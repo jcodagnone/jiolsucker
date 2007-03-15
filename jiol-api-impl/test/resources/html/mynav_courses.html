@@ -1,0 +1,324 @@
+<!DOCTYPE html 
+
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html>
+<head>
+	
+
+<title>Navegación</title>
+<script LANGUAGE="javascript">
+
+//if (parent.location.href == self.location.href)
+//  window.location.href = 'inicio1.htm' + location.search;
+
+function defaultnew(urlcontext, urldesktop)
+{
+	parent.frames["context"].location.href=urlcontext;
+	parent.frames["desktop"].location.href=urldesktop;
+}
+function AbrirAplicacion(str_url){
+
+	settings = 'width='+200+',height='+230+',top='+200+',left='+300+',scrollbars=no,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
+	var win = window.open(str_url, '_blank', settings);
+}
+function OpenWebMail() {
+	var settings = 'width=790,height=600,top=0,left=0,scrollbars=no,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes';
+	// var url = 'http://www.itba.edu.ar/horde/imp/';
+	var url = 'WebMail.htm';
+	var win = window.open(url, '_blank', settings);
+	win.focus();
+}
+
+</script>
+
+
+<!-- <meta http-equiv="REFRESH" content="15; mynav.asp?refresh=1"> -->
+<link rel="stylesheet" href="common.css" type="text/css">
+
+
+
+<style>
+a:hover.resalta  {	background-color : #ADD8E6;	color : #000000;}
+a:hover.Ilum {color : #BEE9F7;}
+A {font: 8pt Arial}
+</style>
+
+</head>
+
+<body bgcolor="#2991b3" link="#FFFFFF" vlink="#CCCCCC" alink="#FFFF99">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+ 
+		<script language="JavaScript">
+			defaultnew("context.asp", "mydesktop.asp")	
+		</script> 
+		
+	<tr>
+		<td valign="bottom" height="18" background="images/sep_bkg_l.jpg">
+			<font face="arial" size="1" color="#FEE5B2">
+				<b>Personal</b>
+			</font>
+		</td>
+		<td width="1%" valign="bottom" height="18"><img src="images/sep_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="mynav.asp?cmd=logout" target="navbar">
+				Logout
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="myDesktop.asp" target="desktop">
+				Escritorio Personal
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="matSearch.asp" target="desktop">
+				Buscar materia
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="novlistall.asp" target="desktop">
+				Novedades
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="sugests.asp" target="desktop">
+				Sugerencias
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="#" target="_self"OnClick="OpenWebMail()">
+				Correo electrónico
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="reglamentacion.asp" target="desktop">
+				Reglamentaci&oacute;n
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<tr>
+		<td background="images/button_bkg_l.jpg">
+			<a style="width : 100 px" class="Ilum" href="http://search.epnet.com/" target="_blank">
+				Biblioteca EBSCO
+			</a>
+		</td>
+		<td width="1%"><img src="images/button_bkg_r.jpg"></td>
+	</tr>
+	
+	<!--
+	<tr><td>1=4950</td></tr>
+	<tr><td>2=</td></tr>
+	<tr><td>3=</td></tr>
+	<tr><td>4=</td></tr>
+	-->
+	
+	<!--
+	<tr><td>1=4950</td></tr>
+	<tr><td>2=</td></tr>
+	<tr><td>3=</td></tr>
+	<tr><td>4=</td></tr>
+	-->
+	
+	<!--
+	<tr><td>1=4950</td></tr>
+	<tr><td>2=</td></tr>
+	<tr><td>3=</td></tr>
+	<tr><td>4=</td></tr>
+	-->
+	<ul>
+	<tr>
+		<td valign="bottom" height="18" background="images/sep_bkg_l.jpg">
+			<font face="arial" size="1" color="#FEE5B2">
+				<b>Areas</b>
+			</font>
+		</td>
+		<td width="1%" valign="bottom" height="18"><img src="images/sep_bkg_r.jpg"></td>
+	</tr>
+	
+		<tr><td>
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=1&amp;snivel=GRA" target="navbar">
+		GRADO
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		</ul>
+		<!--<tr><td><hr></td></tr>-->
+		<ul>
+	<tr>
+		<td valign="bottom" height="18" background="images/sep_bkg_l.jpg">
+			<font face="arial" size="1" color="#FEE5B2">
+				<b>Carreras</b>
+			</font>
+		</td>
+		<td width="1%" valign="bottom" height="18"><img src="images/sep_bkg_r.jpg"></td>
+	</tr>
+	
+		</ul>
+		<!--<tr><td><hr></td></tr>-->
+		<ul>
+	<tr>
+		<td valign="bottom" height="18" background="images/sep_bkg_l.jpg">
+			<font face="arial" size="1" color="#FEE5B2">
+				<b>Dptos.</b>
+			</font>
+		</td>
+		<td width="1%" valign="bottom" height="18"><img src="images/sep_bkg_r.jpg"></td>
+	</tr>
+	
+		<tr><td>
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=3&amp;snivel=-12" target="navbar">
+		CEITBA
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		
+		<tr><td>
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=3&amp;snivel=-21" target="navbar">
+		OFRECIMIENTO DE PASANTIAS
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		</ul>
+		<!--<tr><td><hr></td></tr>-->
+		<ul>
+	<tr>
+		<td valign="bottom" height="18" background="images/sep_bkg_l.jpg">
+			<font face="arial" size="1" color="#FEE5B2">
+				<b>Materias</b>
+			</font>
+		</td>
+		<td width="1%" valign="bottom" height="18"><img src="images/sep_bkg_r.jpg"></td>
+	</tr>
+	
+		<tr><td colspan="2">
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=4&amp;snivel=61.31" target="navbar">
+		DERECHO PARA INGENIEROS
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		
+		<tr><td colspan="2">
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=4&amp;snivel=21.01" target="navbar">
+		ELECTROTECNIA I
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		
+		<tr><td colspan="2">
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=4&amp;snivel=94.22" target="navbar">
+		FORMACION GENERAL II
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		
+		<tr><td colspan="2">
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=4&amp;snivel=93.71" target="navbar">
+		INVESTIGACION OPERATIVA.
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		
+		<tr><td colspan="2">
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=4&amp;snivel=93.05" target="navbar">
+		MATEMATICA V
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		
+		<tr><td colspan="2">
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="1%" valign="top"><font color="#DDDDDD">•&nbsp;</font></td>
+		<td>
+		<a href="mynav.asp?cmd=ChangeContext&amp;nivel=4&amp;snivel=71.19" target="navbar">
+		SISTEMAS DE COMPUTACION
+		</a>
+		</td>
+		</tr>
+		</table>
+		</td></tr>
+		</ul>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ar.com.leak.iolsucker</groupId>
+  <artifactId>jiol</artifactId>
+  <packaging>pom</packaging>
+  <name>jiol</name>
+  <version>3.13</version>
+  <description>Cliente java para Itba On Line (iol) con un diseño muy flexible, y una implementación simple</description>
+  <url>http://www.leak.com.ar/~juam/code/jiol/</url>
+  <issueManagement/>
+  <ciManagement>
+     <system>continiuum</system>
+     <notifiers>
+       <notifier>
+          <configuration>
+	    <address>juan</address>
+	  </configuration>
+       </notifier>
+     </notifiers>
+  </ciManagement>
+  <inceptionYear>2005</inceptionYear>
+  <mailingLists/>
+  <developers>
+    <developer>
+      <name>Juan F. Codagnone</name>
+      <id>juan</id>
+      <roles>
+         <role>Fundador</role>
+	 <role>core developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Eduardo Pereda</name>
+      <id>epere4</id>
+      <roles>
+         <role>fixes GUI</role>
+      </roles>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Sebastián Thierer</name>
+    </contributor>
+    <contributor>
+      <name>Federico Angeleri</name>
+    </contributor>
+  </contributors>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:svn:https://svn.leak.com.ar/jiol/</connection>
+    <developerConnection>scm:svn:https://svn.leak.com.ar/jiol/</developerConnection>
+    <url>https://svn.leak.com.ar/jiol/</url>
+  </scm>
+  <organization>
+    <name>leak.com.ar</name>
+    <url>http://www.leak.com.ar/~juan/</url>
+  </organization>
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+    <testSourceDirectory >test/java</testSourceDirectory>
+    <!--directory/>
+    <scriptSourceDirectory/>
+    <outputDirectory/>
+    <testOutputDirectory/-->
+    <defaultGoal>compile</defaultGoal>
+    <resources>
+      <resource>
+        <directory>src/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+       <testResource>
+          <directory>test/resources</directory>
+       </testResource></testResources>
+    <finalName/>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.5</source>
+            <target>1.5</target>
+            <encoding>ISO-8859-1</encoding>
+          </configuration>
+        </plugin>
+	<plugin>
+	   <artifactId>maven-eclipse-plugin</artifactId>
+	</plugin>
+      </plugins>
+    </pluginManagement>  
+  </build>
+  <profiles/>
+  <modules>
+     <module>leak-commons</module>
+     <module>jiol-api</module>
+     <module>jiol-api-impl</module>
+     <module>jiol-iolsucker</module>
+  </modules>
+  <repositories>
+      <repository>
+         <id>jiol maven repo</id>
+         <name>jiol override directory</name>
+         <url>http://www.leak.com.ar/~juan/code/jiol/m2/</url>
+	 <layout>default</layout>
+      </repository>
+  </repositories>
+  <pluginRepositories/>
+  <reporting>
+     <plugins>
+        <!--plugin>
+          <groupId>org.apache.maven.reports</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+	  <version>2.0-alpha-1</version>
+       </plugin-->
+     <!--plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+	 <artifactId>maven-dependencytree-plugin</artifactId>
+	 <version>1.0-SNAPSHOT</version>
+       </plugin-->
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+	 <artifactId>maven-project-info-reports-plugin</artifactId>
+       </plugin>
+     </plugins>
+  </reporting>
+  <dependencyManagement/>
+  <distributionManagement>
+    <site>
+       <id>my.leak.com.ar</id>
+       <name>my.leak.com.ar</name>
+       <url>scp://my.leak.com.ar/home/juam/public_html/code/jiol</url>
+    </site>
+    <repository>
+           <id>leak.com.ar</id>
+	   <name>my.leak.com.ar</name>
+	   <url>scp://my.leak.com.ar/home/juam/public_html/code/jiol/m2</url>
+	   <layout>default</layout>
+    </repository>
+    <downloadUrl/>
+    <!-- TODO distribution -->
+  </distributionManagement>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<faqs title="Frequently Asked Questions">
+
+  <part id="general">
+    <title>General</title>
+     <faq id="almacen">
+      <question>¿Donde se almacena por defecto la configuración, si es que decido guardarla?</question>
+      <answer>
+        <p>Si decide guardarla, se almacena en un archivo en el directorio 
+           <em>user.home</em>/.jiolsucker/config.xml. <em>user.home</em> es 
+           una propiedad estática de Java, y depende en cada plataforma, pero
+    	   tiende a ser el home de su usuario. Recuerde mantener los permisos
+    	   de esos archivos de formas que otros usuarios no puedan accederlos.
+        </p>
+      </answer>
+    </faq>
+    <faq id="consola">
+      <question>¿Puedo correr jiolsucker desde una consola?</question>
+      <answer>
+        <p><b>TODO</b>Actualizar la respuesta para el contenedor Spring</p>
+      </answer>
+    </faq>
+    <faq id="configuración">
+      <question>Quiero usar la versión de consola porque no tengo XFree, y no
+         quiero usar las propiedades. ¿Tenes un ejemplo del archivo de 
+         configuración?</question>
+      <answer>
+        <p><b>TODO</b>Actualizar la respuesta para el contenedor Spring</p>
+        <p>La versión 0 del archivo de configuración es de la forma:
+          <source>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;configuration&gt;
+  &lt;revision&gt;0&lt;/revision&gt;
+  &lt;username&gt;29123456&lt;/username&gt;
+  &lt;password&gt;FAIab1Eqb3lezt==
+  &lt;/password&gt;
+  &lt;pass_algo&gt;base64&lt;/pass_algo&gt;
+  &lt;save_data&gt;true&lt;/save_data&gt;
+  &lt;save_password&gt;true&lt;/save_password&gt;
+  &lt;repo&gt;/tmp/jiol-rep&lt;/repo&gt;
+&lt;/configuration&gt;
+          </source>
+        </p>
+        <p>
+          En este caso, la constraña está codificada con base64. Puede obtener
+          la codificación usando el programa <code>uuencode</code>. Ejemplo:
+           <source>juan@dinah juan $ uuencode -m -
+begin-base64 644 -
+test
+dGVzdAo=
+====</source>
+        </p>
+      </answer>
+    </faq>
+    <faq id="usb">
+         <question>Tengo un llavero USB donde guardo el repositorio,
+         y tambien deseo que allí se guarde la configuración default.
+         ¿Como puedo hacerlo?</question>
+         <answer> 
+         <p><b>TODO</b>Actualizar la respuesta para el contenedor Spring</p>
+         <p>
+	         Desde el script donde corre el programa, agrege 
+	         <code>-Diolsucker.home=/path/to/usb</code>. Su script debe determinar
+	         cual es el path al usb.a</p>
+         </answer>
+      </faq>
+      <faq id="filter">
+         <question>No quiero sincronizar todas las materias, y quiero poder
+         decirle el orden en el que las quiero sincronizar!!!</question>
+         <answer> <p>
+	         El controlador default (Iolsucker), suporta el filtrado de materias,
+	         y el ordenado de las mismas, pero todavia no hay una forma visual
+	         de configurarlo. Si es un power-user, escriba una clase que 
+	         herede de <code>ConsoleContainerFactory</code> o 
+	         <code>SwingContainerFactory</code> y sobreescriba el método
+	         <code>registerController</code>. Allí especifique el predicado a usar
+	         para seleccionar que materias quiere sincronizar, y el Comparator
+	         para ordenar las materias; y no se olvide de usar la propiedad
+	         <code>iolsucker.factory.pico</code> para especificar la nueva
+	         clase. </p>
+         </answer>
+      </faq>
+      
+  </part> 
+  
+   <part id="power">
+    <title>Power Users</title>
+      <faq id="optiondao">
+         <question>Quiero que la configuración se guarde en otro formato (en vez 
+               de un XML). ¿Como hago?</question>
+         <answer> <p>
+	         Debe escribir una clase con un constructor default que
+	         implemente la interfase 
+	           <a href="apidocs/ar/com/leak/iolsucker/container/OptionsDAO.html">ar.com.leak.iolsucker.container.OptionsDAO</a>.
+	         Cuando corra el programa, use la propiedad <code>iolsucker.factory.options</code> para
+	         especificar dicha clase.</p>
+         </answer>
+      </faq>
+      <faq id="repository">
+         <question>Tengo una mejor forma de guardar el repositorio (o quiero 
+           hacer otras cosas como guardarlo en mi base de datos). 
+           ¿Puedo facilmente cambiar el comportamiento?</question>
+         <answer> <p>
+            Si, debe escribir un clase que implemente la interfase
+              <a href="apidocs/ar/com/leak/iolsucker/view/Repository.html">ar.com.leak.iolsucker.view.Repository</a>.
+              Tambien debe reflejar este cambio en el <code>ContainerFactory</code>. 
+              Para esto puede heredar de <code>ConsoleContainerFactory</code> o de 
+              <code>SwingContainerFactory</code> , sobre escribir el metodo 
+              <code>registerRepository</code>. Al ejecutar el programa use la 
+              propiedad <code>iolsucker.factory.pico</code> para especificar
+              su <code>ContainerFactory</code>.
+
+	           <a href="apidocs/ar/com/leak/iolsucker/container/OptionsDAO.html">ar.com.leak.iolsucker.container.OptionsDAO</a>.
+	         Cuando corra el programa, use la propiedad <code>iolsucker.factory.options</code> para
+	         especificar dicha clase. </p>
+         </answer>
+      </faq>
+      <faq id="ioldao">
+         <question>Descubrí otra forma de obtener los datos, sin necesidad
+         de parsear los html de la pagina de IOL (XML, SOAP, XMLRPC...).¿Como
+         implemento el cambio?</question>
+         <answer> 
+         <p><b>TODO</b>Actualizar la respuesta para el contenedor Spring</p>
+         <p>
+            Debe hacer algo similar al repositorio: implementear 
+              <a href="apidocs/ar/com/leak/iolsucker/model/IolDAOhtml">ar.com.leak.iolsucker.model.IolDAO</a>,
+              heredar de <code>ConsoleContainerFactory</code> o de 
+              <code>SwingContainerFactory</code> ,  sobreescribir el método 
+              <code>registerDao</code> y al ejecutar el programa usar la 
+              propiedad <code>iolsucker.factory.pico</code> para especificar
+              su <code>ContainerFactory</code>. </p>
+         </answer>
+      </faq>
+    </part>  
+</faqs>

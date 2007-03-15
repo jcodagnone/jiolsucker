@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+      "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>			
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+         xx Controladores: debe inyectar 0 o más controladores            xx
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+    -->   
+   	<bean id="courseComparator" class="ar.com.leak.iolsucker.view.common.CoursesComparator"/>
+    <!-- the main controller  -->
+    <bean id="iolsucker" class="ar.com.leak.iolsucker.controller.Iolsucker">
+    	<constructor-arg ref="repository" />
+    	<constructor-arg ref="ioldao"/>
+		<constructor-arg ref="courseComparator"/>
+		<constructor-arg>
+  	       	<bean id="coursePredicate" class="ar.com.leak.iolsucker.container.spring.StaticConditionalFactoryBean">
+			   <property name="condition">
+					<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+						<property name="targetObject" ref="options"/>
+						<property name="targetMethod">
+							<value>isFilterCourses</value>
+						</property>
+					</bean>
+			   </property>
+			   <property name="trueBean">
+		 	      <bean class="ar.com.leak.iolsucker.container.swing.SwingCoursePredicate">
+		 	      	<constructor-arg index="0" ref="ioldao"/>
+		 	      	<constructor-arg index="1" ref="courseComparator"/>
+		 	      </bean>
+			   </property>
+			   <property name="falseBean">
+	 	          <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	                 <property name="staticMethod">
+	                    <value>org.apache.commons.collections.functors.TruePredicate.getInstance</value>
+	                 </property>
+ 	              </bean>
+			   </property>
+			</bean>
+		</constructor-arg>
+    </bean>
+    
+    <!-- the news controller -->
+    <bean id="iolnews" class="ar.com.leak.iolsucker.controller.News">
+	    <constructor-arg ref="ioldao"/>
+    	<constructor-arg index="1">
+    		<value>false</value>
+    	</constructor-arg>
+    </bean>
+    
+    <!-- controlador que borra todas las noticias -->
+    <bean id="clearnews" class="ar.com.leak.iolsucker.controller.ClearNews">
+    	<constructor-arg ref="ioldao"/>
+    </bean>
+</beans>

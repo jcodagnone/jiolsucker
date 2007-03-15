@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+      "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="test1" class="ar.com.leak.iolsucker.container.spring.StaticConditionalFactoryBean">
+	   <property name="condition">
+		   <value>true</value>
+	   </property>
+	   <property name="trueBean">
+ 	       <value>true</value>
+	   </property>
+	   <property name="falseBean">
+     	   <value>false</value>
+	   </property>
+	</bean>
+	
+	<bean id="test2" class="ar.com.leak.iolsucker.container.spring.StaticConditionalFactoryBean">
+	   <property name="condition">
+		   <value>false</value>
+	   </property>
+	   <property name="trueBean">
+ 	       <value>true</value>
+	   </property>
+	   <property name="falseBean">
+     	   <value>false</value>
+	   </property>
+	</bean>
+</beans>
+      

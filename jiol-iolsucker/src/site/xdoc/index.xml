@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<document>
+
+  <properties>
+    <author>Juan F. Codagnone</author>
+    <title>Arquitectura de la aplicación</title>
+  </properties>
+  <body>
+    <section name="jiol">
+      <subsection name="Introducción">
+        <p>
+           <code>jiol</code> es la tercer reencarnación del gran 
+           <a href="http://www.leak.com.ar/~juan/code/iolsucker/">iolsucker</a>,
+           un programa que automatiza la tarea de mantenerse al día 
+           con los materiales didáctico de Itba on-line.
+        </p>
+        <p>
+           <code>jiol</code> es un software 
+           <a href="http://www.opensource.org/docs/definition.php">Open Source</a>.
+           El autor alienta a otros desarrolladores, para que metan mano, y lo tuneen.
+        </p>
+        <p>El estado actual es de beta. No todas las features disponibles en el 
+            código se usan.
+        </p>
+      </subsection>
+      <subsection name="Historia">
+        <p>iolsucker nació en el segundo cuatrimestre del 2002 como un script en bash.
+           La falta de portabilidad, y la poca mantenibilidad del código bash hizo que 
+           saliera el iolsucker-2.x escrito en C, con releases tanto para Windows como 
+           para Linux. Como cada vez escribo menos C, ty la version 2.x no tenía un
+           diseño orientado a objetos, y tuve un tardecita aburrida, escribí está 
+           versión en java. El diseño  es muy flexible, y explora varios conceptos 
+           interesantes como la  <a href="http://www.martinfowler.com/articles/injection.html">Inversion de Control</a>.
+        </p>
+        </subsection>
+        <subsection name="Descargas">
+          <table>
+	          <tr>
+	            <th>Archivo</th>
+	            <th>Descripción</th>
+	          </tr>
+	          <tr>
+	            <td><a
+		    href="dist/3.13.1/jiol-iolsucker-3.13.1.exe">jiol-iolsucker-3.13.1.exe</a>
+	            [<a href="dist/3.13.1/jiol-iolsucker-3.13.1.exe.asc">PGP</a>]
+	            </td>
+	            <td>Instalador para windows. Comodo para usuarios nuevos. 
+	                Listo para usar.</td>
+	          </tr>
+	          <tr>
+	            <td><a href="dist/3.13.1/jiol-iolsucker-3.13.1.tar.gz">
+		       jiol-iolsucker-3.13.1.tar.gz</a>
+                  [<a href="dist/3.13/jiol-iolsucker-3.13.1.tar.gz.asc">PGP</a>]</td>
+	            <td>se descomprime y está listo para usar por medio de .bat</td>
+	          </tr>
+	          <tr>
+	            <td><a href="dist/3.13.1/jiol-iolsucker-3.13.1.jar">
+		           jiol-iolsucker-3.13.1.jar</a>
+              [<a href="dist/3.13.1/jiol-iolsucker-3.13.1.jar.asc">PGP</a>]</td>
+	            <td>Solo el jar, sin dependencias. Para actualizar rápido, o
+	            para programar.</td>
+	          </tr>
+	          <tr>
+	            <td><a href="dist/3.11/jiol-api-3.11.jar">
+		           jiol-api-3.11.jar</a>
+              [<a href="dist/3.11/jiol-api-3.11.jar.asc">PGP</a>]</td>
+	            <td>API de jiol</td>
+	          </tr>
+                  <tr>
+	            <td><a href="dist/3.13.1/jiol-api-impl-3.13.1.jar">
+		           jiol-api-impl-3.13.jar</a>
+              [<a href="dist/3.13.1/jiol-api-impl-3.13.1.jar.asc">PGP</a>]</td>
+	            <td>implementacion del API de jiol</td>
+	          </tr>
+
+
+                   <!-- tr>
+	            <td><a href="dist/old/jiolnotifier-3.5.jar">jiolnotifier-3.5.jar</a>
+	              [<a href="dist/old/jiolnotifier-3.5.jar.asc">PGP</a>]</td>
+	            <td>Solo el jar, sin dependencias. Para actualizar rápido, o
+	            para programar.</td>
+	          </tr-->
+
+	          <tr>
+	            <td><a href="https://svn.leak.com.ar/jiol/">https://svn.leak.com.ar/jiol/</a> </td>
+	            <td>Código fuente.</td>
+	          </tr>
+	        </table>
+	        <p>También puede <a href="dist/">ver todos los archivos disponibles</a></p>
+	        <p>También puede <a href="changes-report.html">ver lo cambios entre versiones</a></p>
+        </subsection>
+        <subsection name="Requerimientos">
+           <p>Java Runtime Environment 1.5 (java 5)</p>
+        </subsection>
+        <subsection name="Entorno de desarrollo">
+          <p>
+	          <table>
+	          <tr>
+	            <th>Software</th>
+	            <th>Versión</th>
+	            <th>¿Para qué?</th>
+	          </tr>
+	          <tr>
+	            <td><a href="http://java.sun.com/j2se/1.5.0/">J2SE SDK</a></td>
+	            <td>1.5.0</td>
+	            <td>Como compilador</td>
+	          </tr>
+	          <tr>
+	            <td><a href="http://www.eclipse.org/">Eclipse</a></td>
+	            <td>3.1</td>
+	            <td>Como IDE para el programador</td>
+	          </tr>
+	          <tr>
+	            <td><a href="http://maven.apache.org/">Maven</a></td>
+	            <td>1.0.2</td>
+	            <td>Como manejador del proyecto, para manejar las dependencias,
+	                autogenerar los codigos fuentes autogenerados, y para la 
+	                generación de la documentación, y reportes del proyecto</td>
+	          </tr>
+	        </table>
+	      </p>  
+       </subsection>
+       <subsection name="Screenshots">
+               <center><img src="screenshot.png"/></center>
+       </subsection>
+    </section>
+  </body>
+</document>

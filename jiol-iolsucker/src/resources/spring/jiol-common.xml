@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+      "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <!-- relative path validator: valida los path que pasan el servidor, para
+         que no intente mandarnos paths que puedan salir del sandbox del
+         repositorio. lo usa la implementacion del DAO -->
+   <bean id="relativePathValidator" 
+         class="ar.com.leak.iolsucker.impl.common.RelativeLocationValidator"/>    
+</beans>

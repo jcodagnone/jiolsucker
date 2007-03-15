@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+      "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+         xx OTROS: Repositorio                                            xx
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+    -->   	
+	<!-- Información del proyecto -->
+	<bean id="projectInfo" class="ar.com.leak.iolsucker.ProjectInfo"/>
+	
+	<!-- path del repositorio local -->
+	<!--bean id="repopath" factory-bean="options" factory-method="getRepository"/-->
+	<bean id="repopath" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="options"/>
+		<property name="targetMethod">
+			<value>getRepository</value>
+		</property>
+	</bean>
+	<!-- observador del repositorio: changelog en formato feed -->
+	<bean id="atomFeedObserver" 
+	      class="ar.com.leak.iolsucker.view.common.AtomObserver" 
+	      destroy-method="dispose">
+		<constructor-arg index="0">
+			<bean class="java.security.SecureRandom"/>
+		</constructor-arg>
+		<constructor-arg type="java.io.File"  index="1">
+			<bean class="java.io.File">
+				<constructor-arg index="0" ref="repopath"/>
+				<constructor-arg index="1">
+					<value>changelog.atom.xml</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg index="2" ref="projectInfo"/>
+	</bean>
+	
+	<bean id="textChangelogObserver" 
+	      class="ar.com.leak.iolsucker.view.common.TextChangelogObserver"
+	      destroy-method="dispose">
+		<constructor-arg type="java.io.File">
+			<bean class="java.io.File">
+				<constructor-arg index="0" ref="repopath"/>
+				<constructor-arg index="1">
+					<value>changelog.txt</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="repository" class="ar.com.leak.iolsucker.view.common.FSRepository">
+		<constructor-arg index="0" ref="repopath"/>
+		<constructor-arg index="1">
+			<bean class="ar.com.leak.iolsucker.view.common.LoggerDownloadMeter"/>
+		</constructor-arg>
+		<constructor-arg ref="relativePathValidator" index="2"/>
+				<constructor-arg index="3">
+			<bean class="ar.com.leak.iolsucker.view.common.TagRepublishRepositoryStrategy"/>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<value>16</value> <!-- cantidad de trabajadores en paralelo -->
+		</constructor-arg>
+		<property name="repositoryListeners">
+			<list>
+				 <ref bean="atomFeedObserver"/>
+				 <ref bean="textChangelogObserver"/>
+			</list>
+		</property>
+	</bean>
+</beans>

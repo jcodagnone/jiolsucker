@@ -1,0 +1,185 @@
+<document>
+  <properties>
+    <title>Cambios entre versiones</title>
+    <author email="">Juan F. Codagnone</author>
+  </properties>
+  <body>
+    <!-- http://maven.apache.org/reference/plugins/changes/ 
+		 action.dev
+		 action.type := add, fix, remove, update
+		 action.issue := 
+		 action.due-to
+		 action.due-to-email
+      -->
+    <release version="3.13" date="2005-03-01" description="back!!">
+        <action dev="juan" type="update">
+	   La gente de IOL cambió la forma de navegar las carpetas. Se hizo
+	   más "dificil". Nos adaptamos.
+	</action>
+	<action dev="juan" type="update">
+	   Cambió el tipo de link directo de descarga de archivo rompiendo el
+	   modo iolsucker-2.x. Nos adaptamos.
+	</action>
+    </release>
+    <release version="3.12" date="2005-10-19" description="Right Away">
+        <action dev="epere4" type="feature">
+	  Se puede configurar para que el jiol arranque sin preguntar la 
+	  configuración.
+	</action>
+    </release>
+    <release version="3.11" date="2005-09-06" description="Extreme Makeover">
+        <action dev="juan" type="feature">
+	   Si se utiliza la forma vieja de bajar los archivos (iolsucker-2.x) y
+	   el profesor cambia el archivo manteniendo el mismo nombre  (es una
+	   mala práctica) se detecta el cambio, se renombra la version local, y
+	   se baja la nueva versión (Idea de Eduardo Pereda)
+	</action>
+	 <action dev="epere4" type="update">
+	   Ajustes visuales a la GUI. Queda todo más lindo!
+	</action>
+        <action dev="juan" type="fix">
+	   En Windows, si se apretaba el boton Salir durante la sincronización
+	   se quedaba colgado intentado liberar los recursos (bug de swing?)
+	</action>
+	 <action dev="juan" type="add">
+	   dev: algo de documentación como preparar el entorno de programación
+	   y como configurar el eclipse para jugar con el jiol.
+	</action>
+    </release>
+    
+    <release version="3.10" date="2005-08-30" description="frapé">
+        <action dev="juan" type="feature">
+	   posibilidad de elegir la forma vieja (iolsucker-2.x) de bajar los
+	   archivos. Hoy se usa el boton "Bajar Archivo", y el viejo iolsucker
+	   usaba el link "Bajar". Si bien es menos robusto la vieja forma
+	   de bajar los archivos y genera un poco mas de tráfico, no marca
+	   como leido a los archivo. Según Edu, que no se cambie el estado del
+	   archivo puede ser útil para saber que se imprimió.
+	</action>
+	<action dev="juan" type="feature">
+	  Posibilidad de seleccionar que materias sincronizar (si bien ya el
+	  soporte estaba, faltaba la ventanita...y un "pero...va a bajar todo"
+	  en la lab me hizo hacerla.
+	</action>
+	<action dev="juan" type="update">
+	  atom changelog: cada entrada tiene link al nuevo archivo. asi
+	  haciendo click en el agregator se habre el archivo que acabo de 
+	  bajar.
+	</action>
+	<action dev="juan" type="update">
+	  dev: el prometido desglose en modulos: jiol-api tiene la definición
+	     del api de jio, jiol-api-impl implementa el api, y jiol-iolsucker
+	     es una aplicación que usa jiol. Tambien ademas de soportar
+	     maven-1, agregé los poms para M2.
+	</action>
+
+    </release>
+    
+    <release version="3.9" date="2005-08-22" description="go speedracer, go!">
+		<action dev="juan" type="bugfix">
+		 performace fix: se paraleliza el recorrido por las carpetas de 
+		 material didáctico y la búsqueda de los nombres de archivos, 
+		 optimizando el uso del ancho de banda disponible. En mi caso pasé
+		 de tardar 36 segundos a 15 segundos. Para la paralización venía
+		 comodo algunas clases de java 5 (queue y el JCP-166), por lo que 
+		 abandoné la compatiblidad 1.4. Se requiere un jre 1.5.
+		</action>	
+		<action dev="juan" type="update">
+		  termino de matar warnings checkstyle
+		</action>
+	</release>  
+    <release version="3.8" date="2005-08-18" description="glue">
+		<action dev="juan" type="feature">
+		 Changelog de texto (changelog.txt) para la gente no tan cool.
+		</action>	
+		<action dev="juan" type="update">
+		  El changelo de formatp atom feed tiene un título mas informativo
+		</action>
+	</release>
+    <release version="3.7" date="2005-08-16" description="glue">
+		<action dev="juan" type="feature">
+		 Changelog de las operaciones sobre el repositorio local (al estilo el
+		 cambios.txt del iolsucker-2.x), pero con ATOM feed!
+		</action>	
+		<action dev="juan" type="update">
+		  cambio el contenedor IoC picoContainer por Spring! picoContainer se
+		  estaba yendo de las manos, y generando codigo que olia feo.
+		</action>
+		<action dev="juan" type="update">
+		  la mayoría de las clases fueron retocadas para que checkstyle no se 
+		  queje.
+		</action>
+		<action dev="juan" type="feature">
+		  nuevo controlador que permite al usuario borrar todas las noticias 
+		  (util para cuando se acumulan mucha, y los títulos no parecen interesantes)
+		</action>
+    </release>
+    <release version="3.6" date="2005-05-15" description="java 1.4">
+		<action dev="juan" type="bugfix">
+		  la versiones 3.4 y 3.5 parecen que no funcionaban con un jre 1.4 
+		  porque se usaba un método especifico de java 1.5. Reportado por
+		  Federico Angeleri.
+		</action>	
+    </release>
+    <release version="3.5" date="2005-05-07" description="behind scenes">
+		<action dev="juan" type="update">
+		  cambio algunos codigos para hacer las clases un poco mas
+		  facil de reusar desde afuera de jiol. Para jiolnotifier.
+		</action>	
+		<action dev="juan" type="add">
+		 jiol notifier!
+		</action>	
+
+    </release>
+ 
+    <release version="3.4" date="" description="">
+		<action dev="juan" type="fix">
+			security fix: agrego un chequeo agresivo contra los nombre de 
+			archivos de material didactico que pasa el servidor.
+			 Sin este fix, si la gente de iol  (o por hay un administrador de 
+			 material didactico) fuera mala, podria crear (pero no pisar) 
+			 archivos fuera del repositorio.
+		</action>	
+    </release>
+    <release version="3.3" date="2005-04-26" description="login">
+		<action dev="juan" type="fix">
+			Si el usuario entra mal el usuario o la password, se muestra un 
+			mensaje mas entendible... Reportado por Sebastián Thierer.
+		</action>	
+	</release>
+    <release version="3.2" date="2005-04-26" description="news!!">
+	  <action dev="juan" type="add">
+        En la vista gráfica (swing) se puede seleccionar el nivel de debug de los mensajes
+      </action>   
+      <action dev="juan" type="add">
+        Soporte de noticias
+      </action>   
+	  <action dev="juan" type="fix">
+        programación: Hago un poco mas claro el código que obtiene las materias 
+		en la implementación HTTP.
+      </action>
+	  <action dev="juan" type="fix">
+        programación: Se pueden registrar múltiples controladores. Por ejemplo
+		ahora hay dos controladores: iolsucker y noticias
+      </action>
+	  <action dev="juan" type="fix">
+        programación: el programa está libre de Reflexion! la clase Main mejoró
+		mucho.
+      </action>
+    </release>	
+    <release version="3.1" date="2005-04-19" description="conectividad...">
+	  <action dev="juan" type="add">
+        Interface visual (y cambio en la fabrica de contenedores) para seteo de proxy. 
+      </action>   
+	  <action dev="juan" type="add">
+        Interface visual (y cambio en la fabrica de contenedores) que permite 
+		cambiar la URL de Itba-OnLine 
+      </action>   
+    </release>
+   <release version="3.0" date="2005-04-14" description="versión inicial">
+	    <action dev="juan" type="add">
+          Versión Inicial
+        </action>   
+    </release>
+  </body>
+</document>

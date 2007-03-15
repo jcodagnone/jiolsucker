@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+      "http://www.springframework.org/dtd/spring-beans.dtd">
+      
+<!--
+   Ejemplo de configuracion para correr jiol desde la consola, sin X
+  -->
+<beans>
+	<bean name="options" class="ar.com.leak.iolsucker.container.Options">
+	    <!-- el usuario: tipicamente el numero de dni -->
+		<property name="username"><value>1234567</value></property>
+		<!-- la clave del usuario -->
+		<property name="password"><value>milindapassword</value></property>
+		<!-- repositorio: donde se guardan las cosas que se bajan  -->
+		<property name="repository"><value>/home/juan/materias/jiol-rep</value></property>
+		<!-- activar al comportamiento de iolsucker-2.x?  
+		     para mas detalle ver el javadoc de la clase:
+ 		     ar.com.leak.iolsucker.impl.http.extras.OldFashionHttpMaterialFile
+		  -->
+		<property name="oldFashion"><value>true</value></property>
+	</bean>
+	
+    <bean id="configurator" class="ar.com.leak.iolsucker.container.common.NullConfigurator"/>
+	<!-- elegir uno de los dos -->
+	<import resource="jiol-dao-http.xml"/>
+	<!-- import resource="jiol-dao-mock.xml"/-->
+	
+	<import resource="jiol-common.xml"/>
+	<import resource="jiol-repository.xml"/>
+	<import resource="jiol-controllers.xml"/>
+</beans>

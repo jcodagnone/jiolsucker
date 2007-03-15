@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/3.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
+  <pomVersion>3</pomVersion>
+  <artifactId>jiol</artifactId>
+  <name>jiolsucker</name>
+  <groupId>jiol</groupId>
+  <currentVersion>3.13.1</currentVersion>
+  <organization>
+    <name>leak.com.ar</name>
+    <url>http://www.leak.com.ar/~juan/</url>
+  </organization>
+  <inceptionYear>2005</inceptionYear>
+  <package>ar.com.leak.iolsucker</package>
+  <description>Cliente java para Itba On Line (iol) con un diseño muy flexible, y una implementación simple</description>
+  <shortDescription>Cliente java para Itba On Line (iol)</shortDescription>
+  <url>http://www.leak.com.ar/~juam/code/jiol</url>
+  <siteAddress>my.leak.com.ar</siteAddress>
+  <siteDirectory>/home/juam/public_html/code/jiol</siteDirectory>
+  <repository>
+    <connection>scm:svn:http://svn.leak.com.ar/jiol/</connection>
+    <url>https://svn.leak.com.ar/jiol/</url>
+  </repository>
+  <developers>
+    <developer>
+      <name>Juan F. Codagnone</name>
+      <id>juan</id>
+      <roles>
+        <role>Fundador y core developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Eduardo Pereda</name>
+      <id>epere4</id>
+      <roles>
+         <role>GUI fixes</role>
+      </roles>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Sebastián Thierer</name>
+    </contributor>
+    <contributor>
+      <name>Federico Angeleri</name>
+    </contributor>
+  </contributors>
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+    <unitTestSourceDirectory>test/java</unitTestSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/resources</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+    <unitTest>
+        <resources>
+            <resource>
+               <directory>test/resources</directory>
+               <filtering>false</filtering>
+            </resource>
+        </resources>
+    </unitTest>
+
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>maven-plugins</groupId>
+      <artifactId>maven-dotuml-plugin</artifactId>
+      <version>1.0</version>
+      <type>plugin</type>
+    </dependency>
+  </dependencies>
+</project>
+

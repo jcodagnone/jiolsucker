@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+      "http://www.springframework.org/dtd/spring-beans.dtd">
+<!--
+  | Configuración y ensamble de componentes para obtener iolsucker
+  |
+  | @see TODO
+  -->
+<beans>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+         xx el configurator muestra una gui para poder configurar las     xx
+         xx opciones. Es el unico bean requerido.                         xx
+         xx Si se quiere correr sin gui, deberia injectar un bean que no  xx
+         xx requiera atencion del usuario                                 xx
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+    -->   
+
+    <bean id="configurator" class="ar.com.leak.iolsucker.container.swing.SwingConfigurator">
+    	<constructor-arg ref="optionsDAO"/>
+    </bean>
+
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+         xx helpers  de configuración                                     xx
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+    -->   
+    <bean id="options" factory-bean="configurator" factory-method="getOptions" singleton="false" />
+
+    <!-- DAO para obtener la configuración -->
+    <bean id="optionsDAO" class="ar.com.leak.iolsucker.container.common.CommonConfigurationOptionDAO"/>
+        
+</beans>

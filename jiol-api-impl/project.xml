@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/3.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
+  <pomVersion>3</pomVersion>
+  <artifactId>jiol-api-impl</artifactId>
+  <name>defaults jiol api implementation</name>
+  <extend>../project.xml</extend>
+  <dependencies>
+    <dependency>
+      <groupId>jiol</groupId>
+      <artifactId>jiol-api</artifactId>
+      <version>${pom.currentVersion}</version>
+      <type>jar</type>
+      <properties>
+        <eclipse.dependency>true</eclipse.dependency>
+        <jar.manifest.classpath>true</jar.manifest.classpath>
+      </properties>
+    </dependency>    
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.0</version>
+      <type>jar</type>
+    </dependency>
+
+   <dependency>
+      <groupId>htmlparser</groupId>
+      <artifactId>htmlparser</artifactId>
+      <version>1.5</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1-dev</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.1</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.3</version>
+      <type>jar</type>
+    </dependency>    
+
+  </dependencies>
+
+</project>
+

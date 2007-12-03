@@ -120,6 +120,8 @@ public class HTTPClient {
             huc.setAllowUserInteraction(true);
             huc.setInstanceFollowRedirects(true);
             huc.setRequestProperty("User-Agent", USER_AGENT);
+            huc.setRequestProperty("Referer", 
+                    "http://silvestre.itba.edu.ar/itbaV/login.asp");
             huc.setRequestMethod(method.toString());
             if(this.sessionCookie != null) {
                 huc.setRequestProperty("Cookie", this.sessionCookie);

@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.apache.commons.lang.NullArgumentException;
+import org.apache.commons.lang.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -170,9 +171,23 @@ public class HTTPIolDao implements IolDAO {
     throws IOException {
         URLConnection huc = null;
 
+        huc = httpClient.getConnection(namingMapper.getWelcomePage());
+        BufferedReader inSecret = null;
+        inSecret = new BufferedReader(
+                new InputStreamReader(huc
+                .getInputStream()));
+        String secret = null;
+        try {
+            secret = LinkParser.getLoginSecret(inSecret);
+        } finally {
+            if(inSecret != null) {
+                inSecret.close();
+            }
+        }
+        huc = null;
         logger.info("login in as user `".concat(user).concat("'"));
         huc = httpClient.postConnection(namingMapper.getLoginCommand(),
-                encodeUserAndPassword(user, password));
+                encodeUserAndPassword(user, password, secret));
         BufferedReader in = new BufferedReader(new InputStreamReader(huc
                 .getInputStream()));
 
@@ -218,14 +233,18 @@ public class HTTPIolDao implements IolDAO {
      * 
      * @param user the username
      * @param password the username's password
+     * @param secret login secret
      * @return un string listo para hacer el login
      */
     private String encodeUserAndPassword(final String user, 
-            final String password) {
+            final String password, final String secret) {
         StringBuffer sb = new StringBuffer();
-
-        sb.append("txtdni=");
+        Validate.notNull(secret);
+        
         try {
+            sb.append("secretNr=");
+            sb.append(secret);
+            sb.append("&txtdni=");
             sb.append(URLEncoder.encode(user, "US-ASCII"));
             sb.append("&txtpwd=");
             sb.append(URLEncoder.encode(password, "US-ASCII"));

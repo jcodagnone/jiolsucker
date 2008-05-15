@@ -96,4 +96,9 @@ public class NamingMapper {
     public final String getNewsCommand(final boolean all) {
         return "novlistAll.asp?showAll=" + Boolean.toString(all);
     }
+    
+    /** pagina de login */
+    public final String getWelcomePage() {
+        return "welcome.asp";
+    }
 }

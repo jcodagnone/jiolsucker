@@ -19,10 +19,12 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 
+import org.apache.commons.lang.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.NodeClassFilter;
+import org.htmlparser.tags.InputTag;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
@@ -103,6 +105,35 @@ public final class LinkParser {
         return sb.toString();
     }
 
+    public static String getLoginSecret(final BufferedReader source) throws IOException {
+        return getLoginSecret(getString(source));
+    }
+    
+    public static String getLoginSecret(final String s) throws IOException {
+        final NodeClassFilter filter = new NodeClassFilter(InputTag.class);
+        final Parser parser = new Parser();
+        String secret = null;
+        try {
+            parser.setEncoding("ISO-8859-1");
+            parser.setInputHTML(s);
+            final NodeList list = parser.extractAllNodesThatMatch(filter);
+            
+            for(int i = 0; i < list.size(); i++) {
+                final InputTag input = (InputTag)list.elementAt(i);
+                if(input.getAttribute("name") != null 
+                     && input.getAttribute("name").equalsIgnoreCase("secretNr")) {
+                    secret = input.getAttribute("value");
+                }
+            }
+        } catch(ParserException e) {
+            LOGGER.error("loading html", e);
+            throw new IOException(e.getMessage());
+        }
+
+        Validate.notNull(secret, "no se pudo obtener el challenge de login de iol");
+        return secret;   
+    }
+    
     /**
      * quick test 
      * @param args command line parameters

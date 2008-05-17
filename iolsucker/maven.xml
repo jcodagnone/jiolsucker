@@ -1,9 +1,0 @@
-<project xmlns:j="jelly:core"
-         xmlns:maven="jelly:maven">
-
-    <preGoal name="xdoc:init">
-      <attainGoal name="changes:report"/>  
-      
-    </preGoal>
-
-</project>

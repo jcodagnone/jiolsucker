@@ -5,50 +5,38 @@
   <parent>
     <artifactId>jiol</artifactId>
     <groupId>ar.com.leak.iolsucker</groupId>
-    <version>3.13</version>
+    <version>3.14-SNAPSHOT</version>
   </parent>
   <artifactId>jiol-iolsucker</artifactId>
   <name>utilidad iolsucker</name>
   <description>Sincroniza los archivos de IOL con los locales</description>
-  <version>3.13</version>
+
   <dependencies>
     <dependency>
       <groupId>ar.com.leak.iolsucker</groupId>
       <artifactId>jiol-api</artifactId>
-      <version>3.11</version>
-      <type>jar</type>
-      <scope>compile</scope>
+      <version>${pom.version}</version>
     </dependency>    
      <dependency>
       <groupId>ar.com.leak.iolsucker</groupId>
       <artifactId>jiol-api-impl</artifactId>
-      <version>3.13</version>
-      <type>jar</type>
-      <scope>compile</scope>
+      <version>${pom.version}</version>
     </dependency>    
      <dependency>
       <artifactId>leak-commons</artifactId>
       <groupId>ar.com.leak</groupId>
-      <version>1.0-rc1</version>
-      <type>jar</type>
-      <scope>compile</scope>
+      <version>1.0-rc2</version>
     </dependency>    
 
-  
-  
      <dependency>
       <groupId>springframework</groupId>
       <artifactId>spring-beans</artifactId>
       <version>1.2.3</version>
-      <type>jar</type>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>springframework</groupId>
       <artifactId>spring-core</artifactId>
       <version>1.2.3</version>
-      <type>jar</type>
-      <scope>compile</scope>
     </dependency>
     
     <dependency>

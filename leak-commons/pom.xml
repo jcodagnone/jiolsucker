@@ -6,7 +6,7 @@
   <name>commons leak: reusable classes</name>
   <artifactId>leak-commons</artifactId>
   <groupId>ar.com.leak</groupId>
-  <version>1.0-rc1</version>
+  <version>1.0-rc2</version>
   <organization>
     <name>leak.com.ar</name>
     <url>http://www.leak.com.ar/~juan/</url>
@@ -39,14 +39,5 @@
       <id>epere4</id>
     </developer>
   </developers>
-  <build>
-    <sourceDirectory>src/java</sourceDirectory>
-    <testSourceDirectory>test/java</testSourceDirectory>
-    <resources>
-      <resource>
-        <directory>src/resources</directory>
-      </resource>
-    </resources>
-  </build>
 </project>
 

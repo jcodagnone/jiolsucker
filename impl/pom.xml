@@ -5,10 +5,10 @@
   <parent>
     <artifactId>jiol</artifactId>
     <groupId>ar.com.leak.iolsucker</groupId>
-    <version>3.13</version>
+    <version>3.14-SNAPSHOT</version>
   </parent>
   <artifactId>jiol-api-impl</artifactId>
-  <version>3.13</version>
+
   <name>jiol default implementation of api</name>
   <description>Implementación de jiol que simula a un usuario navegando con el browser</description>
   <dependencies>

@@ -76,9 +76,9 @@
   <profiles/>
   <modules>
      <module>leak-commons</module>
-     <module>jiol-api</module>
-     <module>jiol-api-impl</module>
-     <module>jiol-iolsucker</module>
+     <module>api</module>
+     <module>impl</module>
+     <module>iolsucker</module>
   </modules>
   <repositories>
       <repository>

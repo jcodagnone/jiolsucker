@@ -11,16 +11,6 @@
   <description>Cliente java para Itba On Line (iol) con un diseño muy flexible, y una implementación simple</description>
   <url>http://www.leak.com.ar/~juam/code/jiol/</url>
   <issueManagement/>
-  <ciManagement>
-     <system>continiuum</system>
-     <notifiers>
-       <notifier>
-          <configuration>
-	    <address>juan</address>
-	  </configuration>
-       </notifier>
-     </notifiers>
-  </ciManagement>
   <inceptionYear>2005</inceptionYear>
   <mailingLists/>
   <developers>
@@ -65,23 +55,7 @@
     <url>http://www.leak.com.ar/~juan/</url>
   </organization>
   <build>
-    <sourceDirectory>src/java</sourceDirectory>
-    <testSourceDirectory >test/java</testSourceDirectory>
-    <!--directory/>
-    <scriptSourceDirectory/>
-    <outputDirectory/>
-    <testOutputDirectory/-->
     <defaultGoal>compile</defaultGoal>
-    <resources>
-      <resource>
-        <directory>src/resources</directory>
-      </resource>
-    </resources>
-    <testResources>
-       <testResource>
-          <directory>test/resources</directory>
-       </testResource></testResources>
-    <finalName/>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -117,19 +91,9 @@
   <pluginRepositories/>
   <reporting>
      <plugins>
-        <!--plugin>
-          <groupId>org.apache.maven.reports</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-	  <version>2.0-alpha-1</version>
-       </plugin-->
-     <!--plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-	 <artifactId>maven-dependencytree-plugin</artifactId>
-	 <version>1.0-SNAPSHOT</version>
-       </plugin-->
        <plugin>
          <groupId>org.apache.maven.plugins</groupId>
-	 <artifactId>maven-project-info-reports-plugin</artifactId>
+	     <artifactId>maven-project-info-reports-plugin</artifactId>
        </plugin>
      </plugins>
   </reporting>

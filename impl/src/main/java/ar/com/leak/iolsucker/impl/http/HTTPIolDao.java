@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.apache.commons.lang.NullArgumentException;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -90,12 +91,11 @@ public class HTTPIolDao implements IolDAO {
             logger.debug("obteniendo materias del usuario");
             huc.connect();
             final InputStream in = huc.getInputStream();
-            final Collection links = LinkParser.getLinks(new BufferedReader(
-                    new InputStreamReader(in)));
+            final Collection<Link> links = LinkParser.getLinks(new BufferedReader(
+                    new InputStreamReader(in, "iso-8859-1")));
             in.close();
-            for(Iterator i = links.iterator(); i.hasNext();) {
-                Link link = (Link)i.next();
-                Course course = createCourse(link);
+            for(final Link link : links) {
+                final Course course = createCourse(link);
                 logger.debug("course: " + course + " del link: " + link);
                 if(course != null) {
                     ret.add(course);
@@ -274,7 +274,8 @@ public class HTTPIolDao implements IolDAO {
                 final String code = uh.getParam(codesz);
 
                 ret = new HTTPCourse(httpClient, httpMaterialFactory, code,
-                        courseLink.getAnchor(), level);
+                        StringEscapeUtils.unescapeHtml(courseLink.getAnchor()), 
+                        level);
                 ret.setLink(courseLink.getUri());
             }
         }

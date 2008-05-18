@@ -98,7 +98,12 @@
     </dependency>
 
   </dependencies>
-  
+  <scm>
+    <connection>scm:svn:https://svn.leak.com.ar/jiol/</connection>
+    <developerConnection>scm:svn:https://svn.leak.com.ar/jiol/trunk/</developerConnection>
+    <url>https://svn.leak.com.ar/jiol/trunk/</url>
+  </scm>
+
   <build>
     <plugins>
       <plugin>

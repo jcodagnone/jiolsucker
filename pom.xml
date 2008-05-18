@@ -44,8 +44,8 @@
   </licenses>
   <scm>
     <connection>scm:svn:https://svn.leak.com.ar/jiol/</connection>
-    <developerConnection>scm:svn:https://svn.leak.com.ar/jiol/</developerConnection>
-    <url>https://svn.leak.com.ar/jiol/</url>
+    <developerConnection>scm:svn:https://svn.leak.com.ar/jiol/trunk/</developerConnection>
+    <url>https://svn.leak.com.ar/jiol/trunk/</url>
   </scm>
   <organization>
     <name>leak.com.ar</name>
@@ -68,6 +68,12 @@
            <artifactId>maven-eclipse-plugin</artifactId>
            <configuration>
               <outputDirectory>${project.build.directory}/eclipse-bin</outputDirectory>
+              <additionalProjectnatures>
+                 <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+              </additionalProjectnatures>
+               <additionalBuildcommands>
+                <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+              </additionalBuildcommands>
            </configuration>
            <inherited>true</inherited>
 	    </plugin>

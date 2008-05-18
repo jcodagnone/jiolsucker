@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp
+    spec="1.0+"
+    codebase="http://www.leak.com.ar/~juan/code/jiol/dist/3.13.1/ws/"
+    href="$outputFile">
+  <information>
+    <title>iolsucker</title>
+    <description kind="one-line">Scrapper de Itba On Line</description>
+    <icon
+      width="35"
+      height="26"
+      href="images/icon.gif"/>
+    <icon
+      kind="splash"
+      href="images/icon.jpg"/>
+    <vendor>leak.com.ar</vendor>
+  </information>
+  <security>
+     <all-permissions/>
+  </security>
+  <resources>
+    <j2se version="1.5+"
+     initial-heap-size="32m"
+     max-heap-size="128m"
+     />
+     $dependencies
+  </resources>
+  <application-desc main-class="$mainClass"/>
+</jnlp>

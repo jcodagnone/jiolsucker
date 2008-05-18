@@ -166,6 +166,39 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>webstart-maven-plugin</artifactId>
+        <version>1.0-alpha-2-r4672</version>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>jnlp</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <jnlp>
+                <mainClass>ar.com.leak.iolsucker.Main</mainClass>
+            </jnlp>
+            <sign>
+                <keystore>${iolsucker.kestore}</keystore>
+                <storepass>${iolsucker.storepass}</storepass>
+                <alias>myAlias</alias>
+                <verify>true</verify>
+            </sign>
+
+            <keystoreConfig>
+                <delete>true</delete>
+                <gen>true</gen>
+            </keystoreConfig>
+
+            <pack200>true</pack200>
+            <gzip>true</gzip>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 </project>

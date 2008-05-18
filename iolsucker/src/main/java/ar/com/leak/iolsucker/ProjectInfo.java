@@ -27,7 +27,7 @@ public class ProjectInfo {
     /** name */
     private final String projectName = "iolsucker";
     /** version... */
-    private final String projectVersion = "3.13";
+    private final String projectVersion = "3.14";
     /** developers...*/
     private final String [] developers = {
             "Juan F. Codagnone <juan @ sin.spam im.leak.com.ar> (core)",

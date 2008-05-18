@@ -32,6 +32,10 @@
         </p>
         </subsection>
         <subsection name="Descargas">
+          
+          <p>iolsucker puede ser descargado, o se puede corrar online usando
+          Java WebStart. <a href="dist/3.14/webstart/launch.jnlp">Ejecutar
+          online</a></p>
           <table>
 	          <tr>
 	            <th>Archivo</th>
@@ -46,9 +50,9 @@
 	                Listo para usar.</td>
 	          </tr>
 	          <tr>
-	            <td><a href="dist/3.14/jiol-iolsucker-3.14.1.tar.gz">
-		       jiol-iolsucker-3.14.tar.gz</a>
-                  [<a href="dist/3.14/jiol-iolsucker-3.14.tar.gz.asc">PGP</a>]</td>
+	            <td><a href="dist/3.14/jiol-iolsucker-3.14-bin.tar.gz">
+		       jiol-iolsucker-3.14-bin.tar.gz</a>
+                  [<a href="dist/3.14/jiol-iolsucker-3.14-bin.tar.gz.asc">PGP</a>]</td>
 	            <td>se descomprime y está listo para usar por medio de .bat</td>
 	          </tr>
 	          <tr>
@@ -59,9 +63,9 @@
 	            para programar.</td>
 	          </tr>
 	          <tr>
-	            <td><a href="dist/3.11/jiol-api-3.11.jar">
-		           jiol-api-3.11.jar</a>
-              [<a href="dist/3.11/jiol-api-3.11.jar.asc">PGP</a>]</td>
+	            <td><a href="dist/3.14/jiol-api-3.14.jar">
+		           jiol-api-3.14.jar</a>
+              [<a href="dist/3.14/jiol-api-3.14.jar.asc">PGP</a>]</td>
 	            <td>API de jiol</td>
 	          </tr>
                   <tr>
@@ -70,14 +74,6 @@
               [<a href="dist/3.14/jiol-api-impl-3.14.jar.asc">PGP</a>]</td>
 	            <td>implementacion del API de jiol</td>
 	          </tr>
-
-
-                   <!-- tr>
-	            <td><a href="dist/old/jiolnotifier-3.5.jar">jiolnotifier-3.5.jar</a>
-	              [<a href="dist/old/jiolnotifier-3.5.jar.asc">PGP</a>]</td>
-	            <td>Solo el jar, sin dependencias. Para actualizar rápido, o
-	            para programar.</td>
-	          </tr-->
 
 	          <tr>
 	            <td><a href="https://svn.leak.com.ar/jiol/">https://svn.leak.com.ar/jiol/</a> </td>

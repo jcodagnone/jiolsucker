@@ -158,7 +158,15 @@
 	 <layout>default</layout>
       </repository>
   </repositories>
-  <pluginRepositories/>
+  <pluginRepositories>
+      <pluginRepository>
+         <id>jiol maven repo</id>
+         <name>jiol override directory</name>
+         <url>http://www.leak.com.ar/~juan/code/jiol/m2/</url>
+	 <layout>default</layout>
+      </pluginRepository>
+  </pluginRepositories>
+  
   <reporting>
      <plugins>
        <plugin>

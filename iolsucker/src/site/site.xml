@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Garfio">
+  <!--
+  http://maven.apache.org/plugins/maven-site-plugin/examples/sitedescriptor.html
+  -->
+
+  <bannerLeft>
+    <name>Iolsucker</name>
+    <href>http://www.leak.com.ar/~juan/code/jiol/</href>
+  </bannerLeft>
+  <bannerRight>
+    <src>images/zauber-code-small.png</src>
+    <name>Zauber</name>
+    <href>http://www.zauber.com.ar/</href>
+  </bannerRight>
+  <publishDate format="dd MMM yyyy" position="right" />
+  <skin>
+    <groupId>ar.com.zauber.maven.skins</groupId>
+    <artifactId>maven-zauber-skin</artifactId>
+    <version>1</version>
+  </skin>
+  <body>
+    <links>
+      <item href="rss/svn.rss" name="SVN RSS's feed"/>
+      <item href="http://maven.apache.org/" name="Maven"/>
+      <item href="http://silvestre.itba.edu.ar/itbaV/" name="IOL"/>
+      <item href="http://www.leak.com.ar/~juan/code/iolsucker/" name="iolsucker-2.x"/>
+      <item href="http://www.leak.com.ar/~juan/" name="Juan's HomePage"/>
+    </links>
+
+    <menu name="Overview">
+      <item href="/index.html" name="Introduccion"/>
+      <item href="/faq.html" name="Preguntas e Ideas"/>
+      <item href="/changes-report.html" name="Reporte de cambios"/>
+    </menu>
+
+    <menu name="Project Infrastructure">
+      <item name="Mailing List" href="mail-lists.html"/>
+      <item name="Issue Tracker" href="issue-tracking.html"/>
+      <item name="SCM" href="source-repository.html" />
+    </menu>
+  </body>
+</project>

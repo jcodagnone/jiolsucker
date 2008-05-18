@@ -11,6 +11,23 @@
 		 action.due-to
 		 action.due-to-email
       -->
+    <release version="3.14" date="2008-05-18" description="so long!">
+        <action dev="juan" type="fix">
+           IOL cambió el formulario de login (intentaron hacerlo más dificil para el jiol?).
+           Nos adaptamos.
+        </action>
+        <action dev="juan" type="update">
+           Actualizo la forma de construir jiol. Ahora usa  maven2. (en el 2005 
+           no habia un release de maven2!) 
+        </action>
+        <action dev="juan" type="update">
+           Actualizo de springframework 1.2.x a springframework 2.5.4. 
+        </action>
+        <action dev="juan" type="update">
+           El feed de changelog atom ahora se genera con rome 0.9. 
+        </action>
+    </release>
+    
     <release version="3.13" date="2005-03-01" description="back!!">
         <action dev="juan" type="update">
 	   La gente de IOL cambió la forma de navegar las carpetas. Se hizo

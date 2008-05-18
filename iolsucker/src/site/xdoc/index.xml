@@ -18,19 +18,16 @@
         <p>
            <code>jiol</code> es un software 
            <a href="http://www.opensource.org/docs/definition.php">Open Source</a>.
-           El autor alienta a otros desarrolladores, para que metan mano, y lo tuneen.
-        </p>
-        <p>El estado actual es de beta. No todas las features disponibles en el 
-            código se usan.
+           El autor alienta a otros desarrolladores, para que lo modifiquen y
+           mejoren.
         </p>
       </subsection>
       <subsection name="Historia">
         <p>iolsucker nació en el segundo cuatrimestre del 2002 como un script en bash.
            La falta de portabilidad, y la poca mantenibilidad del código bash hizo que 
            saliera el iolsucker-2.x escrito en C, con releases tanto para Windows como 
-           para Linux. Como cada vez escribo menos C, ty la version 2.x no tenía un
-           diseño orientado a objetos, y tuve un tardecita aburrida, escribí está 
-           versión en java. El diseño  es muy flexible, y explora varios conceptos 
+           para Linux. Luego en el año 2005 vino está versión realizada en java. 
+           El diseño  es muy flexible, y explora varios conceptos 
            interesantes como la  <a href="http://www.martinfowler.com/articles/injection.html">Inversion de Control</a>.
         </p>
         </subsection>
@@ -42,22 +39,22 @@
 	          </tr>
 	          <tr>
 	            <td><a
-		    href="dist/3.13.1/jiol-iolsucker-3.13.1.exe">jiol-iolsucker-3.13.1.exe</a>
-	            [<a href="dist/3.13.1/jiol-iolsucker-3.13.1.exe.asc">PGP</a>]
+		    href="dist/3.14/jiol-iolsucker-3.14.exe">jiol-iolsucker-3.14.exe</a>
+	            [<a href="dist/3.14/jiol-iolsucker-3.14.exe.asc">PGP</a>]
 	            </td>
 	            <td>Instalador para windows. Comodo para usuarios nuevos. 
 	                Listo para usar.</td>
 	          </tr>
 	          <tr>
-	            <td><a href="dist/3.13.1/jiol-iolsucker-3.13.1.tar.gz">
-		       jiol-iolsucker-3.13.1.tar.gz</a>
-                  [<a href="dist/3.13/jiol-iolsucker-3.13.1.tar.gz.asc">PGP</a>]</td>
+	            <td><a href="dist/3.14/jiol-iolsucker-3.14.1.tar.gz">
+		       jiol-iolsucker-3.14.tar.gz</a>
+                  [<a href="dist/3.14/jiol-iolsucker-3.14.tar.gz.asc">PGP</a>]</td>
 	            <td>se descomprime y está listo para usar por medio de .bat</td>
 	          </tr>
 	          <tr>
-	            <td><a href="dist/3.13.1/jiol-iolsucker-3.13.1.jar">
-		           jiol-iolsucker-3.13.1.jar</a>
-              [<a href="dist/3.13.1/jiol-iolsucker-3.13.1.jar.asc">PGP</a>]</td>
+	            <td><a href="dist/3.14/jiol-iolsucker-3.14.jar">
+		           jiol-iolsucker-3.14.jar</a>
+              [<a href="dist/3.14/jiol-iolsucker-3.14.jar.asc">PGP</a>]</td>
 	            <td>Solo el jar, sin dependencias. Para actualizar rápido, o
 	            para programar.</td>
 	          </tr>
@@ -68,9 +65,9 @@
 	            <td>API de jiol</td>
 	          </tr>
                   <tr>
-	            <td><a href="dist/3.13.1/jiol-api-impl-3.13.1.jar">
-		           jiol-api-impl-3.13.jar</a>
-              [<a href="dist/3.13.1/jiol-api-impl-3.13.1.jar.asc">PGP</a>]</td>
+	            <td><a href="dist/3.14/jiol-api-impl-3.14.jar">
+		           jiol-api-impl-3.14.jar</a>
+              [<a href="dist/3.14/jiol-api-impl-3.14.jar.asc">PGP</a>]</td>
 	            <td>implementacion del API de jiol</td>
 	          </tr>
 
@@ -108,12 +105,12 @@
 	          </tr>
 	          <tr>
 	            <td><a href="http://www.eclipse.org/">Eclipse</a></td>
-	            <td>3.1</td>
+	            <td>3.2</td>
 	            <td>Como IDE para el programador</td>
 	          </tr>
 	          <tr>
 	            <td><a href="http://maven.apache.org/">Maven</a></td>
-	            <td>1.0.2</td>
+	            <td>2.0.9</td>
 	            <td>Como manejador del proyecto, para manejar las dependencias,
 	                autogenerar los codigos fuentes autogenerados, y para la 
 	                generación de la documentación, y reportes del proyecto</td>

@@ -1,0 +1,23 @@
+<assembly>
+   <id>bin</id>
+   <formats>
+      <format>tar.gz</format>
+   </formats>
+   <fileSets>
+     <fileSet>
+        <directory>src/main/assembly/overlay</directory>
+        <outputDirectory>/</outputDirectory>
+     </fileSet>
+   </fileSets>
+   <dependencySets>
+     <dependencySet>
+       <includes>
+         <include>*:jar:*</include>
+       </includes>
+       <excludes>
+         <exclude>junit:*</exclude>
+       </excludes>
+       <outputDirectory>lib</outputDirectory>
+    </dependencySet>
+  </dependencySets>
+</assembly>

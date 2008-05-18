@@ -16,6 +16,10 @@
            IOL cambió el formulario de login (intentaron hacerlo más dificil para el jiol?).
            Nos adaptamos.
         </action>
+        <action dev="juan" type="fix">
+           Algunas materias que en su nombre tenian acentos, se mostraban mal
+        </action>
+
         <action dev="juan" type="update">
            Actualizo la forma de construir jiol. Ahora usa  maven2. (en el 2005 
            no habia un release de maven2!) 

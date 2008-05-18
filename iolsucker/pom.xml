@@ -38,13 +38,6 @@
       <artifactId>spring-core</artifactId>
       <version>${spring.version}</version>
     </dependency>
-    
-    <dependency>
-       <groupId>sandler</groupId>
-       <artifactId>sandler</artifactId>
-       <version>1.0</version>
-    </dependency>
-
     <dependency>
     	<groupId>commons-configuration</groupId>
     	<artifactId>commons-configuration</artifactId>
@@ -98,6 +91,12 @@
       <artifactId>xercesImpl</artifactId>
       <version>2.6.2</version>
     </dependency>
+    <dependency>
+      <groupId>rome</groupId>
+      <artifactId>rome</artifactId>
+      <version>0.9</version>
+    </dependency>
+
   </dependencies>
   
   <build>

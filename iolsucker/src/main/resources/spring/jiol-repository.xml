@@ -28,7 +28,7 @@
 			<bean class="java.io.File">
 				<constructor-arg index="0" ref="repopath"/>
 				<constructor-arg index="1">
-					<value>changelog.atom.xml</value>
+					<value>changelog.atom1.xml</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>

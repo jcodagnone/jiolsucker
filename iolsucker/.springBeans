@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
 	<configs>
-		<config>src/resources/spring/default.xml</config>
+		<config>src/main/resources/spring/console.xml</config>
+		<config>src/main/resources/spring/default.xml</config>
+		<config>src/main/resources/spring/jiol-common.xml</config>
+		<config>src/main/resources/spring/jiol-conf-swing.xml</config>
+		<config>src/main/resources/spring/jiol-controllers.xml</config>
+		<config>src/main/resources/spring/jiol-dao-http.xml</config>
+		<config>src/main/resources/spring/jiol-dao-mock.xml</config>
+		<config>src/main/resources/spring/jiol-repository.xml</config>
+		<config>src/test/resources/ar/com/leak/iolsucker/container/spring/test.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

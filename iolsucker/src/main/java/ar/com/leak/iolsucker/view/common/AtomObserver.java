@@ -15,23 +15,33 @@
  */
 package ar.com.leak.iolsucker.view.common;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import org.apache.commons.codec.binary.Base64;
-import org.intabulas.sandler.Sandler;
-import org.intabulas.sandler.SyndicationFactory;
-import org.intabulas.sandler.builders.XPPBuilder;
-import org.intabulas.sandler.elements.Feed;
-import org.intabulas.sandler.exceptions.MarshallException;
-import org.intabulas.sandler.serialization.SerializationException;
-import org.intabulas.sandler.serialization.WriterSerializer;
+import org.apache.commons.lang.SerializationException;
 
 import ar.com.leak.iolsucker.ProjectInfo;
 import ar.com.leak.iolsucker.view.Repository;
 import ar.com.leak.iolsucker.view.Repository.ObservableAction;
+
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndEntryImpl;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndFeedImpl;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.SyndFeedOutput;
 
 
 /**
@@ -45,7 +55,7 @@ import ar.com.leak.iolsucker.view.Repository.ObservableAction;
  */
 public class AtomObserver implements Observer {
     /** feed */
-    private final Feed feed;
+    private SyndFeed feed;
     /** archivo de salida (puede ser null si outputStream no lo es) */
     private final File outputFile;
     
@@ -55,34 +65,35 @@ public class AtomObserver implements Observer {
      * @param secureRandom random generator
      * @param feedFile archivo donde vive el feed (lectura/escritura)
      * @param info  informacion del programa
-     * @throws MarshallException on error
      * @throws IOException on error
+     * @throws FeedException on error 
      */
     public AtomObserver(final SecureRandom secureRandom, 
                         final File feedFile, final ProjectInfo info) 
-                             throws MarshallException, IOException {
+                             throws IOException, FeedException {
+        boolean newFile = true;
         if(feedFile.exists()) {
-            InputStream stream = null;
             try {
-                stream = new FileInputStream(feedFile);
-                feed = Sandler.unmarshallFeed(stream, new XPPBuilder());
-            } finally {
-                if(stream != null) {
-                    stream.close();
-                }
+                feed = new SyndFeedInput().build(feedFile);
+                newFile = false;
+            } catch (Throwable t) {
+                // nothing todo
             }
-        } else {
-            feed = SyndicationFactory.createFeed(SyndicationFactory
-                    .createPerson(info.getProjectName(), "", ""), "", 
-                    SyndicationFactory.createAlternateLink(""), new Date());
+        } 
+        
+        
+        if(newFile) {
+            feed = new SyndFeedImpl();
+            feed.setFeedType("atom_1.0");
             feed.setTitle("jiol changelog");
-            
+            feed.setAuthor("jiolsucker using rome v0.9");
+            feed.setEntries(new ArrayList());
             final int idLength = 33;
             final byte [] bytes = new byte[idLength];
             secureRandom.nextBytes(bytes);
             final String id = info.getProjectName() + "-"
                                        + new String(Base64.encodeBase64(bytes));
-            feed.setId(id);
+            feed.setUri(id);
         }
     
         outputFile = feedFile;
@@ -94,18 +105,25 @@ public class AtomObserver implements Observer {
         //final Repository repository = (Repository)o;
         final Repository.ObservableAction action = (ObservableAction)arg;
         
+        final SyndEntry entry = new SyndEntryImpl();
+        entry.setTitle(action.getMsg());
+        entry.setPublishedDate(new Date());
         try {
-            feed.addEntry(SyndicationFactory.createEntry(
-                    SyndicationFactory.createEscapedContent(action.getMsg()),
-                    action.getType() + ": " + action.getFile().getPath(),
-                    feed.getId() + "-" + (feed.getEntryCount()  
-                        + GregorianCalendar.getInstance().getTimeInMillis()),
-                        SyndicationFactory.createAlternateLink(action.getFile().
-                        toURL().toExternalForm()),
-                    new Date(), new Date()));
-        } catch(final MalformedURLException e) {
+            entry.setLink(action.getFile().toURL().toExternalForm());
+        } catch (final MalformedURLException e) {
             throw new RuntimeException(e);
         }
+        final com.sun.syndication.feed.synd.SyndContent content = 
+            new com.sun.syndication.feed.synd.SyndContentImpl();
+        content.setValue(action.getType() + ": " + action.getFile().getPath());
+        content.setType("html");
+        final List contents = new ArrayList();
+        contents.add(content);
+        entry.setDescription(content);
+        entry.setContents(contents);
+        entry.setPublishedDate(new Date());
+        entry.setContents(contents);
+        feed.getEntries().add(entry);
     }
 
     /** cierra todos los recursos abiertos */
@@ -137,9 +155,13 @@ public class AtomObserver implements Observer {
      * @param out stream de salida
      * @throws SerializationException en caso de error
      */
-    private void write(final OutputStream out) 
-        throws SerializationException {
-        new WriterSerializer(new OutputStreamWriter(out)).serialize(feed);
+    private void write(final OutputStream out) {
+        final com.sun.syndication.io.SyndFeedOutput output = 
+            new com.sun.syndication.io.SyndFeedOutput();
+        try {
+            output.output(feed, new OutputStreamWriter(out));
+        } catch (final Throwable e) {
+            throw new RuntimeException(e);
+        }
     }
 }
-

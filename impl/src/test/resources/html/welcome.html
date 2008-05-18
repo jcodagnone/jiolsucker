@@ -1,0 +1,206 @@
+<html>
+<head>
+<title>Bienvenido</title>
+
+<style type="text/css">
+<!--
+.just {  text-align: justify}
+-->
+</style>
+<script language="JavaScript">
+<!--
+function DarFoco(){
+document.login.txtdni.focus();
+}
+function checkGo(){
+
+    return true;
+    
+    if (document.login.txtdni.value != "" && document.login.txtpwd.value != "")
+        {
+        var str =document.login.txtdni.value
+        var i
+        for (i=0;i<str.length;i++)
+            {
+            if  (str.charCodeAt(i)<48 || str.charCodeAt(i)>57)
+                {
+                alert("El documento ingresado es inválido, debe ser sólo numérico.")
+                return false;
+                }
+            }
+        return true;
+        }
+    else{
+        alert ("por favor ingrese su DNI y clave");
+    return false;
+    }
+
+}
+
+-->
+</script>
+
+
+
+
+
+
+
+</head>
+
+<body BGCOLOR="#FFFFFF" BACKGROUND="images/fondiol.jpg" 
+      onload="DarFoco();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="99%">
+    <!-- Area Superior -->
+    <tr>
+        <td>
+            <!-- Superior Izquierda -->
+            <table border="0" height="100%">
+                <tr>
+
+                    <!-- Imagen -->
+                    <td valign="top" align="center">
+                        <font face="Arial" size="5" color="#000099">
+                            <b>
+                            <img src="images/intranet.jpg" vspace="0" 
+                                 hspace="0" width="143" height="110">
+                            </b>
+                        </font>
+                    </td>
+                </tr>
+
+                <tr>
+                    <!-- Form login -->
+                  <td valign="bottom" align="center"> 
+                    <form name="login" method="post" action="mynav.asp" target="navbar" 
+                          onSubmit="return checkGo()">
+                        <input type="hidden" name="secretNr" value="506533544">
+                      <table border="1" cellspacing="0" cellpadding="1" align="center" width="90%">
+                        <tr> 
+                          <td> 
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr> 
+                                <td bgcolor="#0066CC"><font color="#FFFFFF" face="Arial"><b>Login:</b></font></td>
+
+                              </tr>
+                              <tr> 
+                                <td bgcolor="#FFFFFF"><font face="Arial">Documento:</font></td>
+                              </tr>
+                              <tr> 
+                                <td bgcolor="#FFFFFF" align="center"> 
+                                  <div align="center"> 
+                                    <input type="text" name="txtdni" size="13" maxlength="13">
+                                  </div>
+                                </td>
+
+                              </tr>
+                              <tr> 
+                                <td bgcolor="#FFFFFF"><font face="Arial">Clave:</font></td>
+                              </tr>
+                              <tr> 
+                                <td bgcolor="#FFFFFF" align="center"> 
+                                  <div align="center"> 
+                                    <input type="password" name="txtpwd" size="12">
+                                  </div>
+                                </td>
+
+                              </tr>
+                              <tr> 
+                                <td bgcolor="#FFFFFF" align="center"> 
+                                  <div align="center"> 
+                                    <input type="submit" name="Submit" value="Conectar">
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+
+                        </tr>
+                      </table>
+                      <input type="hidden" name="cmd" value="login">
+                    </form>
+                  </td>
+                </tr>
+            </table>
+        </td>
+
+        <td valign="top">
+            <!-- Superior Derecha -->
+            <table border="0">
+                <tr>
+                    <!-- Titulo -->
+                    <td valign="top" align="center"> 
+                        <p>
+                        <b>
+                        <font face="Arial" size="4" color="#000099">
+
+                            BIENVENIDO A ITBA ON-LINE<br>
+                            <font size="2">VERSION 1.0</font>
+                        </font>
+                        </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+
+                    <!-- Texto -->
+                    <td valign="top" align="center"> 
+                        <p align="left"><font face="Arial">
+                        <b>
+                        <span class="just">
+                        <font face="Arial" size="2" color="#000099">
+                        En ITBA ON-LINE está disponible toda la información de las materias correspondientes a las distintas áreas de esta Universidad. Además encontrará, 
+                        de acuerdo con su perfil de usuario, consultas de datos, exámenes, carteleras, etc. y servicios como novedades, material didáctico y foros de discusión.
+                        <br>
+                        Los administradores de materias disponen de herramientas para actualizar.
+                        <br><br>
+
+                        Si Ud. tiene comentarios por favor enviarlos a 
+                        <a href="mailto:itbaonline@itba.edu.ar">
+                            itbaonline@itba.edu.ar
+                        </a>
+                        <br><br>
+                        </font>
+                        </span>
+                        </b>
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <!-- Nota -->
+                    <td valign="middle" bgcolor="#66CCCC"> 
+                      <p>
+                      <span class="just">
+                      <font face="Arial" color="#FFFFFF" size="-1">
+                      <b>ATENCIÓN</b>
+                      Esta versión está preparada para ser usada en navegadores <b>MS 
+                      Internet Explorer 6.0 o superiores</b>.
+                      </font>
+
+                      </span>
+                      </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <!-- Area Inferior -->
+    <tr>
+
+        <td colspan="2" nowrap valign="middle" align="center">
+            <font size="1" face="Arial">
+                <b><img border="0" src="images/logoDSI.gif" height="30" hspace="1" align="middle">
+                Desarrollado en el
+                Área de Sistemas - Direcci&oacute;n de Servicios Inform&aacute;ticos - ITBA<br>
+                (Horario de atencion de soporte - Lunes a Viernes de 08:00 a 21:00)
+                </b>
+            </font>
+        </td>
+
+    </tr>
+</table>
+</body>
+</html>

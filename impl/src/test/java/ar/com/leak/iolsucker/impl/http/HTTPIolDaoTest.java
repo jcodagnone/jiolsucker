@@ -46,6 +46,8 @@ public class HTTPIolDaoTest extends TestCase {
         final ClassLoader classLoader = getClass().getClassLoader();
         map.put(namingMapper.getUserCoursesCommand(), MockHTTPClient
                 .getResourceURL(classLoader, "html/mynav_courses.html"));
+        map.put(namingMapper.getWelcomePage(), MockHTTPClient
+                .getResourceURL(classLoader, "html/welcome.html"));
         final HTTPClient hc = new MockHTTPClient(namingMapper, map);
 
         final HTTPIolDao dao = new HTTPIolDao(new ParameterLoginInfo("foo",
@@ -89,6 +91,9 @@ public class HTTPIolDaoTest extends TestCase {
                 }, {
                     namingMapper.getUserCoursesCommand(),
                     "html/mynav_courses.html" 
+                }, {
+                    namingMapper.getWelcomePage(),
+                    "html/welcome.html"
                 },
         };
         HTTPIolDao dao = getDAO(rsc, namingMapper);

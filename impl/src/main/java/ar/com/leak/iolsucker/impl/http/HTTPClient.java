@@ -66,7 +66,7 @@ public class HTTPClient {
     private final NamingMapper namingMapper;
     /** user-agent to show to the web-servers */
     private static final String USER_AGENT = 
-        "jiolsucker (VERSION; OperatingSys )";
+        "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)";
     /** holds the server session cookie */
     private String sessionCookie = null;
 
@@ -121,7 +121,7 @@ public class HTTPClient {
             huc.setInstanceFollowRedirects(true);
             huc.setRequestProperty("User-Agent", USER_AGENT);
             huc.setRequestProperty("Referer", 
-                    "http://silvestre.itba.edu.ar/itbaV/login.asp");
+                    "http://silvestre.itba.edu.ar/itbaV/welcome.asp");
             huc.setRequestMethod(method.toString());
             if(this.sessionCookie != null) {
                 huc.setRequestProperty("Cookie", this.sessionCookie);

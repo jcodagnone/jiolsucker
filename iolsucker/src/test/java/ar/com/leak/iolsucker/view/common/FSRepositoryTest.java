@@ -83,6 +83,31 @@ public final class FSRepositoryTest extends TestCase {
         }
     }
     
+
+    public void testSlashMateriaOkPaths() throws Exception {
+        final IolDAO dao = new MockIolDao(new Course[] {
+                 new MockCourse("Estadistica K/V", "10.1", -3, 
+                         Arrays.asList(new Material [] {
+                    new MockMaterialDir("otro_directorio_valido"),
+                 }))
+             }, null, null);
+        // TODO no harcodear path
+        final File location = new File(getTmpDirectory(), "evilPaths");
+        if(!location.exists()) {
+             location.mkdirs();
+        }
+         
+         final FSRepository repository = new FSRepository(location,
+                 new NullDownloadMeter(), new RelativeLocationValidator(), 
+                 new NullRepublishRepositoryStrategy(), 1);
+         
+         for(Iterator i = dao.getUserCourses().iterator(); i.hasNext();) {
+             Course evilCourse = (Course)i.next();
+             repository.syncMaterial(evilCourse);
+         }
+         assertEquals(0, repository.getExceptions().size());
+     }
+
     
     /**
      * testea que nos comportemos correctamente en una republicación de un 

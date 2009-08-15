@@ -56,6 +56,8 @@ public class FSRepository extends  Observable implements Repository {
     private final int nWorkers;
     /** estrategia de republicación de archivos */
     private final RepublishRepositoryStrategy republishStrategy;
+    /** listado de errores que se encontró */
+    private final List<Throwable> exceptions = new LinkedList<Throwable>();
     
     /**
      * Crea el FSRepository.
@@ -133,6 +135,7 @@ public class FSRepository extends  Observable implements Repository {
                                     }
                                 }
                             } catch(final Throwable t) {
+                                exceptions.add(t);
                                 logger.error("error descargando: " + t.getMessage(),
                                         t);
                             }
@@ -194,6 +197,7 @@ public class FSRepository extends  Observable implements Repository {
                               Repository.ObservableActionEnum.REPUBLISHED_FILE,
                               destFile));
                 } catch(IOException e) {
+                    exceptions.add(e);
                     logger.error("saving material", e);
                     throw new RuntimeException(e);
                 }
@@ -225,6 +229,7 @@ public class FSRepository extends  Observable implements Repository {
                         errors++;
                         logger.error("Error al guardar material "
                                 + e.getLocalizedMessage(), e);
+                        exceptions.add(e);
                         if(errors > 5) {
                             logger.error("Abortando. Demasiados errores."
                                     + e.getLocalizedMessage(), e);
@@ -263,7 +268,10 @@ public class FSRepository extends  Observable implements Repository {
      * @return un directorio  donde debe quedar almacenado un curso
      */
     final File getDestDir(final Course course) {
-        final String name = course.getName();
+        final String name = course.getName().replace('/', '-')
+                                            .replace('(', ' ')
+                                            .replace(')', ' ')
+                                            .trim();
         if(name.indexOf('/') != -1) {
             throw new IllegalStateException("la materia `" + name
                     + "`tiene caracteres inseguros");
@@ -330,5 +338,9 @@ public class FSRepository extends  Observable implements Repository {
                 tmpDestination.renameTo(destination);
             }
         }
+    }
+
+    public List<Throwable> getExceptions() {
+        return exceptions;
     }
 }

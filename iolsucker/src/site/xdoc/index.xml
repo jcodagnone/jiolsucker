@@ -34,8 +34,7 @@
         <subsection name="Descargas">
           
           <p>iolsucker puede ser descargado, o se puede corrar online usando
-          Java WebStart. <a href="dist/3.14/webstart/launch.jnlp">Ejecutar
-          online</a></p>
+          Java WebStart. <strong><a href="dist/3.16/webstart/launch.jnlp">Ejecutar online</a></strong></p>
           <table>
 	          <tr>
 	            <th>Archivo</th>
@@ -43,35 +42,36 @@
 	          </tr>
 	          <tr>
 	            <td><a
-		    href="dist/3.14/jiol-iolsucker-3.14.exe">jiol-iolsucker-3.14.exe</a>
-	            [<a href="dist/3.14/jiol-iolsucker-3.14.exe.asc">PGP</a>]
+		    href="dist/3.15/jiol-iolsucker-3.15.exe">jiol-iolsucker-3.15.exe</a>
+	            [<a href="dist/3.15/jiol-iolsucker-3.15.exe.asc">PGP</a>]
+                    <strong>Versión vieja!</strong>
 	            </td>
 	            <td>Instalador para windows. Comodo para usuarios nuevos. 
 	                Listo para usar.</td>
 	          </tr>
 	          <tr>
-	            <td><a href="dist/3.14/jiol-iolsucker-3.14-bin.tar.gz">
-		       jiol-iolsucker-3.14-bin.tar.gz</a>
-                  [<a href="dist/3.14/jiol-iolsucker-3.14-bin.tar.gz.asc">PGP</a>]</td>
+	            <td><a href="dist/3.16/jiol-iolsucker-3.16-bin.tar.gz">
+		       jiol-iolsucker-3.16-bin.tar.gz</a>
+                  [<a href="dist/3.16/jiol-iolsucker-3.16-bin.tar.gz.asc">PGP</a>]</td>
 	            <td>se descomprime y está listo para usar por medio de .bat</td>
 	          </tr>
 	          <tr>
-	            <td><a href="dist/3.14/jiol-iolsucker-3.14.jar">
-		           jiol-iolsucker-3.14.jar</a>
-              [<a href="dist/3.14/jiol-iolsucker-3.14.jar.asc">PGP</a>]</td>
+	            <td><a href="dist/3.16/jiol-iolsucker-3.16.jar">
+		           jiol-iolsucker-3.16.jar</a>
+              [<a href="dist/3.16/jiol-iolsucker-3.16.jar.asc">PGP</a>]</td>
 	            <td>Solo el jar, sin dependencias. Para actualizar rápido, o
 	            para programar.</td>
 	          </tr>
 	          <tr>
-	            <td><a href="dist/3.14/jiol-api-3.14.jar">
-		           jiol-api-3.14.jar</a>
-              [<a href="dist/3.14/jiol-api-3.14.jar.asc">PGP</a>]</td>
+	            <td><a href="dist/3.16/jiol-api-3.16.jar">
+		           jiol-api-3.16.jar</a>
+              [<a href="dist/3.16/jiol-api-3.16.jar.asc">PGP</a>]</td>
 	            <td>API de jiol</td>
 	          </tr>
                   <tr>
-	            <td><a href="dist/3.14/jiol-api-impl-3.14.jar">
-		           jiol-api-impl-3.14.jar</a>
-              [<a href="dist/3.14/jiol-api-impl-3.14.jar.asc">PGP</a>]</td>
+	            <td><a href="dist/3.16/jiol-api-impl-3.16.jar">
+		           jiol-api-impl-3.16.jar</a>
+              [<a href="dist/3.16/jiol-api-impl-3.16.jar.asc">PGP</a>]</td>
 	            <td>implementacion del API de jiol</td>
 	          </tr>
 
@@ -106,7 +106,7 @@
 	          </tr>
 	          <tr>
 	            <td><a href="http://maven.apache.org/">Maven</a></td>
-	            <td>2.0.9</td>
+	            <td>2.2.1</td>
 	            <td>Como manejador del proyecto, para manejar las dependencias,
 	                autogenerar los codigos fuentes autogenerados, y para la 
 	                generación de la documentación, y reportes del proyecto</td>

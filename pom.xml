@@ -157,6 +157,35 @@
          <url>http://www.leak.com.ar/~juan/code/jiol/m2/</url>
 	 <layout>default</layout>
       </repository>
+         <repository>
+               <releases><enabled>true</enabled></releases>
+               <snapshots><enabled>false</enabled></snapshots>
+               <id>zauber-code-releases</id>
+               <name>Zauber Code Releases</name>
+               <url>https://repo1.zauber.com.ar/zauber/code/releases</url>
+         </repository>
+         <repository>
+               <releases><enabled>false</enabled></releases>
+               <snapshots><enabled>true</enabled></snapshots>
+               <id>zauber-code-snapshots</id>
+              <name>Zauber Code Snapshots</name>
+              <url>https://repo1.zauber.com.ar/zauber/code/snapshots</url>
+         </repository>
+     <repository>
+      <id>zauber-internal-releases</id>
+      <name>Zauber Internal Releases</name>
+      <url>https://repo1.zauber.com.ar/zauber/internal/releases</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+     </repository>
+     <repository>
+      <id>zauber-internal-snapshots</id>
+      <name>Zauber Internal Releases</name>
+      <url>https://repo1.zauber.com.ar/zauber/internal/snapshots</url>
+      <releases><enabled>false</enabled></releases>
+      <snapshots><enabled>true</enabled></snapshots>
+     </repository>
+
   </repositories>
   <pluginRepositories>
       <pluginRepository>

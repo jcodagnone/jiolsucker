@@ -5,7 +5,7 @@
   <parent>
     <artifactId>jiol</artifactId>
     <groupId>ar.com.leak.iolsucker</groupId>
-    <version>3.16-SNAPSHOT</version>
+    <version>3.17-SNAPSHOT</version>
   </parent>
   <artifactId>jiol-api</artifactId>
 

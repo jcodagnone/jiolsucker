@@ -119,17 +119,22 @@ public class FSRepository extends  Observable implements Repository {
                     public void run() {
                         Material material;
                         while((material = courseFiles.poll()) != null) {
-                            final File d = getDestDir(course, material);
-                            
-                            if(!material.isFolder() && d != null) {
-                                if(d.exists()) {
-                                    if(material.getLastModified().after(
-                                            new Date(d.lastModified()))) {
-                                        republishedFiles.add(material);
+                            try {
+                                final File d = getDestDir(course, material);
+                                
+                                if(!material.isFolder() && d != null) {
+                                    if(d.exists()) {
+                                        if(material.getLastModified().after(
+                                                new Date(d.lastModified()))) {
+                                            republishedFiles.add(material);
+                                        }
+                                    } else {
+                                        newFiles.add(material);
                                     }
-                                } else {
-                                    newFiles.add(material);
                                 }
+                            } catch(final Throwable t) {
+                                logger.error("error descargando: " + t.getMessage(),
+                                        t);
                             }
                         }
                         doneSignal.countDown();

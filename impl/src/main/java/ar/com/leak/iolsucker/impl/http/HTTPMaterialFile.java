@@ -18,10 +18,12 @@ package ar.com.leak.iolsucker.impl.http;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.util.Date;
 
 import org.apache.commons.lang.NullArgumentException;
+import org.apache.commons.lang.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -75,9 +77,8 @@ public class HTTPMaterialFile implements Material {
      * @return una conexión resultado de hacer HEAD a la url del archivo
      * @throws IOException on error 
      */
-    private URLConnection headHUC() throws IOException {
-        return client.headConnection(client.getNamingMapper().
-                getDownloadFile(fid));
+    private URLConnection headHUC(final String url) throws IOException {
+        return client.headConnection(url);
     }
     
     /**
@@ -93,6 +94,8 @@ public class HTTPMaterialFile implements Material {
     private void loadValues(final URLConnection huc) {
         size = huc.getContentLength();
         String tmp = huc.getHeaderField("Content-Disposition");
+        Validate.notNull(tmp, "se esperaba el header Content-Disposition "
+                + "para extraer el nombre de archivo, pero no vino.");
         tmp = tmp.substring(tmp.indexOf(';'));
         tmp = tmp.substring(tmp.lastIndexOf('=') + 1).trim();
         name = parent + File.separatorChar + tmp;
@@ -102,10 +105,21 @@ public class HTTPMaterialFile implements Material {
     private void loadValues() {
         if(name == null) {
             try {
-                URLConnection huc = headHUC();
+                final String url = client.getNamingMapper().getDownloadFile(fid);
+                final URLConnection huc = headHUC(url);
+                if(huc instanceof HttpURLConnection 
+                     && ((HttpURLConnection) huc).getResponseCode() != 200) {
+                    final HttpURLConnection c = (HttpURLConnection) huc; 
+                    throw new RuntimeException(
+                            "obteniendo nombre de archivo usando " 
+                            + url
+                            + ". El server retornó " 
+                            + c.getResponseCode()
+                            + " " + c.getResponseMessage());
+                }
                 loadValues(huc);
             } catch(IOException e) {
-                logger.error("obteniendo nombre de archivo", e);
+                logger.error("obteniendo nombre de archivo" + e.getMessage(), e);
                 throw new RuntimeException(e);
             }
         }

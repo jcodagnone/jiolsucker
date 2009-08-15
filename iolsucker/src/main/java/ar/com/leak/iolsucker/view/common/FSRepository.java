@@ -196,6 +196,7 @@ public class FSRepository extends  Observable implements Repository {
         });
         
         CollectionUtils.forAllDo(newFiles, new Closure() {
+            private int errors = 0; 
             public void execute(final Object data) {
                 final Material material = (Material)data;
                 final File destFile = getDestDir(course, material);
@@ -216,8 +217,15 @@ public class FSRepository extends  Observable implements Repository {
                                   Repository.ObservableActionEnum.NEW_FILE,
                                   destFile));
                     } catch(IOException e) {
-                        logger.error("saving material", e);
-                        throw new RuntimeException(e);
+                        errors++;
+                        logger.error("Error al guardar material "
+                                + e.getLocalizedMessage(), e);
+                        if(errors > 5) {
+                            logger.error("Abortando. Demasiados errores."
+                                    + e.getLocalizedMessage(), e);
+                            throw new RuntimeException(e);
+                            
+                        }
                     }
                 }
             }

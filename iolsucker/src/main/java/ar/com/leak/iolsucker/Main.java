@@ -19,9 +19,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.AbstractResource;
 import org.springframework.core.io.ClassPathResource;
@@ -42,7 +41,7 @@ import ar.com.leak.iolsucker.model.impl.common.login.WrongCredentials;
  */
 public class Main {
     /** class logger */
-    private final  Log logger = LogFactory.getLog(Main.class);
+    private final  org.slf4j.Logger logger = LoggerFactory.getLogger(Main.class);
 
     /**
      * Program entry point
@@ -130,11 +129,11 @@ public class Main {
                     // void
                 }
                 if(cause instanceof WrongCredentials) {
-                    logger.fatal(cause.getMessage());
+                    logger.error(cause.getMessage());
                     logger.debug("causa:");
-                    logger.debug(e);
+                    logger.trace("causa", e);
                 } else {
-                    logger.fatal("error ejecutando jiolsucker", e);
+                    logger.error("error ejecutando jiolsucker", e);
                     new JCrashDialog(e, null);
                 }
             } catch(Exception e) {
@@ -144,7 +143,7 @@ public class Main {
                 }
                 logger.error(cause.getMessage());
             } catch(Throwable e) {
-                logger.fatal("error ejecutando jiolsucker", e);
+                logger.error("error ejecutando jiolsucker", e);
                 new JCrashDialog(e, null);
             }
         }

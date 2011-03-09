@@ -39,8 +39,8 @@ import org.apache.commons.collections.ListUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.NullArgumentException;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.common.fs.FilesystemUtils;
 import ar.com.leak.iolsucker.model.Course;
@@ -58,7 +58,7 @@ import ar.com.leak.iolsucker.view.Repository;
  */
 public class FSRepository extends  Observable implements Repository {
     /** logger instance */
-    private final Log logger = LogFactory.getLog(FSRepository.class);
+    private final Logger logger = LoggerFactory.getLogger(FSRepository.class);
     /** Path al repositorio (injected) */
     private final File base;
     /** list of Course that where touched */

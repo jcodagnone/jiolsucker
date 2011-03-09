@@ -17,8 +17,8 @@ package ar.com.leak.iolsucker.view.common;
 
 import java.io.File;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.iolsucker.model.Material;
 
@@ -32,7 +32,7 @@ import ar.com.leak.iolsucker.model.Material;
 public class NullRepublishRepositoryStrategy 
           implements RepublishRepositoryStrategy {
     /** the logger ...*/
-    private final Log logger = LogFactory.getLog(
+    private final Logger logger = LoggerFactory.getLogger(
             NullRepublishRepositoryStrategy.class);
     
     /** @see RepublishRepositoryStrategy#republish(Material, java.io.File) */

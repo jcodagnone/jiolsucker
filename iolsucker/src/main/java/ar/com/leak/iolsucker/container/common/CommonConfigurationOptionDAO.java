@@ -21,10 +21,11 @@ import java.net.URL;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.iolsucker.container.Options;
+import ar.com.leak.iolsucker.container.OptionsDAO;
 
 /**
  * 
@@ -40,7 +41,7 @@ import ar.com.leak.iolsucker.container.Options;
  */
 public class CommonConfigurationOptionDAO extends FileOptionsDAO {
     /** class logger */
-    private final Log logger = LogFactory.getLog(
+    private final Logger logger = LoggerFactory.getLogger(
             CommonConfigurationOptionDAO.class);
     /** nombre del directorio donde se guarda la configuración */
     public static final String IOL_DIRECTORY = ".jiolsucker";

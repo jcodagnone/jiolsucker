@@ -19,8 +19,8 @@
 
 package ar.com.leak.iolsucker.view.common;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.iolsucker.view.DownloadMeter;
 
@@ -32,7 +32,7 @@ import ar.com.leak.iolsucker.view.DownloadMeter;
  */
 public class LoggerDownloadMeter implements DownloadMeter {
     /** class logger */
-    private final Log logger = LogFactory.getLog(LoggerDownloadMeter.class);
+    private final Logger logger = LoggerFactory.getLogger(LoggerDownloadMeter.class);
     /** constant: how many bytes are in a kilobyte */
     private static final int BYTES_IN_KILOBYTE = 1024;
     

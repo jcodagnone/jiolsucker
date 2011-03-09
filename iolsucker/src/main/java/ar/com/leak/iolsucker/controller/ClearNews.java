@@ -18,8 +18,8 @@ package ar.com.leak.iolsucker.controller;
 
 import org.apache.commons.collections.Closure;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.iolsucker.model.IolDAO;
 import ar.com.leak.iolsucker.model.News;
@@ -33,7 +33,7 @@ import ar.com.leak.iolsucker.model.News;
  */
 public class ClearNews implements Runnable {
     /** class logger */
-    private final Log logger = LogFactory.getLog(ClearNews.class);
+    private final Logger logger = LoggerFactory.getLogger(ClearNews.class);
     /** dao a usar */
     private final IolDAO dao;
     

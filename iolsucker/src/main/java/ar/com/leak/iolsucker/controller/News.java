@@ -17,8 +17,8 @@ package ar.com.leak.iolsucker.controller;
 
 import java.util.Collection;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.iolsucker.model.IolDAO;
 
@@ -30,7 +30,7 @@ import ar.com.leak.iolsucker.model.IolDAO;
  */
 public class News implements Runnable {
     /** class logger */
-    private final Log logger = LogFactory.getLog(News.class);
+    private final Logger logger = LoggerFactory.getLogger(News.class);
     /** mostrar la cantidad de noticias totales? */
     private final boolean bAll;
     /** dao a utilizar para obtener las noticias (inyectado) */

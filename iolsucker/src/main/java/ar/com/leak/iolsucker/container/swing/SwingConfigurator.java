@@ -26,9 +26,9 @@ import javax.swing.JFrame;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.PatternLayout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.iolsucker.ProjectInfo;
 import ar.com.leak.iolsucker.container.Configurator;
@@ -50,7 +50,7 @@ import ar.com.leak.iolsucker.controller.News;
  */
 public class SwingConfigurator implements Configurator {
     /** logger... */
-    private final  Log logger = LogFactory.getLog(SwingConfigurator.class);
+    private final  Logger logger = LoggerFactory.getLogger(SwingConfigurator.class);
     /** holds the optionsDao... */
     private final OptionsView optionsView;
 

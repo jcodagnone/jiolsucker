@@ -21,8 +21,8 @@ import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.NullArgumentException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Codificador de passwords 
@@ -137,7 +137,7 @@ interface PasswordAlgoCoder {
  */
 class Base64PasswordCoder implements PasswordAlgoCoder {
     /** class logger */
-    private final Log logger = LogFactory.getLog(Base64PasswordCoder.class);
+    private final Logger logger = LoggerFactory.getLogger(Base64PasswordCoder.class);
     /** default encoding */
     private final String encoding = "UTF-8";
     

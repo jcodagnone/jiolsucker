@@ -16,13 +16,16 @@
 
 package ar.com.leak.iolsucker.controller;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.NullArgumentException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ar.com.leak.iolsucker.model.Course;
 import ar.com.leak.iolsucker.model.IolDAO;
@@ -36,7 +39,7 @@ import ar.com.leak.iolsucker.view.Repository;
  */
 public class Iolsucker implements Runnable  {
     /** class logger */
-    private final Log logger = LogFactory.getLog(Iolsucker.class);
+    private final Logger logger = LoggerFactory.getLogger(Iolsucker.class);
     /** un predicado que permite filtrar cursos a la otra del download */
     private final Comparator<Course> courseComparator;
     /** un IolDao de donde sacar la informacion (inyectado) */

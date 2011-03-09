@@ -1,5 +1,5 @@
 
-Para empezar a romper el jiol es necesario tener maven, y un jdk 1.5 (o 5 :).
+Para empezar a romper el jiol es necesario tener maven, y un jdk 1.6 (o 6 :).
 
 El proyecto se construye con maven2: http://maven.apache.org/
 
@@ -12,7 +12,8 @@ Modulos:
   leak-commons    clases reusables por cualquier proyecto. algun dia se va a
                   graduar de jiol
   jiol-api        API que provee jiol para acceder a IO L
-  jiol-api-impl   Implementación del api usando HTTP, e implementación Mock
+  jiol-api-impl   Implementación Mock (a ser renombrado a mock)
   jiol-iolsucker  Aplicación que usa jiol-api para bajar material didacticos
+  sharepoint      Implementacion IOL2 que va contra Sharepoint.
 
 Juan

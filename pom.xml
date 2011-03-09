@@ -14,7 +14,7 @@
   <packaging>pom</packaging>
   <name>jiol</name>
   
-  <version>3.17-SNAPSHOT</version>
+  <version>3.17</version>
   <description>Cliente java para Itba On Line (iol) con un diseño muy flexible, y una implementación simple</description>
   <url>http://www.leak.com.ar/~juam/code/jiol/</url>
   
@@ -90,6 +90,7 @@
   <modules>
      <module>leak-commons</module>
      <module>api</module>
+     <module>impl</module>
      <module>sharepoint</module>
      <module>iolsucker</module>
   </modules>

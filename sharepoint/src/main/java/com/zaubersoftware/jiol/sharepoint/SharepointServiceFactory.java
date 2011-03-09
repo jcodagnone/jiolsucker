@@ -15,9 +15,9 @@
  */
 package com.zaubersoftware.jiol.sharepoint;
 
-import ar.com.zauber.leviathan.api.URIFetcher;
+import javax.xml.ws.BindingProvider;
 
-import com.microsoft.schemas.sharepoint.soap.SiteDataSoap;
+import ar.com.zauber.leviathan.api.URIFetcher;
 
 /**
  * Permite obtener endpoints de servicios de sharepoint.
@@ -28,8 +28,10 @@ import com.microsoft.schemas.sharepoint.soap.SiteDataSoap;
 public interface SharepointServiceFactory {
 
     /** gets the {@link SiteDataSoap} service */
-    SiteDataSoap getSiteDataService();
+//    SiteDataSoap getSiteDataService();
     
     /** el fetcher para utilizar */
     URIFetcher getUriFetcher();
+    
+    void configureService(BindingProvider provider);
 }

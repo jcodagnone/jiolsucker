@@ -18,11 +18,14 @@ package com.zaubersoftware.jiol.sharepoint;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.Holder;
+import javax.xml.ws.soap.SOAPFaultException;
 
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.Validate;
@@ -34,6 +37,15 @@ import ar.com.leak.iolsucker.model.IolDAO;
 import ar.com.leak.iolsucker.model.LoginInfo;
 import ar.com.leak.iolsucker.model.News;
 
+import com.microsoft.schemas.sharepoint.soap.ArrayOfSFPUrl;
+import com.microsoft.schemas.sharepoint.soap.ArrayOfSListWithTime;
+import com.microsoft.schemas.sharepoint.soap.ArrayOfSWebWithTime;
+import com.microsoft.schemas.sharepoint.soap.ArrayOfString;
+import com.microsoft.schemas.sharepoint.soap.SWebMetadata;
+import com.microsoft.schemas.sharepoint.soap.SWebWithTime;
+import com.microsoft.schemas.sharepoint.soap.SiteData;
+import com.microsoft.schemas.sharepoint.soap.SiteDataSoap;
+
 /**
  * Implementation agains IOL2 (sharepoint based)
  *
@@ -44,38 +56,74 @@ import ar.com.leak.iolsucker.model.News;
 public class SharepointIolDAO implements IolDAO {
     private final LoginInfo login;
     private final Logger logger = LoggerFactory.getLogger(SharepointIolDAO.class);
-    private final URL url;
+    private final URISharepointStrategy uriStrategy;
     
     /**
-     * Creates the SharepointIolDAO.
+     * Creates the SharepointIolDAO. 
      */
     public SharepointIolDAO(final LoginInfo login,
-            final URL url) throws MalformedURLException {
+            final URISharepointStrategy uriSharepointStrategy) throws MalformedURLException, URISyntaxException {
         Validate.notNull(login);
-        Validate.notNull(url);
+        Validate.notNull(uriSharepointStrategy);
         
         this.login = login;
-        this.url = url;
+        this.uriStrategy = uriSharepointStrategy;
     }
     
     @Override
     public final Collection<Course> getUserCourses() {
         final Collection<Course> ret = new ArrayList<Course>();
-        
-        for(final String materia : Arrays.asList("72.27")) {
-            try {
-                final SharepointServiceFactory factory = new JAXWSharepointServiceFactory(
-                        new FixedURISharepointStrategy(url.toURI()),
-                                login, materia);
-                ret.add(new SharepointCourse(materia, materia, factory));
-            } catch (final MalformedURLException e) {
-                throw new UnhandledException(e);
-            } catch (final URISyntaxException e) {
-                throw new UnhandledException(e);
+        final List<String []> materiasUrlTitle = new ArrayList<String[]>();
+        final SharepointServiceFactory serviceFactory;
+        try {
+            serviceFactory = new JAXWSharepointServiceFactory(uriStrategy, login);
+            
+            final WebListing webs = getWebs(uriStrategy, serviceFactory);
+            for(final SWebWithTime web : webs.getWebs()) {
+                try {
+                    final WebListing sub = getWebs(new FixedURISharepointStrategy(
+                            URI.create(web.getUrl())), serviceFactory);
+                    for(SWebWithTime s : sub.getWebs()) {
+                        final WebListing subsub = getWebs(new FixedURISharepointStrategy(
+                                URI.create(s.getUrl())), serviceFactory);
+                        final String [] uriTitle = new String[]{s.getUrl(), 
+                                                        subsub.getMetadata().getTitle()};
+                        materiasUrlTitle.add(uriTitle);
+                    }
+                } catch(SOAPFaultException t) {
+                    // esto puede estar bien...significa 403 probablemente
+                }
             }
+            
+        } catch(MalformedURLException e) {
+            throw new UnhandledException(e);
+        }
+        
+        for(final String []urlTitle : materiasUrlTitle) {
+            ret.add(new SharepointCourse(urlTitle[1], URI.create(urlTitle[0]), 
+                    serviceFactory));
         }
         
         return ret;
+    }
+
+    /** retorna las sub webs de una web */
+    private WebListing getWebs(final URISharepointStrategy uriStrategy, 
+            final SharepointServiceFactory serviceFactory)
+            throws MalformedURLException {
+        final SiteDataSoap site = new SiteData(uriStrategy.getUriForService(SiteData.class)
+                .toURL()).getSiteDataSoap();
+        serviceFactory.configureService((BindingProvider) site);
+        final Holder<java.lang.Long> getWebResult = new Holder<Long>();
+        final Holder<SWebMetadata> sWebMetadata = new Holder<SWebMetadata>();
+        final Holder<ArrayOfSWebWithTime> vWebs = new Holder<ArrayOfSWebWithTime>();
+        final Holder<ArrayOfSListWithTime> vLists = new Holder<ArrayOfSListWithTime>();
+        final Holder<ArrayOfSFPUrl> vFPUrls = new Holder<ArrayOfSFPUrl>();
+        final Holder<java.lang.String> strRoles = new Holder<String>();
+        final Holder<ArrayOfString> vRolesUsers = new Holder<ArrayOfString>();
+        final Holder<ArrayOfString> vRolesGroups = new Holder<ArrayOfString>();
+        site.getWeb(getWebResult, sWebMetadata, vWebs, vLists, vFPUrls, strRoles, vRolesUsers, vRolesGroups);
+        return new WebListing(sWebMetadata.value, vWebs.value.getSWebWithTime());
     }
 
     @Override
@@ -94,5 +142,31 @@ public class SharepointIolDAO implements IolDAO {
     public void dispose() throws Exception {
         // TODO Auto-generated method stub
 
+    }
+}
+
+/** weblisting result */
+class WebListing {
+    private final SWebMetadata metadata;
+    private final List<SWebWithTime> webs;
+
+    /**
+     * Creates the WebListing.
+     *
+     */
+    public WebListing(final SWebMetadata metadata, final List<SWebWithTime> webs) {
+        Validate.notNull(metadata);
+        Validate.notNull(webs);
+        
+        this.metadata = metadata;
+        this.webs = webs;
+    }
+
+    public final SWebMetadata getMetadata() {
+        return metadata;
+    }
+    
+    public final List<SWebWithTime> getWebs() {
+        return webs;
     }
 }

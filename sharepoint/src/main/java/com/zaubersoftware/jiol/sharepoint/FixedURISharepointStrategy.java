@@ -16,6 +16,8 @@
 package com.zaubersoftware.jiol.sharepoint;
 
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import javax.xml.ws.Service;
 
@@ -30,7 +32,7 @@ import org.apache.commons.lang.Validate;
  */
 public class FixedURISharepointStrategy implements URISharepointStrategy {
 
-    private static final  String VTI = "/_vti_bin/";
+    private static final  String VTI = "_vti_bin/";
     private final URI prefix;
     
     
@@ -44,14 +46,23 @@ public class FixedURISharepointStrategy implements URISharepointStrategy {
         this.prefix = prefix;
     }
 
-    @Override
-    public final URI getUriForService(final Class<? extends Service> service, final String codigo) {
-        return prefix.resolve("/grado/" + codigo + VTI + getName(service) + ".asmx?wsdl");
-    }
-
+    /** Creates the FixedURISharepointStrategy.  */
+   public FixedURISharepointStrategy(final URL prefix) throws URISyntaxException {
+       this(prefix.toURI());
+   }
+    
     @Override
     public final URI getUriForService(final Class<? extends Service> service) {
-        return prefix.resolve(VTI + getName(service) + ".asmx?wsdl");
+        final StringBuilder sb = new StringBuilder();
+        final String uri = prefix.toString();
+        sb.append(uri);
+        if(!uri.endsWith("/")) {
+            sb.append("/");
+        }
+        sb.append(VTI);
+        sb.append(getName(service));
+        sb.append(".asmx?wsdl");
+        return URI.create(sb.toString());
     }
     
     /** @return the endpoint name */

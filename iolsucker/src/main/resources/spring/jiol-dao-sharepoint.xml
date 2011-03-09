@@ -7,11 +7,15 @@
     <bean name="ioldao" class="com.zaubersoftware.jiol.sharepoint.SharepointIolDAO" destroy-method="dispose">
         <constructor-arg ref="options"/>
         <constructor-arg>
-            <bean id="iolurl" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-                <property name="targetObject" ref="options"/>
-                <property name="targetMethod">
-                    <value>getURLBase</value>
-                </property>
+            <bean class="com.zaubersoftware.jiol.sharepoint.FixedURISharepointStrategy">
+                <constructor-arg>
+                    <bean id="iolurl" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                        <property name="targetObject" ref="options"/>
+                        <property name="targetMethod">
+                            <value>getURLBase</value>
+                        </property>
+                    </bean>
+                </constructor-arg>
             </bean>
         </constructor-arg>
     </bean>

@@ -45,10 +45,7 @@ import com.microsoft.schemas.sharepoint.soap.Authentication;
 import com.microsoft.schemas.sharepoint.soap.AuthenticationSoap;
 import com.microsoft.schemas.sharepoint.soap.LoginErrorCode;
 import com.microsoft.schemas.sharepoint.soap.LoginResult;
-import com.microsoft.schemas.sharepoint.soap.SiteData;
 import com.microsoft.schemas.sharepoint.soap.SiteDataSoap;
-import com.microsoft.schemas.sharepoint.soap.Webs;
-import com.microsoft.schemas.sharepoint.soap.WebsSoap;
 
 /**
  * TODO Descripcion de la clase. Los comenterios van en castellano.
@@ -58,15 +55,15 @@ import com.microsoft.schemas.sharepoint.soap.WebsSoap;
  * @since Mar 8, 2011
  */
 public class JAXWSharepointServiceFactory implements SharepointServiceFactory {
-    private final SiteDataSoap siteDataService;
     private final URIFetcher uriFetcher;
+    private final Map<?, ?> cookies;
     
     /**
      * Creates the JAXWSharepointServiceFactory 
      *
      */
-    public JAXWSharepointServiceFactory(final URISharepointStrategy uriStrategy,
-            final LoginInfo credentialsProvider, final String materia) 
+    public JAXWSharepointServiceFactory(final URISharepointStrategy uriStrategy, 
+            final LoginInfo credentialsProvider) 
             throws MalformedURLException {
         Validate.notNull(uriStrategy);
         Validate.notNull(credentialsProvider);
@@ -81,15 +78,14 @@ public class JAXWSharepointServiceFactory implements SharepointServiceFactory {
         }
         final HTTPConduit authenticationHTTP = (HTTPConduit) 
                 ClientProxy.getClient(authentication).getConduit();
-        final Map<?, ?> cookies = authenticationHTTP.getCookies();
+        cookies = authenticationHTTP.getCookies();
         
-        siteDataService = new SiteData(uriStrategy.getUriForService(SiteData.class, materia)
-                        .toURL()).getSiteDataSoap();
-        
-        for(final Object provider : Arrays.asList(siteDataService)) {
-            configureCookies((BindingProvider)provider, cookies);
-        }
         uriFetcher = getURIFetcher(cookies);
+    }
+    
+    @Override
+    public final void configureService(final BindingProvider provider) {
+        configureCookies(provider, cookies); 
     }
 
 
@@ -147,10 +143,6 @@ public class JAXWSharepointServiceFactory implements SharepointServiceFactory {
         configureBinding(provider);
         final HTTPConduit conduit = (HTTPConduit) ClientProxy.getClient(provider).getConduit();
         conduit.getCookies().putAll(cookies);
-    }
-
-    public final SiteDataSoap getSiteDataService() {
-        return siteDataService;
     }
 
 

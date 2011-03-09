@@ -39,14 +39,18 @@ import com.zaubersoftware.jiol.sharepoint.items.ListItem;
 public class SharepointMaterial implements Material {
     private final ListItem item;
     private final URIFetcher fetcher;
+    private final String basePath;
 
-    /** Creates the SharepointMaterial. */
-    public SharepointMaterial(final ListItem item, final URIFetcher fetcher) {
+    /** Creates the SharepointMaterial. 
+     * @param uri */
+    public SharepointMaterial(final ListItem item, final URIFetcher fetcher, final URI uri) {
         Validate.notNull(item);
         Validate.notNull(fetcher);
+        Validate.notNull(uri);
         
         this.item = item;
         this.fetcher = fetcher;
+        this.basePath  = uri.getPath();
     }
     
     @Override
@@ -56,7 +60,7 @@ public class SharepointMaterial implements Material {
 
     @Override
     public final String getName() {
-        return item.get("ows_ServerUrl");
+        return item.get("ows_ServerUrl").replace(basePath, "");
     }
 
     @Override

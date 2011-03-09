@@ -28,8 +28,5 @@ import javax.xml.ws.Service;
  */
 public interface URISharepointStrategy {
     /** retorna la url de servicio para un servicio de la materia */
-    URI getUriForService(Class<? extends Service> service, String materia);
-    
-    /** retorna la url de servicio para un servicio de la materia */
     URI getUriForService(Class<? extends Service> service);
 }

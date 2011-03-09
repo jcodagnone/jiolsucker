@@ -1,20 +1,14 @@
 package com.zaubersoftware.jiol.sharepoint;
 
-import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.net.URI;
-import java.util.List;
 
-import javax.xml.ws.Holder;
+import org.apache.commons.io.IOUtils;
 
+import ar.com.leak.iolsucker.model.Course;
+import ar.com.leak.iolsucker.model.IolDAO;
+import ar.com.leak.iolsucker.model.Material;
 import ar.com.leak.iolsucker.model.impl.common.login.ParameterLoginInfo;
-
-import com.microsoft.schemas.sharepoint.soap.ArrayOfSList;
-import com.microsoft.schemas.sharepoint.soap.ArrayOfString;
-import com.microsoft.schemas.sharepoint.soap.SList;
-import com.microsoft.schemas.sharepoint.soap.SiteDataSoap;
-import com.zaubersoftware.jiol.sharepoint.items.EventListItemParser;
-import com.zaubersoftware.jiol.sharepoint.items.ListItem;
-import com.zaubersoftware.jiol.sharepoint.items.ListItemParser;
 
 /*
  *  Copyright 2011 Juan F. Codagnone <juam at users dot sourceforge dot net>
@@ -63,31 +57,21 @@ public final class SharepointFacadeDriver {
                     "Falta definir la propiedad del sistema " + KEY_PASSWORD);
         }
 
-        final SharepointServiceFactory factory = new JAXWSharepointServiceFactory(
-                new FixedURISharepointStrategy(
-                        URI.create("http://iol2.itba.edu.ar:27521")),
-                new ParameterLoginInfo(username, password), "72.27");
-        final ListItemParser listItemParser = new EventListItemParser(); 
-        
-        final SiteDataSoap siteDataService = factory.getSiteDataService();
-        final Holder<java.lang.Long> n = new Holder<Long>();
-        final Holder<ArrayOfSList> lists = new Holder<ArrayOfSList>();
-        siteDataService.getListCollection(n, lists);
-        for(final SList list : lists.value.getSList()) {
-            if("Material Didáctico".equals(list.getTitle())) {
-            System.out.println(list.getTitle());
-                final String xml = siteDataService.getListItems(list.getInternalName(), null, 
-                                                                null, 1000);
-                final List<ListItem> items = listItemParser.parseListItems(
-                        new ByteArrayInputStream(xml.getBytes("utf-8")));
-                
-                for(ListItem item : items) {
-                    System.out.println(item);
-                    Holder<ArrayOfString> arrays = new Holder<ArrayOfString>();
+        final IolDAO dao = new SharepointIolDAO(new ParameterLoginInfo(username, password), 
+                new FixedURISharepointStrategy(URI.create("http://iol2.itba.edu.ar:27521/")));
+        for(final Course course : dao.getUserCourses()) {
+            System.out.println(course.getName());
+            for(final Material material : course.getFiles()) {
+                System.out.println(" " + material.getName());
+                InputStream is = null;
+                try {
+                    is = material.getInputStream();
+                    IOUtils.toByteArray(is);
+                } finally {
+                    is.close();
                 }
-                System.out.println("-----------------");
+                
             }
         }
     }
-
 }

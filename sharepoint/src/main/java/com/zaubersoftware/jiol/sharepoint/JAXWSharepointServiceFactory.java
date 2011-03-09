@@ -90,6 +90,7 @@ public class JAXWSharepointServiceFactory implements SharepointServiceFactory {
     }
 
 
+    /** @return a {@link URIFetcher} authenticated that will be used to download files */
     private static URIFetcher getURIFetcher(final Map<?, ?> cookies) {
         final HttpParams params = new BasicHttpParams();
         final HttpProtocolParamBean protocol = new HttpProtocolParamBean(params);

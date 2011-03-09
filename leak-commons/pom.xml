@@ -39,5 +39,20 @@
       <id>epere4</id>
     </developer>
   </developers>
+
+
+  <distributionManagement>
+    <repository>
+      <id>zauber-code-releases</id>
+      <name>Zauber Code Releases</name>
+      <url>https://repo1.zaubersoftware.com/zauber/code/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>zauber-code-snapshots</id>
+      <name>Zauber Code Snapshots</name>
+      <url>https://repo1.zaubersoftware.com/zauber/code/snapshots</url>
+    </snapshotRepository>
+
+  </distributionManagement>
 </project>
 

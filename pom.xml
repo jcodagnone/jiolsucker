@@ -3,6 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>bare</artifactId>
+    <groupId>ar.com.zauber.maven.poms</groupId>
+    <version>1.0.7</version>
+  </parent>
+
   <groupId>ar.com.leak.iolsucker</groupId>
   <artifactId>jiol</artifactId>
   <packaging>pom</packaging>
@@ -46,9 +52,7 @@
     </license>
   </licenses>
   <scm>
-    <connection>scm:svn:https://svn.leak.com.ar/jiol/</connection>
-    <developerConnection>scm:svn:https://svn.leak.com.ar/jiol/trunk/</developerConnection>
-    <url>https://svn.leak.com.ar/jiol/trunk/</url>
+    <url>https://github.com/jcodagnone/jiolsucker</url>
   </scm>
   <organization>
     <name>leak.com.ar</name>
@@ -67,70 +71,6 @@
             <encoding>ISO-8859-1</encoding>
           </configuration>
         </plugin>
-  	    <plugin>
-           <artifactId>maven-eclipse-plugin</artifactId>
-           <configuration>
-              <outputDirectory>${project.build.directory}/eclipse-bin</outputDirectory>
-              <additionalProjectnatures>
-                 <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-              </additionalProjectnatures>
-               <additionalBuildcommands>
-                <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-              </additionalBuildcommands>
-           </configuration>
-           <inherited>true</inherited>
-	    </plugin>
-        <plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-javadoc-plugin</artifactId>
-           <version>2.4</version>
-	           <configuration>
-	               <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
-	               <docletArtifact>
-	                   <groupId>gr.spinellis</groupId>
-	                   <artifactId>UmlGraph</artifactId>
-	                   <version>4.4</version>
-	               </docletArtifact>
-	               <additionalparam>
-	                   -inferrel -inferdep -quiet -hide java.*
-	                   -collpackages java.util.* -qualify
-	                   -postfixpackage -nodefontsize 9
-	                   -nodefontpackagesize 7 -operations -constructors
-	                   -visibility -types -link
-	                   http://java.sun.com/j2se/1.5/docs/api -all
-	               </additionalparam>
-	           </configuration>
-           </plugin>
-           <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <version>2.0</version>
-           </plugin>
-           <plugin>
-               <groupId>org.codehaus.mojo</groupId>
-               <artifactId>cobertura-maven-plugin</artifactId>
-               <inherited>true</inherited>
-          </plugin>
-          <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-project-info-reports-plugin</artifactId>
-         </plugin>
-         <plugin>
-	         <artifactId>maven-eclipse-plugin</artifactId>
-	         <configuration>
-	             <downloadSources>true</downloadSources>
-	             <outputDirectory>${project.build.directory}/eclipse-bin</outputDirectory>
-	             <wtpversion>2.0</wtpversion>
-	             <additionalProjectnatures>
-	                 <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-	             </additionalProjectnatures>
-	             <additionalBuildcommands>
-	                 <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-	             </additionalBuildcommands>
-	         </configuration>
-	         <version>2.5.1</version>
-	         <inherited>true</inherited>
-         </plugin>
          <plugin>
              <groupId>org.apache.maven.plugins</groupId>
              <artifactId>maven-source-plugin</artifactId>
@@ -170,30 +110,6 @@
          </repository>
   </repositories>
   
-  <reporting>
-     <plugins>
-       <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-	     <artifactId>maven-project-info-reports-plugin</artifactId>
-       </plugin>
-       <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-changes-plugin</artifactId>
-            <version>2.0</version>
-            <reportSets>
-                <reportSet>
-                    <reports>
-                        <report>changes-report</report>
-                    </reports>
-                </reportSet>
-            </reportSets>
-       </plugin>
-       <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-       </plugin>
-     </plugins>
-  </reporting>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -435,17 +351,17 @@
   </pluginRepositories>
 
   <distributionManagement>
-    <site>
-       <id>my.leak.com.ar</id>
-       <name>my.leak.com.ar</name>
-       <url>scp://my.leak.com.ar/home/juam/public_html/code/jiol</url>
-    </site>
     <repository>
-       <id>leak.com.ar</id>
-	   <name>my.leak.com.ar</name>
-	   <url>scp://my.leak.com.ar/home/juam/public_html/code/jiol/m2</url>
-	   <layout>default</layout>
+      <id>zauber-code-releases</id>
+      <name>Zauber Code Releases</name>
+      <url>https://repo1.zaubersoftware.com/zauber/code/releases</url>
     </repository>
+    <snapshotRepository>
+      <id>zauber-code-snapshots</id>
+      <name>Zauber Code Snapshots</name>
+      <url>https://repo1.zaubersoftware.com/zauber/code/snapshots</url>
+    </snapshotRepository>
+
   </distributionManagement>
   <dependencies>
     <dependency>

@@ -1,0 +1,121 @@
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/sharepoint/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetFormCollection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFormCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormCollectionResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="formUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFormCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormCollection" />
+  </wsdl:message>
+  <wsdl:message name="GetFormCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormSoapIn">
+    <wsdl:part name="parameters" element="tns:GetForm" />
+  </wsdl:message>
+  <wsdl:message name="GetFormSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FormsSoap">
+    <wsdl:operation name="GetFormCollection">
+      <wsdl:input message="tns:GetFormCollectionSoapIn" />
+      <wsdl:output message="tns:GetFormCollectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForm">
+      <wsdl:input message="tns:GetFormSoapIn" />
+      <wsdl:output message="tns:GetFormSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FormsSoap" type="tns:FormsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFormCollection">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetFormCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForm">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetForm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FormsSoap12" type="tns:FormsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFormCollection">
+      <soap12:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetFormCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForm">
+      <soap12:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetForm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Forms">
+    <wsdl:port name="FormsSoap" binding="tns:FormsSoap">
+      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/forms.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FormsSoap12" binding="tns:FormsSoap12">
+      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/forms.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

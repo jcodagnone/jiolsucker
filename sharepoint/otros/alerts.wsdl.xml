@@ -1,0 +1,173 @@
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/sharepoint/soap/2002/1/alerts/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/2002/1/alerts/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/2002/1/alerts/">
+      <s:element name="GetAlerts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAlertsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAlertsResult" type="tns:AlertInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AlertInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertServerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertServerUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertServerType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertsManagementUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertWebTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NewAlertUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertWebId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Alerts" type="tns:ArrayOfAlert" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAlert">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Alert" type="tns:Alert" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Alert">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertForTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertForUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EditAlertUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryChannels" type="tns:ArrayOfDeliveryChannel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeliveryChannel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeliveryChannel" nillable="true" type="tns:DeliveryChannel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeliveryChannel" abstract="true" />
+      <s:complexType name="EmailChannel">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeliveryChannel">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Frequency" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteAlerts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IDs" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteAlertsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAlertsResult" type="tns:ArrayOfDeleteFailure" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDeleteFailure">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteFailure" type="tns:DeleteFailure" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeleteFailure">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Error" type="tns:ErrorType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ErrorType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="AccessDenied" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="TooManyErrors" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAlertsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlerts" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAlertsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAlerts" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAlertsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAlertsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AlertsSoap">
+    <wsdl:operation name="GetAlerts">
+      <wsdl:input message="tns:GetAlertsSoapIn" />
+      <wsdl:output message="tns:GetAlertsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAlerts">
+      <wsdl:input message="tns:DeleteAlertsSoapIn" />
+      <wsdl:output message="tns:DeleteAlertsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlertsSoap" type="tns:AlertsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAlerts">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/2002/1/alerts/GetAlerts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAlerts">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/2002/1/alerts/DeleteAlerts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AlertsSoap12" type="tns:AlertsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAlerts">
+      <soap12:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/2002/1/alerts/GetAlerts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAlerts">
+      <soap12:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/2002/1/alerts/DeleteAlerts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Alerts">
+    <wsdl:port name="AlertsSoap" binding="tns:AlertsSoap">
+      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/alerts.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AlertsSoap12" binding="tns:AlertsSoap12">
+      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/alerts.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

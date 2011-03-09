@@ -120,7 +120,6 @@ public class CommonConfigurationOptionDAO extends FileOptionsDAO {
    /** llave que dice si se deben filtrar los cursos */
    private static final String KEY_FILTERCOURSES  = "filter_courses";
    /** llave que dice si transferimos como el viejo iolsucker-2.x */
-   private static final String KEY_OLDFASHION  = "old_fashion";
    
    /** @see OptionsDAO#getOptions()*/
     public final Options getOptions() throws MalformedURLException {
@@ -152,7 +151,6 @@ public class CommonConfigurationOptionDAO extends FileOptionsDAO {
                 }
                 if(rev > 1) {
                     ret.setFilterCourses(config.getBoolean(KEY_FILTERCOURSES));
-                    ret.setOldFashion(config.getBoolean(KEY_OLDFASHION));
                 }
                 if(rev > 2) {
                     ret.setStartWithoutPrompting(config
@@ -193,9 +191,6 @@ public class CommonConfigurationOptionDAO extends FileOptionsDAO {
                 options.getProxyPort()));
         config.addProperty(KEY_FILTERCOURSES,
                 new Boolean(options.isFilterCourses()));
-        config.addProperty(KEY_OLDFASHION,
-                new Boolean(options.isOldFashion()));
-        
         config.save(getFile());
     }
 

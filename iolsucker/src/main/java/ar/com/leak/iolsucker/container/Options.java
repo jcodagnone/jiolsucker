@@ -42,7 +42,9 @@ public class Options implements LoginInfo  {
     /** si persisten...la password tambien persiste? */
     private boolean savePassword = false;
     /** default base url de iol */
-    private final String defaultURLBase = "http://silvestre.itba.edu.ar/itbaV/";
+    private final String defaultURLBase = "http://iol2.itba.edu.ar:27521/";
+    private final String oldURLBase = "http://silvestre.itba.edu.ar/itbaV/";
+    
     /** base url de iol */
     private URL uRLBase;
     /** proxy host */
@@ -53,8 +55,6 @@ public class Options implements LoginInfo  {
     private static final int DEFAULT_PROXY_PORT = 8080;
     /** filtrar los cursos */ 
     private boolean filterCourses;
-    /** usar el viejo modo de transferencias de archivo del iolsucker? */
-    private boolean oldFashion;
     /**
      * Crea el Options.
      *
@@ -169,7 +169,15 @@ public class Options implements LoginInfo  {
      *             setear
      */
     public final void setURLBase(final URL base) {
-        uRLBase = base;
+        if(base.toString().equals(oldURLBase)) {
+            try {
+                uRLBase = new URL(defaultURLBase);
+            } catch (MalformedURLException e) {
+                uRLBase = base;
+            }
+        } else {
+            uRLBase = base;
+        }
     }
 
     /** @see Object#toString() */
@@ -246,19 +254,4 @@ public class Options implements LoginInfo  {
         this.filterCourses = filterCourses;
     }
 
-    /**
-     * @return <code>true</code> si se usa el viejo modo de 
-     *  transferencias de archivo del iolsucker.
-     */
-    public final boolean isOldFashion() {
-        return oldFashion;
-    }
-
-    /**
-     * @param oldFashion <code>true</code> si se usa el viejo modo de 
-     *  transferencias de archivo del iolsucker.
-     */
-    public final void setOldFashion(final boolean oldFashion) {
-        this.oldFashion = oldFashion;
-    }
 }

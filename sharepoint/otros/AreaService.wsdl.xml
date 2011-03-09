@@ -1,0 +1,695 @@
+
+
+<definitions xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetHomeAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHomeAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetHomeAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewsAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetNewsAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicsAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTopicsAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTopicsAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentsAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDocumentsAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDocumentsAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSearchAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSearchAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMySiteAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMySiteAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMySiteAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKeywordsAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetKeywordsAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetKeywordsAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSitesDirectoryAreaID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSitesDirectoryAreaIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSitesDirectoryAreaIDResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubAreas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubAreasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubAreasResult" type="s0:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAreaListings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaListingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAreaListingsResult" type="s0:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAreaDataResult" type="s0:AreaData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AreaData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SmallIconUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ListingCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlOverride" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlNavigation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Navigation" type="s0:AreaNavigation" />
+          <s:element minOccurs="1" maxOccurs="1" name="System" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppearanceDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpirationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModified" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LargeIconUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPublicNav" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HonorOrder" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Order" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Depth" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InheritUrl" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerGuid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerPicture" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Synonyms" type="s0:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bool1" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bool2" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bool3" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Int1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Int2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Int3" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Datetime1" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NText1" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AreaNavigation">
+        <s:restriction base="s:string">
+          <s:enumeration value="Show" />
+          <s:enumeration value="Hide" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAreaListingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaListingID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaListingDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAreaListingDataResult" type="s0:AreaListingData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AreaListingData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ListingID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SmallIconUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:ListingStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s0:ListingType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonSID" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="PersonGuid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonPreferredName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppearanceDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpirationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModified" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LargeIconUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Order" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bool1" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bool2" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bool3" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NVarChar4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Int1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Int2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Int3" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Datetime1" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NText1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BestBet" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastModifiedBy" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ListingStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Pending" />
+          <s:enumeration value="Approved" />
+          <s:enumeration value="Rejected" />
+          <s:enumeration value="Archived" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ListingType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Keyword" />
+          <s:enumeration value="Site" />
+          <s:enumeration value="TeamSite" />
+          <s:enumeration value="News" />
+          <s:enumeration value="ExternalUrl" />
+          <s:enumeration value="Person" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTemplate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateAreaResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAreaListing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDescription" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s0:ListingType" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAreaListingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateAreaListingResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAreaData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="ad" type="s0:AreaData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAreaDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetAreaListingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaListingID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="ld" type="s0:AreaListingData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAreaListingDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAreaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteAreaListing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaListingID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAreaListingResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </types>
+  <message name="GetHomeAreaIDSoapIn">
+    <part name="parameters" element="s0:GetHomeAreaID" />
+  </message>
+  <message name="GetHomeAreaIDSoapOut">
+    <part name="parameters" element="s0:GetHomeAreaIDResponse" />
+  </message>
+  <message name="GetNewsAreaIDSoapIn">
+    <part name="parameters" element="s0:GetNewsAreaID" />
+  </message>
+  <message name="GetNewsAreaIDSoapOut">
+    <part name="parameters" element="s0:GetNewsAreaIDResponse" />
+  </message>
+  <message name="GetTopicsAreaIDSoapIn">
+    <part name="parameters" element="s0:GetTopicsAreaID" />
+  </message>
+  <message name="GetTopicsAreaIDSoapOut">
+    <part name="parameters" element="s0:GetTopicsAreaIDResponse" />
+  </message>
+  <message name="GetDocumentsAreaIDSoapIn">
+    <part name="parameters" element="s0:GetDocumentsAreaID" />
+  </message>
+  <message name="GetDocumentsAreaIDSoapOut">
+    <part name="parameters" element="s0:GetDocumentsAreaIDResponse" />
+  </message>
+  <message name="GetSearchAreaIDSoapIn">
+    <part name="parameters" element="s0:GetSearchAreaID" />
+  </message>
+  <message name="GetSearchAreaIDSoapOut">
+    <part name="parameters" element="s0:GetSearchAreaIDResponse" />
+  </message>
+  <message name="GetMySiteAreaIDSoapIn">
+    <part name="parameters" element="s0:GetMySiteAreaID" />
+  </message>
+  <message name="GetMySiteAreaIDSoapOut">
+    <part name="parameters" element="s0:GetMySiteAreaIDResponse" />
+  </message>
+  <message name="GetKeywordsAreaIDSoapIn">
+    <part name="parameters" element="s0:GetKeywordsAreaID" />
+  </message>
+  <message name="GetKeywordsAreaIDSoapOut">
+    <part name="parameters" element="s0:GetKeywordsAreaIDResponse" />
+  </message>
+  <message name="GetSitesDirectoryAreaIDSoapIn">
+    <part name="parameters" element="s0:GetSitesDirectoryAreaID" />
+  </message>
+  <message name="GetSitesDirectoryAreaIDSoapOut">
+    <part name="parameters" element="s0:GetSitesDirectoryAreaIDResponse" />
+  </message>
+  <message name="GetSubAreasSoapIn">
+    <part name="parameters" element="s0:GetSubAreas" />
+  </message>
+  <message name="GetSubAreasSoapOut">
+    <part name="parameters" element="s0:GetSubAreasResponse" />
+  </message>
+  <message name="GetAreaListingsSoapIn">
+    <part name="parameters" element="s0:GetAreaListings" />
+  </message>
+  <message name="GetAreaListingsSoapOut">
+    <part name="parameters" element="s0:GetAreaListingsResponse" />
+  </message>
+  <message name="GetAreaDataSoapIn">
+    <part name="parameters" element="s0:GetAreaData" />
+  </message>
+  <message name="GetAreaDataSoapOut">
+    <part name="parameters" element="s0:GetAreaDataResponse" />
+  </message>
+  <message name="GetAreaListingDataSoapIn">
+    <part name="parameters" element="s0:GetAreaListingData" />
+  </message>
+  <message name="GetAreaListingDataSoapOut">
+    <part name="parameters" element="s0:GetAreaListingDataResponse" />
+  </message>
+  <message name="CreateAreaSoapIn">
+    <part name="parameters" element="s0:CreateArea" />
+  </message>
+  <message name="CreateAreaSoapOut">
+    <part name="parameters" element="s0:CreateAreaResponse" />
+  </message>
+  <message name="CreateAreaListingSoapIn">
+    <part name="parameters" element="s0:CreateAreaListing" />
+  </message>
+  <message name="CreateAreaListingSoapOut">
+    <part name="parameters" element="s0:CreateAreaListingResponse" />
+  </message>
+  <message name="SetAreaDataSoapIn">
+    <part name="parameters" element="s0:SetAreaData" />
+  </message>
+  <message name="SetAreaDataSoapOut">
+    <part name="parameters" element="s0:SetAreaDataResponse" />
+  </message>
+  <message name="SetAreaListingDataSoapIn">
+    <part name="parameters" element="s0:SetAreaListingData" />
+  </message>
+  <message name="SetAreaListingDataSoapOut">
+    <part name="parameters" element="s0:SetAreaListingDataResponse" />
+  </message>
+  <message name="DeleteAreaSoapIn">
+    <part name="parameters" element="s0:DeleteArea" />
+  </message>
+  <message name="DeleteAreaSoapOut">
+    <part name="parameters" element="s0:DeleteAreaResponse" />
+  </message>
+  <message name="DeleteAreaListingSoapIn">
+    <part name="parameters" element="s0:DeleteAreaListing" />
+  </message>
+  <message name="DeleteAreaListingSoapOut">
+    <part name="parameters" element="s0:DeleteAreaListingResponse" />
+  </message>
+  <portType name="AreaServiceSoap">
+    <operation name="GetHomeAreaID">
+      <input message="s0:GetHomeAreaIDSoapIn" />
+      <output message="s0:GetHomeAreaIDSoapOut" />
+    </operation>
+    <operation name="GetNewsAreaID">
+      <input message="s0:GetNewsAreaIDSoapIn" />
+      <output message="s0:GetNewsAreaIDSoapOut" />
+    </operation>
+    <operation name="GetTopicsAreaID">
+      <input message="s0:GetTopicsAreaIDSoapIn" />
+      <output message="s0:GetTopicsAreaIDSoapOut" />
+    </operation>
+    <operation name="GetDocumentsAreaID">
+      <input message="s0:GetDocumentsAreaIDSoapIn" />
+      <output message="s0:GetDocumentsAreaIDSoapOut" />
+    </operation>
+    <operation name="GetSearchAreaID">
+      <input message="s0:GetSearchAreaIDSoapIn" />
+      <output message="s0:GetSearchAreaIDSoapOut" />
+    </operation>
+    <operation name="GetMySiteAreaID">
+      <input message="s0:GetMySiteAreaIDSoapIn" />
+      <output message="s0:GetMySiteAreaIDSoapOut" />
+    </operation>
+    <operation name="GetKeywordsAreaID">
+      <input message="s0:GetKeywordsAreaIDSoapIn" />
+      <output message="s0:GetKeywordsAreaIDSoapOut" />
+    </operation>
+    <operation name="GetSitesDirectoryAreaID">
+      <input message="s0:GetSitesDirectoryAreaIDSoapIn" />
+      <output message="s0:GetSitesDirectoryAreaIDSoapOut" />
+    </operation>
+    <operation name="GetSubAreas">
+      <input message="s0:GetSubAreasSoapIn" />
+      <output message="s0:GetSubAreasSoapOut" />
+    </operation>
+    <operation name="GetAreaListings">
+      <input message="s0:GetAreaListingsSoapIn" />
+      <output message="s0:GetAreaListingsSoapOut" />
+    </operation>
+    <operation name="GetAreaData">
+      <input message="s0:GetAreaDataSoapIn" />
+      <output message="s0:GetAreaDataSoapOut" />
+    </operation>
+    <operation name="GetAreaListingData">
+      <input message="s0:GetAreaListingDataSoapIn" />
+      <output message="s0:GetAreaListingDataSoapOut" />
+    </operation>
+    <operation name="CreateArea">
+      <input message="s0:CreateAreaSoapIn" />
+      <output message="s0:CreateAreaSoapOut" />
+    </operation>
+    <operation name="CreateAreaListing">
+      <input message="s0:CreateAreaListingSoapIn" />
+      <output message="s0:CreateAreaListingSoapOut" />
+    </operation>
+    <operation name="SetAreaData">
+      <input message="s0:SetAreaDataSoapIn" />
+      <output message="s0:SetAreaDataSoapOut" />
+    </operation>
+    <operation name="SetAreaListingData">
+      <input message="s0:SetAreaListingDataSoapIn" />
+      <output message="s0:SetAreaListingDataSoapOut" />
+    </operation>
+    <operation name="DeleteArea">
+      <input message="s0:DeleteAreaSoapIn" />
+      <output message="s0:DeleteAreaSoapOut" />
+    </operation>
+    <operation name="DeleteAreaListing">
+      <input message="s0:DeleteAreaListingSoapIn" />
+      <output message="s0:DeleteAreaListingSoapOut" />
+    </operation>
+  </portType>
+  <binding name="AreaServiceSoap" type="s0:AreaServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetHomeAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetHomeAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNewsAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetNewsAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopicsAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetTopicsAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDocumentsAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetDocumentsAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSearchAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetSearchAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMySiteAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetMySiteAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetKeywordsAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetKeywordsAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSitesDirectoryAreaID">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetSitesDirectoryAreaID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSubAreas">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetSubAreas" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAreaListings">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetAreaListings" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAreaData">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetAreaData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAreaListingData">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetAreaListingData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateArea">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/CreateArea" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateAreaListing">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/CreateAreaListing" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetAreaData">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/SetAreaData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetAreaListingData">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/SetAreaListingData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteArea">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/DeleteArea" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteAreaListing">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/DeleteAreaListing" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AreaService">
+    <documentation>SPS Area Service</documentation>
+    <port name="AreaServiceSoap" binding="s0:AreaServiceSoap">
+      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/AreaService.asmx" />
+    </port>
+  </service>
+</definitions>
+

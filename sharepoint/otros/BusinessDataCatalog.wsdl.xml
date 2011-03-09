@@ -1,0 +1,382 @@
+
+
+ <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+ <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Business Data Catalog Metadata Web Service</wsdl:documentation> 
+ <wsdl:types>
+ <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/">
+ <s:element name="GetLobSystemInstances">
+ <s:complexType /> 
+ </s:element>
+ <s:element name="GetLobSystemInstancesResponse">
+ <s:complexType>
+ <s:sequence>
+ <s:element minOccurs="0" maxOccurs="1" name="GetLobSystemInstancesResult" type="tns:ArrayOfLobSystemInstanceStruct" /> 
+ </s:sequence>
+ </s:complexType>
+ </s:element>
+ <s:complexType name="ArrayOfLobSystemInstanceStruct">
+ <s:sequence>
+ <s:element minOccurs="0" maxOccurs="unbounded" name="LobSystemInstanceStruct" nillable="true" type="tns:LobSystemInstanceStruct" /> 
+ </s:sequence>
+ </s:complexType>
+ <s:complexType name="LobSystemInstanceStruct">
+ <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="id" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="lcids" type="tns:ArrayOfInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="localizedNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="lobSystemId" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyTypes" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyValues" type="tns:ArrayOfString" /> 
+  </s:sequence>
+  </s:complexType>
+ <s:complexType name="ArrayOfInt">
+ <s:sequence>
+  <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" /> 
+  </s:sequence>
+  </s:complexType>
+ <s:complexType name="ArrayOfString">
+ <s:sequence>
+  <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" /> 
+  </s:sequence>
+  </s:complexType>
+ <s:element name="GetEntitiesForLobSystemInstance">
+ <s:complexType>
+ <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="lobSystemInstanceId" type="s:unsignedInt" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+ <s:element name="GetEntitiesForLobSystemInstanceResponse">
+ <s:complexType>
+ <s:sequence>
+  <s:element minOccurs="0" maxOccurs="1" name="GetEntitiesForLobSystemInstanceResult" type="tns:ArrayOfEntityStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+ <s:complexType name="ArrayOfEntityStruct">
+ <s:sequence>
+  <s:element minOccurs="0" maxOccurs="unbounded" name="EntityStruct" nillable="true" type="tns:EntityStruct" /> 
+  </s:sequence>
+  </s:complexType>
+ <s:complexType name="EntityStruct">
+ <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="id" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="lcids" type="tns:ArrayOfInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="localizedNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="lobSystemId" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyTypes" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyValues" type="tns:ArrayOfString" /> 
+  </s:sequence>
+  </s:complexType>
+ <s:element name="GetMethodInstancesForEntity">
+ <s:complexType>
+ <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="entityId" type="s:unsignedInt" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:element name="GetMethodInstancesForEntityResponse">
+  <s:complexType>
+  <s:sequence>
+  <s:element minOccurs="0" maxOccurs="1" name="GetMethodInstancesForEntityResult" type="tns:ArrayOfMethodInstanceStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:complexType name="ArrayOfMethodInstanceStruct">
+  <s:sequence>
+  <s:element minOccurs="0" maxOccurs="unbounded" name="MethodInstanceStruct" nillable="true" type="tns:MethodInstanceStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  <s:complexType name="MethodInstanceStruct">
+  <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="id" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="methodId" type="s:unsignedInt" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="returnTypeDescriptorId" type="s:unsignedInt" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="methodInstanceType" type="tns:MethodInstanceType" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="lcids" type="tns:ArrayOfInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="localizedNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyTypes" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyValues" type="tns:ArrayOfString" /> 
+  </s:sequence>
+  </s:complexType>
+  <s:simpleType name="MethodInstanceType">
+  <s:restriction base="s:string">
+  <s:enumeration value="Finder" /> 
+  <s:enumeration value="SpecificFinder" /> 
+  <s:enumeration value="ViewAccessor" /> 
+  <s:enumeration value="GenericInvoker" /> 
+  <s:enumeration value="IdEnumerator" /> 
+  </s:restriction>
+  </s:simpleType>
+  <s:element name="GetMethodsForEntity">
+  <s:complexType>
+  <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="entityId" type="s:unsignedInt" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:element name="GetMethodsForEntityResponse">
+  <s:complexType>
+  <s:sequence>
+  <s:element minOccurs="0" maxOccurs="1" name="GetMethodsForEntityResult" type="tns:ArrayOfMethodStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:complexType name="ArrayOfMethodStruct">
+  <s:sequence>
+  <s:element minOccurs="0" maxOccurs="unbounded" name="MethodStruct" nillable="true" type="tns:MethodStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  <s:complexType name="MethodStruct">
+  <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="id" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="entityId" type="s:unsignedInt" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="isStatic" type="s:boolean" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="lcids" type="tns:ArrayOfInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="localizedNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyTypes" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyValues" type="tns:ArrayOfString" /> 
+  </s:sequence>
+  </s:complexType>
+  <s:element name="GetMethodForMethodInstance">
+  <s:complexType>
+  <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="methodInstanceId" type="s:unsignedInt" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:element name="GetMethodForMethodInstanceResponse">
+  <s:complexType>
+  <s:sequence>
+  <s:element minOccurs="0" maxOccurs="1" name="GetMethodForMethodInstanceResult" type="tns:MethodStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:element name="GetFilterDescriptorsForMethod">
+  <s:complexType>
+  <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="methodId" type="s:unsignedInt" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:element name="GetFilterDescriptorsForMethodResponse">
+  <s:complexType>
+  <s:sequence>
+  <s:element minOccurs="0" maxOccurs="1" name="GetFilterDescriptorsForMethodResult" type="tns:ArrayOfFilterDescriptorStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:element>
+  <s:complexType name="ArrayOfFilterDescriptorStruct">
+  <s:sequence>
+  <s:element minOccurs="0" maxOccurs="unbounded" name="FilterDescriptorStruct" nillable="true" type="tns:FilterDescriptorStruct" /> 
+  </s:sequence>
+  </s:complexType>
+  <s:complexType name="FilterDescriptorStruct">
+  <s:sequence>
+  <s:element minOccurs="1" maxOccurs="1" name="id" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="typeName" type="s:string" /> 
+  <s:element minOccurs="1" maxOccurs="1" name="methodId" type="s:unsignedInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="lcids" type="tns:ArrayOfInt" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="localizedNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyNames" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyTypes" type="tns:ArrayOfString" /> 
+  <s:element minOccurs="0" maxOccurs="1" name="propertyValues" type="tns:ArrayOfString" /> 
+  </s:sequence>
+  </s:complexType>
+  </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLobSystemInstancesSoapIn">
+  <wsdl:part name="parameters" element="tns:GetLobSystemInstances" /> 
+  </wsdl:message>
+  <wsdl:message name="GetLobSystemInstancesSoapOut">
+  <wsdl:part name="parameters" element="tns:GetLobSystemInstancesResponse" /> 
+  </wsdl:message>
+  <wsdl:message name="GetEntitiesForLobSystemInstanceSoapIn">
+  <wsdl:part name="parameters" element="tns:GetEntitiesForLobSystemInstance" /> 
+  </wsdl:message>
+  <wsdl:message name="GetEntitiesForLobSystemInstanceSoapOut">
+  <wsdl:part name="parameters" element="tns:GetEntitiesForLobSystemInstanceResponse" /> 
+  </wsdl:message>
+  <wsdl:message name="GetMethodInstancesForEntitySoapIn">
+  <wsdl:part name="parameters" element="tns:GetMethodInstancesForEntity" /> 
+  </wsdl:message>
+  <wsdl:message name="GetMethodInstancesForEntitySoapOut">
+  <wsdl:part name="parameters" element="tns:GetMethodInstancesForEntityResponse" /> 
+  </wsdl:message>
+  <wsdl:message name="GetMethodsForEntitySoapIn">
+  <wsdl:part name="parameters" element="tns:GetMethodsForEntity" /> 
+  </wsdl:message>
+  <wsdl:message name="GetMethodsForEntitySoapOut">
+  <wsdl:part name="parameters" element="tns:GetMethodsForEntityResponse" /> 
+  </wsdl:message>
+  <wsdl:message name="GetMethodForMethodInstanceSoapIn">
+  <wsdl:part name="parameters" element="tns:GetMethodForMethodInstance" /> 
+  </wsdl:message>
+  <wsdl:message name="GetMethodForMethodInstanceSoapOut">
+  <wsdl:part name="parameters" element="tns:GetMethodForMethodInstanceResponse" /> 
+  </wsdl:message>
+  <wsdl:message name="GetFilterDescriptorsForMethodSoapIn">
+  <wsdl:part name="parameters" element="tns:GetFilterDescriptorsForMethod" /> 
+  </wsdl:message>
+  <wsdl:message name="GetFilterDescriptorsForMethodSoapOut">
+  <wsdl:part name="parameters" element="tns:GetFilterDescriptorsForMethodResponse" /> 
+  </wsdl:message>
+  <wsdl:portType name="BdcWebServiceSoap">
+  <wsdl:operation name="GetLobSystemInstances">
+  <wsdl:input message="tns:GetLobSystemInstancesSoapIn" /> 
+  <wsdl:output message="tns:GetLobSystemInstancesSoapOut" /> 
+  </wsdl:operation>
+  <wsdl:operation name="GetEntitiesForLobSystemInstance">
+  <wsdl:input message="tns:GetEntitiesForLobSystemInstanceSoapIn" /> 
+  <wsdl:output message="tns:GetEntitiesForLobSystemInstanceSoapOut" /> 
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodInstancesForEntity">
+  <wsdl:input message="tns:GetMethodInstancesForEntitySoapIn" /> 
+  <wsdl:output message="tns:GetMethodInstancesForEntitySoapOut" /> 
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodsForEntity">
+  <wsdl:input message="tns:GetMethodsForEntitySoapIn" /> 
+  <wsdl:output message="tns:GetMethodsForEntitySoapOut" /> 
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodForMethodInstance">
+  <wsdl:input message="tns:GetMethodForMethodInstanceSoapIn" /> 
+  <wsdl:output message="tns:GetMethodForMethodInstanceSoapOut" /> 
+  </wsdl:operation>
+  <wsdl:operation name="GetFilterDescriptorsForMethod">
+  <wsdl:input message="tns:GetFilterDescriptorsForMethodSoapIn" /> 
+  <wsdl:output message="tns:GetFilterDescriptorsForMethodSoapOut" /> 
+  </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BdcWebServiceSoap" type="tns:BdcWebServiceSoap">
+  <soap:binding transport="http://schemas.xmlsoap.org/soap/http" /> 
+  <wsdl:operation name="GetLobSystemInstances">
+  <soap:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetLobSystemInstances" style="document" /> 
+  <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetEntitiesForLobSystemInstance">
+  <soap:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetEntitiesForLobSystemInstance" style="document" /> 
+  <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodInstancesForEntity">
+  <soap:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetMethodInstancesForEntity" style="document" /> 
+  <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodsForEntity">
+  <soap:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetMethodsForEntity" style="document" /> 
+  <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodForMethodInstance">
+  <soap:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetMethodForMethodInstance" style="document" /> 
+  <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetFilterDescriptorsForMethod">
+  <soap:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetFilterDescriptorsForMethod" style="document" /> 
+  <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BdcWebServiceSoap12" type="tns:BdcWebServiceSoap">
+  <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" /> 
+  <wsdl:operation name="GetLobSystemInstances">
+  <soap12:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetLobSystemInstances" style="document" /> 
+  <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap12:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetEntitiesForLobSystemInstance">
+  <soap12:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetEntitiesForLobSystemInstance" style="document" /> 
+  <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap12:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodInstancesForEntity">
+  <soap12:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetMethodInstancesForEntity" style="document" /> 
+  <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap12:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodsForEntity">
+  <soap12:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetMethodsForEntity" style="document" /> 
+  <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap12:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetMethodForMethodInstance">
+  <soap12:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetMethodForMethodInstance" style="document" /> 
+  <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap12:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  <wsdl:operation name="GetFilterDescriptorsForMethod">
+  <soap12:operation soapAction="http://schemas.microsoft.com/OfficeServer/BusinessDataCatalog/GetFilterDescriptorsForMethod" style="document" /> 
+  <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+  <wsdl:output>
+  <soap12:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BdcWebService">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Business Data Catalog Metadata Web Service</wsdl:documentation> 
+  <wsdl:port name="BdcWebServiceSoap" binding="tns:BdcWebServiceSoap">
+  <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/BusinessDataCatalog.asmx" /> 
+  </wsdl:port>
+  <wsdl:port name="BdcWebServiceSoap12" binding="tns:BdcWebServiceSoap12">
+  <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/BusinessDataCatalog.asmx" /> 
+  </wsdl:port>
+  </wsdl:service>
+  </wsdl:definitions>

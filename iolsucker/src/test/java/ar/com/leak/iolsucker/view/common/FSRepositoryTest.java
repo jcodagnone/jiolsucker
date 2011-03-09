@@ -15,15 +15,29 @@
  */
 package ar.com.leak.iolsucker.view.common;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
+
+import junit.framework.TestCase;
 
 import org.apache.commons.lang.Validate;
 
-import junit.framework.TestCase;
 import ar.com.leak.common.fs.FilesystemUtils;
 import ar.com.leak.iolsucker.impl.common.RelativeLocationValidator;
-import ar.com.leak.iolsucker.impl.mock.*;
+import ar.com.leak.iolsucker.impl.mock.MockCourse;
+import ar.com.leak.iolsucker.impl.mock.MockIolDao;
+import ar.com.leak.iolsucker.impl.mock.MockMaterialDir;
+import ar.com.leak.iolsucker.impl.mock.MockMaterialFile;
 import ar.com.leak.iolsucker.model.Course;
 import ar.com.leak.iolsucker.model.IolDAO;
 import ar.com.leak.iolsucker.model.Material;

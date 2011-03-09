@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean name="ioldao" class="com.zaubersoftware.jiol.sharepoint.SharepointIolDAO" destroy-method="dispose">
+        <constructor-arg ref="options"/>
+        <constructor-arg>
+            <bean id="iolurl" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                <property name="targetObject" ref="options"/>
+                <property name="targetMethod">
+                    <value>getURLBase</value>
+                </property>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+</beans>

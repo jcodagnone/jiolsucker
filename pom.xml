@@ -32,7 +32,10 @@
   </developers>
   
   <properties>
-    <spring.version>2.5.6</spring.version>
+    <spring.version>3.0.5.RELEASE</spring.version>
+    <slf4j.version>1.6.1</slf4j.version>
+    <commons.version>3.43</commons.version>
+    <leviathan.version>0.4</leviathan.version>
   </properties>
   
   <licenses>
@@ -59,8 +62,8 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <configuration>
-            <source>1.5</source>
-            <target>1.5</target>
+            <source>1.6</source>
+            <target>1.6</target>
             <encoding>ISO-8859-1</encoding>
           </configuration>
         </plugin>
@@ -147,54 +150,25 @@
   <modules>
      <module>leak-commons</module>
      <module>api</module>
-     <module>impl</module>
+     <module>sharepoint</module>
      <module>iolsucker</module>
   </modules>
   <repositories>
-      <repository>
-         <id>jiol maven repo</id>
-         <name>jiol override directory</name>
-         <url>http://www.leak.com.ar/~juan/code/jiol/m2/</url>
-	 <layout>default</layout>
-      </repository>
          <repository>
                <releases><enabled>true</enabled></releases>
                <snapshots><enabled>false</enabled></snapshots>
                <id>zauber-code-releases</id>
                <name>Zauber Code Releases</name>
-               <url>https://repo1.zauber.com.ar/zauber/code/releases</url>
+               <url>https://repo1.zaubersoftware.com/zauber/code/releases</url>
          </repository>
          <repository>
                <releases><enabled>false</enabled></releases>
                <snapshots><enabled>true</enabled></snapshots>
                <id>zauber-code-snapshots</id>
               <name>Zauber Code Snapshots</name>
-              <url>https://repo1.zauber.com.ar/zauber/code/snapshots</url>
+              <url>https://repo1.zaubersoftware.com/zauber/code/snapshots</url>
          </repository>
-     <repository>
-      <id>zauber-internal-releases</id>
-      <name>Zauber Internal Releases</name>
-      <url>https://repo1.zauber.com.ar/zauber/internal/releases</url>
-      <releases><enabled>true</enabled></releases>
-      <snapshots><enabled>false</enabled></snapshots>
-     </repository>
-     <repository>
-      <id>zauber-internal-snapshots</id>
-      <name>Zauber Internal Releases</name>
-      <url>https://repo1.zauber.com.ar/zauber/internal/snapshots</url>
-      <releases><enabled>false</enabled></releases>
-      <snapshots><enabled>true</enabled></snapshots>
-     </repository>
-
   </repositories>
-  <pluginRepositories>
-      <pluginRepository>
-         <id>jiol maven repo</id>
-         <name>jiol override directory</name>
-         <url>http://www.leak.com.ar/~juan/code/jiol/m2/</url>
-	 <layout>default</layout>
-      </pluginRepository>
-  </pluginRepositories>
   
   <reporting>
      <plugins>
@@ -220,7 +194,246 @@
        </plugin>
      </plugins>
   </reporting>
-  <dependencyManagement/>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>2.5</version>
+      </dependency>
+	  
+
+      <!--Spring -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${spring.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-orm</artifactId>
+        <version>${spring.version}</version>
+      </dependency>      
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-webmvc</artifactId>
+	<version>${spring.version}</version>
+      </dependency>
+      <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-web</artifactId>
+	<version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+     <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+     <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${spring.version}</version>
+     </dependency>
+     <dependency>
+        <groupId>org.springframework.ws</groupId>
+        <artifactId>spring-oxm</artifactId>
+        <version>${spring.oxm.version}</version>
+        <exclusions>
+            <exclusion>
+               <groupId>commons-logging</groupId>
+               <artifactId>commons-logging</artifactId>
+             </exclusion>
+         </exclusions>
+     </dependency>
+     <!--END Spring -->
+      <dependency>
+          <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>1.0.0.GA</version>
+        </dependency>
+      <!-- END Hibernate -->
+      <!-- Commons -->  
+      <dependency>
+        <groupId>ar.com.zauber.commons</groupId>
+        <artifactId>commons-base</artifactId>
+        <version>${commons.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>ar.com.zauber.commons.persistence</groupId>
+          <artifactId>commons-persistence-utils</artifactId>
+          <version>${commons.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>ar.com.zauber.commons.persistence</groupId>
+          <artifactId>commons-persistence-api</artifactId>
+          <version>${commons.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>ar.com.zauber.commons.message</groupId>
+          <artifactId>commons-message-impl</artifactId>
+          <version>${commons.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>ar.com.zauber.commons.auth</groupId>
+          <artifactId>commons-auth-api</artifactId>
+          <version>${commons.version}</version>
+     </dependency>
+      <dependency>
+          <groupId>ar.com.zauber.commons.auth</groupId>
+          <artifactId>commons-auth-impl</artifactId>
+          <version>${commons.version}</version>
+     </dependency>
+        <dependency>
+            <artifactId>commons-web-cache</artifactId>
+            <groupId>ar.com.zauber.commons.web</groupId>
+          <version>${commons.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>commons-web-uri</artifactId>
+            <groupId>ar.com.zauber.commons.web</groupId>
+            <version>${commons.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>ar.com.zauber.commons.web</groupId>
+          <artifactId>commons-web-utils</artifactId>
+          <version>${commons.version}</version>
+        </dependency>
+      <dependency>
+          <groupId>ar.com.zauber.commons</groupId>
+          <artifactId>commons-spring</artifactId>
+          <version>${commons.version}</version>
+          <exclusions>
+            <exclusion>
+                <groupId>stax</groupId>
+                <artifactId>stax</artifactId>
+            </exclusion>
+          </exclusions>
+      </dependency>
+     <dependency>
+       <groupId>org.mockito</groupId>
+       <artifactId>mockito-all</artifactId>
+       <version>1.8.5</version>
+       <scope>test</scope>
+     </dependency>
+     <!-- END Commons -->
+     <!-- Logging -->
+     <dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-api</artifactId>
+	<version>${slf4j.version}</version>
+     </dependency>
+     <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+       <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <version>${slf4j.version}</version>
+          <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.15</version>
+        <exclusions>
+           <exclusion>
+             <groupId>javax.mail</groupId>
+             <artifactId>mail</artifactId>
+           </exclusion>
+           <exclusion>
+             <groupId>javax.jms</groupId>
+             <artifactId>jms</artifactId>
+           </exclusion>
+           <exclusion>
+             <groupId>com.sun.jmx</groupId>
+             <artifactId>jmxri</artifactId>
+           </exclusion>
+           <exclusion>
+             <groupId>com.sun.jdmk</groupId>
+             <artifactId>jmxtools</artifactId>
+           </exclusion>
+        </exclusions>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <artifactId>commons-io</artifactId>
+        <groupId>commons-io</groupId>
+        <version>1.4</version>
+    </dependency>
+      <!-- END Logging -->
+
+           <dependency>
+                <groupId>ar.com.zauber.leviathan</groupId>
+                <artifactId>leviathan-api</artifactId>
+                <version>${leviathan.version}</version>
+           </dependency>
+           <dependency>
+                <groupId>ar.com.zauber.leviathan</groupId>
+                <artifactId>leviathan-api-common</artifactId>
+                <version>${leviathan.version}</version>
+           </dependency>
+           <dependency>
+                <groupId>ar.com.zauber.leviathan</groupId>
+                <artifactId>leviathan-api-httpclient</artifactId>
+                <version>${leviathan.version}</version>
+           </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+  <pluginRepositories>
+      <pluginRepository>
+         <id>jiol maven repo</id>
+         <name>jiol override directory</name>
+         <url>http://www.leak.com.ar/~juan/code/jiol/m2/</url>
+      <layout>default</layout>
+      </pluginRepository>
+  </pluginRepositories>
+
   <distributionManagement>
     <site>
        <id>my.leak.com.ar</id>
@@ -238,7 +451,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

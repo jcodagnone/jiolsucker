@@ -18,15 +18,25 @@ package ar.com.leak.iolsucker.container.swing;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import org.apache.commons.collections.Predicate;
-import org.htmlparser.parserapplications.filterbuilder.layouts.
-VerticalLayoutManager;
 
 import ar.com.leak.iolsucker.model.Course;
 import ar.com.leak.iolsucker.model.IolDAO;
@@ -64,7 +74,8 @@ public class SwingCoursePredicate implements Predicate {
         Collections.sort(courses, coursesComparator);
         final Collection<JCheckBox> checkboxes = new ArrayList<JCheckBox>(
                 courses.size());
-        final JPanel panel = new JPanel(new VerticalLayoutManager());
+//        final JPanel panel = new JPanel(new VerticalLayoutManager());
+        final JPanel panel = new JPanel();
         panel.setBorder(new  TitledBorder(new EtchedBorder(), "Cursos"));
         final String courseKey = "course";
         
@@ -87,7 +98,8 @@ public class SwingCoursePredicate implements Predicate {
             panel.add(check);
             checkboxes.add(check);
         }
-        final JPanel box = new JPanel(new VerticalLayoutManager());
+        final JPanel box = new JPanel();
+//        final JPanel box = new JPanel(new VerticalLayoutManager());
         box.setBorder(new  TitledBorder(new EtchedBorder(), "Marcar..."));
         final JButton all = new JButton("Todos");
         all.setToolTipText("Marca todos los cursos");

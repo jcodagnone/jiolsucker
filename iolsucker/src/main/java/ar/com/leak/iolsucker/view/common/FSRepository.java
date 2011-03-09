@@ -15,21 +15,37 @@
  */
 package ar.com.leak.iolsucker.view.common;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Vector;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 
-import org.apache.commons.collections.*;
+import org.apache.commons.collections.Closure;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.ListUtils;
+import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.NullArgumentException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import ar.com.leak.common.fs.FilesystemUtils;
-import ar.com.leak.iolsucker.impl.common.Validator;
 import ar.com.leak.iolsucker.model.Course;
 import ar.com.leak.iolsucker.model.Material;
+import ar.com.leak.iolsucker.model.impl.common.Validator;
 import ar.com.leak.iolsucker.view.DownloadMeter;
 import ar.com.leak.iolsucker.view.Repository;
 

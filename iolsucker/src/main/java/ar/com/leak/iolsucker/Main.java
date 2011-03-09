@@ -29,7 +29,7 @@ import org.springframework.core.io.FileSystemResource;
 
 import ar.com.leak.iolsucker.container.Configurator;
 import ar.com.leak.iolsucker.container.swing.JCrashDialog;
-import ar.com.leak.iolsucker.impl.common.login.WrongCredentials;
+import ar.com.leak.iolsucker.model.impl.common.login.WrongCredentials;
 
 
 /**

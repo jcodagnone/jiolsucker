@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[2.2.4.RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[2.5.1.201011101000-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -12,7 +12,6 @@
 		<config>src/main/resources/spring/jiol-common.xml</config>
 		<config>src/main/resources/spring/jiol-conf-swing.xml</config>
 		<config>src/main/resources/spring/jiol-controllers.xml</config>
-		<config>src/main/resources/spring/jiol-dao-http.xml</config>
 		<config>src/main/resources/spring/jiol-dao-mock.xml</config>
 		<config>src/main/resources/spring/jiol-repository.xml</config>
 		<config>src/test/resources/ar/com/leak/iolsucker/container/spring/test.xml</config>

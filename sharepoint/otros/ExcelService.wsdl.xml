@@ -1,0 +1,876 @@
+
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/excel/server/webservices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://schemas.microsoft.com/office/excel/server/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/excel/server/webservices">
+      <s:element name="GetApiVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetApiVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetApiVersionResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Status" nillable="true" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Status">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Severity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="OpenWorkbook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workbookPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="uiCultureName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataCultureName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OpenWorkbookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OpenWorkbookResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseWorkbook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseWorkbookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Refresh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="connectionName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefreshResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Calculate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeCoordinates" type="tns:RangeCoordinates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RangeCoordinates">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Row" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Column" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CalculateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateA1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateA1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeCoordinates" type="tns:RangeCoordinates" />
+            <s:element minOccurs="1" maxOccurs="1" name="formatted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRangeResult" type="tns:ArrayOfAnyType" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TypeExporter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CellError" type="tns:CellError" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CellError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Div0" />
+          <s:enumeration value="NA" />
+          <s:enumeration value="Name" />
+          <s:enumeration value="Null" />
+          <s:enumeration value="Num" />
+          <s:enumeration value="Ref" />
+          <s:enumeration value="Value" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetRangeA1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="formatted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRangeA1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRangeA1Result" type="tns:ArrayOfAnyType" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCell">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="row" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="column" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="formatted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCellResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCellResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCellA1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="formatted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCellA1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCellA1Result" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeCoordinates" type="tns:RangeCoordinates" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeValues" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetRangeA1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeValues" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetRangeA1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCell">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="row" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="column" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="cellValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCellResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCellA1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sheetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rangeName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cellValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCellA1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateWorkbook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="calculateType" type="tns:CalculateType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CalculateType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Recalculate" />
+          <s:enumeration value="CalculateFull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CalculateWorkbookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSessionInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSessionInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serverVersion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="uiCultureNameUsed" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataCultureNameUsed" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkbook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="workbookType" type="tns:WorkbookType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="WorkbookType">
+        <s:restriction base="s:string">
+          <s:enumeration value="FullWorkbook" />
+          <s:enumeration value="FullSnapshot" />
+          <s:enumeration value="PublishedItemsSnapshot" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetWorkbookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkbookResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetApiVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetApiVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetApiVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetApiVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpenWorkbookSoapIn">
+    <wsdl:part name="parameters" element="tns:OpenWorkbook" />
+  </wsdl:message>
+  <wsdl:message name="OpenWorkbookSoapOut">
+    <wsdl:part name="parameters" element="tns:OpenWorkbookResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseWorkbookSoapIn">
+    <wsdl:part name="parameters" element="tns:CloseWorkbook" />
+  </wsdl:message>
+  <wsdl:message name="CloseWorkbookSoapOut">
+    <wsdl:part name="parameters" element="tns:CloseWorkbookResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefreshSoapIn">
+    <wsdl:part name="parameters" element="tns:Refresh" />
+  </wsdl:message>
+  <wsdl:message name="RefreshSoapOut">
+    <wsdl:part name="parameters" element="tns:RefreshResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculateSoapIn">
+    <wsdl:part name="parameters" element="tns:Calculate" />
+  </wsdl:message>
+  <wsdl:message name="CalculateSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculateA1SoapIn">
+    <wsdl:part name="parameters" element="tns:CalculateA1" />
+  </wsdl:message>
+  <wsdl:message name="CalculateA1SoapOut">
+    <wsdl:part name="parameters" element="tns:CalculateA1Response" />
+  </wsdl:message>
+  <wsdl:message name="GetRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRange" />
+  </wsdl:message>
+  <wsdl:message name="GetRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRangeA1SoapIn">
+    <wsdl:part name="parameters" element="tns:GetRangeA1" />
+  </wsdl:message>
+  <wsdl:message name="GetRangeA1SoapOut">
+    <wsdl:part name="parameters" element="tns:GetRangeA1Response" />
+  </wsdl:message>
+  <wsdl:message name="GetCellSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCell" />
+  </wsdl:message>
+  <wsdl:message name="GetCellSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCellResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCellA1SoapIn">
+    <wsdl:part name="parameters" element="tns:GetCellA1" />
+  </wsdl:message>
+  <wsdl:message name="GetCellA1SoapOut">
+    <wsdl:part name="parameters" element="tns:GetCellA1Response" />
+  </wsdl:message>
+  <wsdl:message name="SetRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:SetRange" />
+  </wsdl:message>
+  <wsdl:message name="SetRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:SetRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetRangeA1SoapIn">
+    <wsdl:part name="parameters" element="tns:SetRangeA1" />
+  </wsdl:message>
+  <wsdl:message name="SetRangeA1SoapOut">
+    <wsdl:part name="parameters" element="tns:SetRangeA1Response" />
+  </wsdl:message>
+  <wsdl:message name="SetCellSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCell" />
+  </wsdl:message>
+  <wsdl:message name="SetCellSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCellResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCellA1SoapIn">
+    <wsdl:part name="parameters" element="tns:SetCellA1" />
+  </wsdl:message>
+  <wsdl:message name="SetCellA1SoapOut">
+    <wsdl:part name="parameters" element="tns:SetCellA1Response" />
+  </wsdl:message>
+  <wsdl:message name="CalculateWorkbookSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculateWorkbook" />
+  </wsdl:message>
+  <wsdl:message name="CalculateWorkbookSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculateWorkbookResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSessionInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSessionInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelRequest" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkbookSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWorkbook" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkbookSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkbookResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ExcelServiceSoap">
+    <wsdl:operation name="GetApiVersion">
+      <wsdl:input message="tns:GetApiVersionSoapIn" />
+      <wsdl:output message="tns:GetApiVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenWorkbook">
+      <wsdl:input message="tns:OpenWorkbookSoapIn" />
+      <wsdl:output message="tns:OpenWorkbookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseWorkbook">
+      <wsdl:input message="tns:CloseWorkbookSoapIn" />
+      <wsdl:output message="tns:CloseWorkbookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Refresh">
+      <wsdl:input message="tns:RefreshSoapIn" />
+      <wsdl:output message="tns:RefreshSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Calculate">
+      <wsdl:input message="tns:CalculateSoapIn" />
+      <wsdl:output message="tns:CalculateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculateA1">
+      <wsdl:input message="tns:CalculateA1SoapIn" />
+      <wsdl:output message="tns:CalculateA1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRange">
+      <wsdl:input message="tns:GetRangeSoapIn" />
+      <wsdl:output message="tns:GetRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRangeA1">
+      <wsdl:input message="tns:GetRangeA1SoapIn" />
+      <wsdl:output message="tns:GetRangeA1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCell">
+      <wsdl:input message="tns:GetCellSoapIn" />
+      <wsdl:output message="tns:GetCellSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCellA1">
+      <wsdl:input message="tns:GetCellA1SoapIn" />
+      <wsdl:output message="tns:GetCellA1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRange">
+      <wsdl:input message="tns:SetRangeSoapIn" />
+      <wsdl:output message="tns:SetRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRangeA1">
+      <wsdl:input message="tns:SetRangeA1SoapIn" />
+      <wsdl:output message="tns:SetRangeA1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCell">
+      <wsdl:input message="tns:SetCellSoapIn" />
+      <wsdl:output message="tns:SetCellSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCellA1">
+      <wsdl:input message="tns:SetCellA1SoapIn" />
+      <wsdl:output message="tns:SetCellA1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculateWorkbook">
+      <wsdl:input message="tns:CalculateWorkbookSoapIn" />
+      <wsdl:output message="tns:CalculateWorkbookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionInformation">
+      <wsdl:input message="tns:GetSessionInformationSoapIn" />
+      <wsdl:output message="tns:GetSessionInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest">
+      <wsdl:input message="tns:CancelRequestSoapIn" />
+      <wsdl:output message="tns:CancelRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkbook">
+      <wsdl:input message="tns:GetWorkbookSoapIn" />
+      <wsdl:output message="tns:GetWorkbookSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ExcelServiceSoap" type="tns:ExcelServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetApiVersion">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetApiVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenWorkbook">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/OpenWorkbook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseWorkbook">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CloseWorkbook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Refresh">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/Refresh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Calculate">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/Calculate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateA1">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CalculateA1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRange">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRangeA1">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetRangeA1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCell">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetCell" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCellA1">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetCellA1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRange">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRangeA1">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetRangeA1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCell">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetCell" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCellA1">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetCellA1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateWorkbook">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CalculateWorkbook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionInformation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetSessionInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CancelRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkbook">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetWorkbook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExcelServiceSoap12" type="tns:ExcelServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetApiVersion">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetApiVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenWorkbook">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/OpenWorkbook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseWorkbook">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CloseWorkbook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Refresh">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/Refresh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Calculate">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/Calculate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateA1">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CalculateA1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRange">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRangeA1">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetRangeA1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCell">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetCell" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCellA1">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetCellA1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRange">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRangeA1">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetRangeA1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCell">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetCell" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCellA1">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/SetCellA1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateWorkbook">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CalculateWorkbook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionInformation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetSessionInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/CancelRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkbook">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/excel/server/webservices/GetWorkbook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExcelService">
+    <wsdl:port name="ExcelServiceSoap" binding="tns:ExcelServiceSoap">
+      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/ExcelService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ExcelServiceSoap12" binding="tns:ExcelServiceSoap12">
+      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/ExcelService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+

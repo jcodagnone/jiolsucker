@@ -6,7 +6,7 @@
 	<import resource="jiol-common.xml"/>
 	
 	<!-- elegir uno de los dos -->
-	<import resource="jiol-dao-http.xml"/>
+	<import resource="jiol-dao-sharepoint.xml"/>
 	<!-- import resource="jiol-dao-mock.xml"/-->
 	
 	<import resource="jiol-repository.xml"/>

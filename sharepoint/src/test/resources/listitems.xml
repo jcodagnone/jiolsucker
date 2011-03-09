@@ -1,0 +1,400 @@
+<xml xmlns:s='uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882' xmlns:dt='uuid:C2F41010-65B3-11d1-A29F-00AA00C14882'
+    xmlns:rs='urn:schemas-microsoft-com:rowset' xmlns:z='#RowsetSchema'>
+    <s:Schema id='RowsetSchema'>
+        <s:ElementType name='row' content='eltOnly'
+            rs:CommandTimeout='30'>
+            <s:AttributeType name='ows_Title' rs:name='Título'
+                rs:number='1'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_FileLeafRef'
+                rs:name='Nombre' rs:number='2'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Vigente_x0020_Desde0'
+                rs:name='Vigente Desde' rs:number='3'>
+                <s:datatype dt:type='datetime' dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Vigente_x0020_Hasta'
+                rs:name='Vigente Hasta' rs:number='4'>
+                <s:datatype dt:type='datetime' dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Vigente_x0020_Desde'
+                rs:name='Cargado el' rs:number='5'>
+                <s:datatype dt:type='datetime' dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ContentTypeId'
+                rs:name='Id. de tipos de contenido' rs:number='6'>
+                <s:datatype dt:type='int' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__ModerationComments'
+                rs:name='Comentarios del aprobador' rs:number='7'>
+                <s:datatype dt:type='string' dt:maxLength='1073741823' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Modified_x0020_By'
+                rs:name='Documento modificado por' rs:number='8'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Created_x0020_By'
+                rs:name='Documento creado por' rs:number='9'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_File_x0020_Type'
+                rs:name='Tipo de archivo' rs:number='10'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_HTML_x0020_File_x0020_Type'
+                rs:name='Tipo de archivo HTML' rs:number='11'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__SourceUrl'
+                rs:name='Dirección URL de origen' rs:number='12'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__SharedFileIndex'
+                rs:name='Índice de archivos compartidos' rs:number='13'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_TemplateUrl'
+                rs:name='Vinculo de la plantilla' rs:number='14'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_xd_ProgID'
+                rs:name='Vínculo de archivo HTML' rs:number='15'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_xd_Signature'
+                rs:name='Está firmado' rs:number='16'>
+                <s:datatype dt:type='boolean' dt:maxLength='1' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ID' rs:name='ID'
+                rs:number='17'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ContentType'
+                rs:name='Tipo de contenido' rs:number='18'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Created' rs:name='Creado'
+                rs:number='19'>
+                <s:datatype dt:type='datetime' dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Author' rs:name='Creado por'
+                rs:number='20'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Modified'
+                rs:name='Modificado' rs:number='21'>
+                <s:datatype dt:type='datetime' dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Editor' rs:name='Modificado por'
+                rs:number='22'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__HasCopyDestinations'
+                rs:name='Tiene destinos de copia' rs:number='23'>
+                <s:datatype dt:type='boolean' dt:maxLength='1' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__CopySource'
+                rs:name='Copiar origen' rs:number='24'>
+                <s:datatype dt:type='string' dt:maxLength='1073741823' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__ModerationStatus'
+                rs:name='Estado de aprobación' rs:number='25'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_FileRef' rs:name='Dirección URL'
+                rs:number='26'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_FileDirRef'
+                rs:name='Ruta' rs:number='27'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Last_x0020_Modified'
+                rs:name='Modificado' rs:number='28'>
+                <s:datatype dt:type='datetime' dt:lookup='true'
+                    dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Created_x0020_Date'
+                rs:name='Creado' rs:number='29'>
+                <s:datatype dt:type='datetime' dt:lookup='true'
+                    dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_File_x0020_Size'
+                rs:name='Tamaño de archivo' rs:number='30'>
+                <s:datatype dt:type='i4' dt:lookup='true'
+                    dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_FSObjType'
+                rs:name='Tipo de elemento' rs:number='31'>
+                <s:datatype dt:type='ui1' dt:lookup='true'
+                    dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_PermMask'
+                rs:name='Máscara de permisos efectivos' rs:number='32'>
+                <s:datatype dt:type='string' dt:maxLength='1073741823' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_CheckedOutUserId'
+                rs:name='Id. del usuario que tiene desprotegido el elemento'
+                rs:number='33'>
+                <s:datatype dt:type='i4' dt:lookup='true'
+                    dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_IsCheckedoutToLocal'
+                rs:name='Está desprotegido en local' rs:number='34'>
+                <s:datatype dt:type='i4' dt:lookup='true'
+                    dt:maxLength='1' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_CheckoutUser'
+                rs:name='Desprotegido para' rs:number='35'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_UniqueId'
+                rs:name='Id. único' rs:number='36'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='38' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ProgId' rs:name='ProgId'
+                rs:number='37'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ScopeId' rs:name='ScopeId'
+                rs:number='38'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='38' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_VirusStatus'
+                rs:name='Estado del virus' rs:number='39'>
+                <s:datatype dt:type='i4' dt:lookup='true'
+                    dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_CheckedOutTitle'
+                rs:name='Desprotegido para' rs:number='40'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__CheckinComment'
+                rs:name='Comentario de protección' rs:number='41'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='1073741823' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_LinkCheckedOutTitle'
+                rs:name='Desprotegido para' rs:number='42'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__EditMenuTableStart'
+                rs:name='Editar fin de tabla de menús' rs:number='43'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__EditMenuTableEnd'
+                rs:name='Editar fin de tabla de menús' rs:number='44'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_LinkFilenameNoMenu'
+                rs:name='Nombre' rs:number='45'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_LinkFilename'
+                rs:name='Nombre' rs:number='46'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_DocIcon' rs:name='Tipo'
+                rs:number='47'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ServerUrl'
+                rs:name='Dirección URL relativa al servidor' rs:number='48'>
+                <s:datatype dt:type='string' dt:maxLength='1073741823' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_EncodedAbsUrl'
+                rs:name='Dirección URL absoluta codificada' rs:number='49'>
+                <s:datatype dt:type='string' dt:maxLength='1073741823' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_BaseName'
+                rs:name='Nombre' rs:number='50'>
+                <s:datatype dt:type='string' dt:maxLength='1073741823' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_FileSizeDisplay'
+                rs:name='Tamaño de archivo' rs:number='51'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_MetaInfo'
+                rs:name='Contenedor de propiedades' rs:number='52'>
+                <s:datatype dt:type='int' dt:lookup='true'
+                    dt:maxLength='2147483646' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__Level' rs:name='Nivel'
+                rs:number='53'>
+                <s:datatype dt:type='ui1' dt:maxLength='1' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__IsCurrentVersion'
+                rs:name='es la versión actual' rs:number='54'>
+                <s:datatype dt:type='boolean' dt:maxLength='1' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_SelectTitle'
+                rs:name='Seleccionar' rs:number='55'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_SelectFilename'
+                rs:name='Seleccionar' rs:number='56'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Edit' rs:name='Editar'
+                rs:number='57'>
+                <s:datatype dt:type='i4' dt:maxLength='1' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_owshiddenversion'
+                rs:name='owshiddenversion' rs:number='58'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__UIVersion'
+                rs:name='Versión de IU' rs:number='59'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows__UIVersionString'
+                rs:name='Versión' rs:number='60'>
+                <s:datatype dt:type='string' dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_InstanceID'
+                rs:name='Id. de instancia' rs:number='61'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Order' rs:name='Orden'
+                rs:number='62'>
+                <s:datatype dt:type='float' dt:maxLength='8' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_GUID' rs:name='GUID'
+                rs:number='63'>
+                <s:datatype dt:type='string' dt:maxLength='38' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_WorkflowVersion'
+                rs:name='Versión del flujo de trabajo' rs:number='64'>
+                <s:datatype dt:type='i4' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_WorkflowInstanceID'
+                rs:name='Id. de instancia de flujo de trabajo'
+                rs:number='65'>
+                <s:datatype dt:type='string' dt:maxLength='38' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ParentVersionString'
+                rs:name='Versión del origen (documento convertido)'
+                rs:number='66'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_ParentLeafName'
+                rs:name='Nombre del origen (documento convertido)'
+                rs:number='67'>
+                <s:datatype dt:type='string' dt:lookup='true'
+                    dt:maxLength='512' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_Combine' rs:name='Combinar'
+                rs:number='68'>
+                <s:datatype dt:type='ui1' dt:maxLength='4' />
+            </s:AttributeType>
+            <s:AttributeType name='ows_RepairDocument'
+                rs:name='Volver a vincular' rs:number='69'>
+                <s:datatype dt:type='ui1' dt:maxLength='4' />
+            </s:AttributeType>
+        </s:ElementType>
+    </s:Schema>
+    <rs:data ItemCount="2">
+        <z:row ows_Title='Cronograma 2011' ows_FileLeafRef='38;#Cronograma.pdf'
+            ows_Vigente_x0020_Desde0='2011-02-25T02:00:00Z'
+            ows_Vigente_x0020_Hasta='2011-06-25T03:00:00Z'
+            ows_Vigente_x0020_Desde='2011-02-25T02:00:00Z'
+            ows_ContentTypeId='0x010100DECB0959A4704B4EB2C40E02B605E74E'
+            ows_Modified_x0020_By='ldapitbaprovider:11154287'
+            ows_Created_x0020_By='ldapitbaprovider:11154287'
+            ows_File_x0020_Type='pdf' ows_ID='38' ows_ContentType='Documento'
+            ows_Created='2011-02-25T19:35:25Z' ows_Author='3965;#Maria Cristina Parpaglione'
+            ows_Modified='2011-02-25T19:35:50Z' ows_Editor='3965;#Maria Cristina Parpaglione'
+            ows__ModerationStatus='0'
+            ows_FileRef='38;#grado/72.27/Material Didctico/clases/Cronograma.pdf'
+            ows_FileDirRef='38;#grado/72.27/Material Didctico/clases'
+            ows_Last_x0020_Modified='38;#2011-02-25T19:35:50Z'
+            ows_Created_x0020_Date='38;#2011-02-25T19:35:25Z'
+            ows_File_x0020_Size='38;#45569' ows_FSObjType='38;#0'
+            ows_PermMask='0xb008431061' ows_CheckedOutUserId='38;#'
+            ows_IsCheckedoutToLocal='38;#0'
+            ows_UniqueId='38;#{7F1DF629-DCB3-415B-9CB3-7C69D8D4C75C}'
+            ows_ProgId='38;#' ows_ScopeId='38;#{4CA61BE4-AFFF-4C6F-A961-C262B01E547E}'
+            ows_VirusStatus='38;#45569' ows_CheckedOutTitle='38;#'
+            ows__CheckinComment='38;#' ows__EditMenuTableStart='Cronograma.pdf'
+            ows__EditMenuTableEnd='38' ows_LinkFilenameNoMenu='Cronograma.pdf'
+            ows_LinkFilename='Cronograma.pdf' ows_DocIcon='pdf'
+            ows_ServerUrl='/grado/72.27/Material Didctico/clases/Cronograma.pdf'
+            ows_EncodedAbsUrl='http://iol2.itba.edu.ar:27521/grado/72.27/Material%20Didctico/clases/Cronograma.pdf'
+            ows_BaseName='Cronograma' ows_FileSizeDisplay='45569'
+            ows_MetaInfo='38;#vti_parserversion:SR|12.0.0.6421
+ContentTypeId:SW|0x010100DECB0959A4704B4EB2C40E02B605E74E
+vti_title:SW|Cronograma 2011
+Vigente Hasta:SW|2011-06-25T00:00:00Z
+ContentType:SW|Documento
+vti_author:SR|ldapitbaprovider:11154287
+Vigente Desde0:SW|2011-02-25T00:00:00Z
+Vigente Desde:SW|2011-02-25T00:00:00Z
+vti_modifiedby:SR|ldapitbaprovider:11154287
+'
+            ows__Level='1' ows__IsCurrentVersion='1' ows_SelectTitle='38'
+            ows_SelectFilename='38' ows_Edit='0' ows_owshiddenversion='3'
+            ows__UIVersion='512' ows__UIVersionString='1.0' ows_Order='3800.00000000000'
+            ows_GUID='{EAACB35C-85A5-4467-91DC-E2F699CD5ACC}'
+            ows_WorkflowVersion='1' ows_ParentVersionString='38;#'
+            ows_ParentLeafName='38;#' ows_Combine='0'
+            ows_RepairDocument='0' />
+        <z:row ows_Title='Cronograma Primer Cuatrimestre 2011'
+            ows_FileLeafRef='39;#Cronograma.pdf'
+            ows_Vigente_x0020_Desde0='2011-03-03T02:00:00Z'
+            ows_Vigente_x0020_Hasta='2011-06-21T03:00:00Z'
+            ows_Vigente_x0020_Desde='2011-03-03T02:00:00Z'
+            ows_ContentTypeId='0x010100DECB0959A4704B4EB2C40E02B605E74E'
+            ows_Modified_x0020_By='ldapitbaprovider:11154287'
+            ows_Created_x0020_By='ldapitbaprovider:11154287'
+            ows_File_x0020_Type='pdf' ows_ID='39' ows_ContentType='Documento'
+            ows_Created='2011-03-03T19:46:46Z' ows_Author='3965;#Maria Cristina Parpaglione'
+            ows_Modified='2011-03-03T19:47:08Z' ows_Editor='3965;#Maria Cristina Parpaglione'
+            ows__ModerationStatus='0'
+            ows_FileRef='39;#grado/72.27/Material Didctico/documentos/Cronograma.pdf'
+            ows_FileDirRef='39;#grado/72.27/Material Didctico/documentos'
+            ows_Last_x0020_Modified='39;#2011-03-03T19:47:08Z'
+            ows_Created_x0020_Date='39;#2011-03-03T19:46:47Z'
+            ows_File_x0020_Size='39;#46089' ows_FSObjType='39;#0'
+            ows_PermMask='0xb008431061' ows_CheckedOutUserId='39;#'
+            ows_IsCheckedoutToLocal='39;#0'
+            ows_UniqueId='39;#{B931111A-4521-45E0-A392-D3043113BB1E}'
+            ows_ProgId='39;#' ows_ScopeId='39;#{4CA61BE4-AFFF-4C6F-A961-C262B01E547E}'
+            ows_VirusStatus='39;#46089' ows_CheckedOutTitle='39;#'
+            ows__CheckinComment='39;#' ows__EditMenuTableStart='Cronograma.pdf'
+            ows__EditMenuTableEnd='39' ows_LinkFilenameNoMenu='Cronograma.pdf'
+            ows_LinkFilename='Cronograma.pdf' ows_DocIcon='pdf'
+            ows_ServerUrl='/grado/72.27/Material Didctico/documentos/Cronograma.pdf'
+            ows_EncodedAbsUrl='http://iol2.itba.edu.ar:27521/grado/72.27/Material%20Didctico/documentos/Cronograma.pdf'
+            ows_BaseName='Cronograma' ows_FileSizeDisplay='46089'
+            ows_MetaInfo='39;#vti_parserversion:SR|12.0.0.6421
+ContentTypeId:SW|0x010100DECB0959A4704B4EB2C40E02B605E74E
+vti_title:SW|Cronograma Primer Cuatrimestre 2011
+Vigente Hasta:SW|2011-06-21T00:00:00Z
+ContentType:SW|Documento
+vti_author:SR|ldapitbaprovider:11154287
+Vigente Desde0:SW|2011-03-03T00:00:00Z
+Vigente Desde:SW|2011-03-03T00:00:00Z
+vti_modifiedby:SR|ldapitbaprovider:11154287
+'
+            ows__Level='1' ows__IsCurrentVersion='1' ows_SelectTitle='39'
+            ows_SelectFilename='39' ows_Edit='0' ows_owshiddenversion='3'
+            ows__UIVersion='512' ows__UIVersionString='1.0' ows_Order='3900.00000000000'
+            ows_GUID='{F41A6B72-061E-484E-8B49-22F6FCD75941}'
+            ows_WorkflowVersion='1' ows_ParentVersionString='39;#'
+            ows_ParentLeafName='39;#' ows_Combine='0'
+            ows_RepairDocument='0' />
+    </rs:data>
+</xml>

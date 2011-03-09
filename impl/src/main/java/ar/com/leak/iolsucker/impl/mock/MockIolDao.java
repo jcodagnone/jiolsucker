@@ -19,8 +19,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import ar.com.leak.iolsucker.impl.common.StringNews;
-import ar.com.leak.iolsucker.model.*;
+import ar.com.leak.iolsucker.model.Course;
+import ar.com.leak.iolsucker.model.IolDAO;
+import ar.com.leak.iolsucker.model.Material;
+import ar.com.leak.iolsucker.model.News;
+import ar.com.leak.iolsucker.model.impl.common.StringNews;
 
 /**
  * Dao con datos de jugete para poder probar el repositorio y el controlador

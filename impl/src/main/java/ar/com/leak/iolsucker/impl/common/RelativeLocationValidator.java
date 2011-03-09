@@ -17,8 +17,10 @@ package ar.com.leak.iolsucker.impl.common;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import ar.com.leak.iolsucker.model.impl.common.Validator;
 
 /**
  * @see #isValid(String)  
@@ -27,7 +29,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class RelativeLocationValidator implements Validator {
     /** class logger */
-    private Log logger = LogFactory.getLog(RelativeLocationValidator.class);
+    private Logger logger = LoggerFactory.getLogger(RelativeLocationValidator.class);
     /** codec helper */
     private final URLCodec urlCodec = new URLCodec();
     

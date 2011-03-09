@@ -385,28 +385,6 @@ public class OptionsView  {
         gridBag.setConstraints(chkFilter, constraints);
         mainPanel.add(chkFilter);
 
-        final JCheckBox chkOldFashion = new JCheckBox("Bajar los archivos "
-                + "comportandandose como el iolsucker-2.x");
-        chkOldFashion.setToolTipText("<html>El viejo iolsucker usaba el link "
-                + "<b>Bajar</b> en vez del boton <b>Bajar archivo</b>.<br>"
-                + "¿Cuales son las ventajas de usar el modo viejo?"
-                + "<ul><li>El archivo no se marca como leído. En IOL sigue "
-                + "manteniendo el cartelito <br>de <b>New!!</b>. Es util "
-                + "para saber que se imprimió.</li></ul>¿Desventajas? <ul><li>"
-                + "Genera un poquito más de tráfico de red</li>"
-                +  "<li>se puede romper con más facilidad (se deben hacer más "
-                +  "<br>suposiciones)</li></ul></html>");
-        chkOldFashion.addActionListener(new ActionListener() {
-            public void actionPerformed(final ActionEvent e) {
-                model.setOldFashion(chkOldFashion.isSelected());
-            }
-        });
-        chkOldFashion.setSelected(model.isOldFashion());
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        gridBag.setConstraints(chkOldFashion, constraints);
-        mainPanel.add(chkOldFashion);
-
         return mainPanel;
     }
 

@@ -1,0 +1,528 @@
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sharepoint Email Integration Web Service</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="CreateContact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForwardingEmail" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="tns:ContactFlags" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ContactFlags">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="OnlyAllowAuthenticatedEmail" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateContactResult" type="tns:RequestStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="RequestStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="PendingApproval" />
+          <s:enumeration value="ApprovalDenied" />
+          <s:enumeration value="DuplicateAlias" />
+          <s:enumeration value="InvalidArgument" />
+          <s:enumeration value="ServiceNotConfigured" />
+          <s:enumeration value="AccessDenied" />
+          <s:enumeration value="ServerUnavailable" />
+          <s:enumeration value="ObjectNotFound" />
+          <s:enumeration value="InvalidMember" />
+          <s:enumeration value="InternalError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="DeleteContact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteContactResult" type="tns:RequestStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyContact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OldAlias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewAlias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForwardingEmail" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="tns:ContactFlags" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyContactResult" type="tns:RequestStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDistributionGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContactCN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Info" type="tns:RequestInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="tns:DistributionGroupFlags" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestorEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Justification" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateDistributionGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateDistributionGroupResult" type="tns:RequestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="JobID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobStatus" type="tns:RequestStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteDistributionGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Info" type="tns:RequestInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDistributionGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDistributionGroupResult" type="tns:RequestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RenameDistributionGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OldAlias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewAlias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Info" type="tns:RequestInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RenameDistributionGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RenameDistributionGroupResult" type="tns:RequestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyDistributionGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContactCN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Info" type="tns:RequestInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="tns:DistributionGroupFlags" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="DistributionGroupFlags">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="OnlyAllowAuthenticatedEmail" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ModifyDistributionGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyDistributionGroupResult" type="tns:RequestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetJobStatusResult" type="tns:RequestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeUsersMembershipInDistributionGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddNt4NameList" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteNt4NameList" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAllCurrentMembers" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChangeUsersMembershipInDistributionGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeUsersMembershipInDistributionGroupResult" type="tns:RequestStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeContactsMembershipInDistributionGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddListForContacts" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteListForContacts" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAllCurrentMembers" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeContactsMembershipInDistributionGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeContactsMembershipInDistributionGroupResult" type="tns:RequestStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateContactSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateContact" />
+  </wsdl:message>
+  <wsdl:message name="CreateContactSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteContactSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteContact" />
+  </wsdl:message>
+  <wsdl:message name="DeleteContactSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyContactSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyContact" />
+  </wsdl:message>
+  <wsdl:message name="ModifyContactSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateDistributionGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateDistributionGroup" />
+  </wsdl:message>
+  <wsdl:message name="CreateDistributionGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateDistributionGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDistributionGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDistributionGroup" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDistributionGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDistributionGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="RenameDistributionGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:RenameDistributionGroup" />
+  </wsdl:message>
+  <wsdl:message name="RenameDistributionGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:RenameDistributionGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDistributionGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyDistributionGroup" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDistributionGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyDistributionGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetJobStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeUsersMembershipInDistributionGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeUsersMembershipInDistributionGroup" />
+  </wsdl:message>
+  <wsdl:message name="ChangeUsersMembershipInDistributionGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeUsersMembershipInDistributionGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeContactsMembershipInDistributionGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeContactsMembershipInDistributionGroup" />
+  </wsdl:message>
+  <wsdl:message name="ChangeContactsMembershipInDistributionGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeContactsMembershipInDistributionGroupResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SharepointEmailWSSoap">
+    <wsdl:operation name="CreateContact">
+      <wsdl:input message="tns:CreateContactSoapIn" />
+      <wsdl:output message="tns:CreateContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContact">
+      <wsdl:input message="tns:DeleteContactSoapIn" />
+      <wsdl:output message="tns:DeleteContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyContact">
+      <wsdl:input message="tns:ModifyContactSoapIn" />
+      <wsdl:output message="tns:ModifyContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDistributionGroup">
+      <wsdl:input message="tns:CreateDistributionGroupSoapIn" />
+      <wsdl:output message="tns:CreateDistributionGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDistributionGroup">
+      <wsdl:input message="tns:DeleteDistributionGroupSoapIn" />
+      <wsdl:output message="tns:DeleteDistributionGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RenameDistributionGroup">
+      <wsdl:input message="tns:RenameDistributionGroupSoapIn" />
+      <wsdl:output message="tns:RenameDistributionGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDistributionGroup">
+      <wsdl:input message="tns:ModifyDistributionGroupSoapIn" />
+      <wsdl:output message="tns:ModifyDistributionGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobStatus">
+      <wsdl:input message="tns:GetJobStatusSoapIn" />
+      <wsdl:output message="tns:GetJobStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUsersMembershipInDistributionGroup">
+      <wsdl:input message="tns:ChangeUsersMembershipInDistributionGroupSoapIn" />
+      <wsdl:output message="tns:ChangeUsersMembershipInDistributionGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeContactsMembershipInDistributionGroup">
+      <wsdl:input message="tns:ChangeContactsMembershipInDistributionGroupSoapIn" />
+      <wsdl:output message="tns:ChangeContactsMembershipInDistributionGroupSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SharepointEmailWSSoap" type="tns:SharepointEmailWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateContact">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/CreateContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContact">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/DeleteContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyContact">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ModifyContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDistributionGroup">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/CreateDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDistributionGroup">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/DeleteDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenameDistributionGroup">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/RenameDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDistributionGroup">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ModifyDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobStatus">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/GetJobStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUsersMembershipInDistributionGroup">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ChangeUsersMembershipInDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeContactsMembershipInDistributionGroup">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ChangeContactsMembershipInDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SharepointEmailWSSoap12" type="tns:SharepointEmailWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateContact">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/CreateContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContact">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/DeleteContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyContact">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ModifyContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDistributionGroup">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/CreateDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDistributionGroup">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/DeleteDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenameDistributionGroup">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/RenameDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDistributionGroup">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ModifyDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobStatus">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/GetJobStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUsersMembershipInDistributionGroup">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ChangeUsersMembershipInDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeContactsMembershipInDistributionGroup">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SharePoint/SharepointEmailWS/ChangeContactsMembershipInDistributionGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SharepointEmailWS">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sharepoint Email Integration Web Service</wsdl:documentation>
+    <wsdl:port name="SharepointEmailWSSoap" binding="tns:SharepointEmailWSSoap">
+      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/SharepointEmailWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SharepointEmailWSSoap12" binding="tns:SharepointEmailWSSoap12">
+      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/SharepointEmailWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

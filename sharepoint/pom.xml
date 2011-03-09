@@ -25,9 +25,6 @@
                                          <includes>
                                                <include>*.wsdl.xml</include>
                                          </includes>
-                                        <wsdlOption>
-                                            <autoNameResolution>true</autoNameResolution>
-                                        </wsdlOption>
                                </configuration>
                                <goals>
                                        <goal>wsdl2java</goal>

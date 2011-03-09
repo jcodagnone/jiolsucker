@@ -47,6 +47,8 @@ import com.microsoft.schemas.sharepoint.soap.LoginErrorCode;
 import com.microsoft.schemas.sharepoint.soap.LoginResult;
 import com.microsoft.schemas.sharepoint.soap.SiteData;
 import com.microsoft.schemas.sharepoint.soap.SiteDataSoap;
+import com.microsoft.schemas.sharepoint.soap.Webs;
+import com.microsoft.schemas.sharepoint.soap.WebsSoap;
 
 /**
  * TODO Descripcion de la clase. Los comenterios van en castellano.
@@ -69,7 +71,8 @@ public class JAXWSharepointServiceFactory implements SharepointServiceFactory {
         Validate.notNull(uriStrategy);
         Validate.notNull(credentialsProvider);
         
-        final AuthenticationSoap authentication = new Authentication().getAuthenticationSoap();
+        final AuthenticationSoap authentication = new Authentication(uriStrategy.getUriForService(
+                Authentication.class).toURL()).getAuthenticationSoap();
         configureBinding((BindingProvider) authentication);
         final LoginResult login = authentication.login(credentialsProvider.getUsername(), 
                                                        credentialsProvider.getPassword());

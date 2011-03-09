@@ -43,11 +43,19 @@ public class FixedURISharepointStrategy implements URISharepointStrategy {
         
         this.prefix = prefix;
     }
-    
-    
+
+    @Override
     public final URI getUriForService(final Class<? extends Service> service, final String codigo) {
-        final String name = service.getSimpleName();
-        return prefix.resolve("/grado/" + codigo + VTI + name + ".asmx?wsdl");
+        return prefix.resolve("/grado/" + codigo + VTI + getName(service) + ".asmx?wsdl");
     }
 
+    @Override
+    public final URI getUriForService(final Class<? extends Service> service) {
+        return prefix.resolve(VTI + getName(service) + ".asmx?wsdl");
+    }
+    
+    /** @return the endpoint name */
+    private String getName(final Class<? extends Service> service) {
+        return service.getSimpleName();
+    }
 }

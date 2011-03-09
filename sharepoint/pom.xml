@@ -5,7 +5,7 @@
   <parent>
     <artifactId>jiol</artifactId>
     <groupId>ar.com.leak.iolsucker</groupId>
-    <version>3.17</version>
+    <version>3.18-SNAPSHOT</version>
   </parent>
    <artifactId>jiol-sharepoint</artifactId>
   <name>sharepoint implementation</name>

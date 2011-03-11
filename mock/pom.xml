@@ -7,12 +7,11 @@
 		<groupId>ar.com.leak.iolsucker</groupId>
 		<version>3.18-SNAPSHOT</version>
 	</parent>
-	<artifactId>jiol-api-impl</artifactId>
+	<artifactId>jiol-api-mock</artifactId>
 
-	<name>jiol default implementation of api</name>
+	<name>jiol mock api implementation</name>
 	<description>
-		Implementación de jiol que simula a un usuario navegando con el
-		browser
+		Implementación de jiol de mentirita
 	</description>
 	<dependencies>
 		<dependency>

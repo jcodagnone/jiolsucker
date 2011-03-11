@@ -45,12 +45,6 @@
           <artifactId>jiol-api</artifactId>
           <version>${pom.version}</version>
         </dependency>
-        <dependency>
-          <groupId>${pom.groupId}</groupId>
-          <artifactId>jiol-api-impl</artifactId>
-          <scope>test</scope>
-          <version>${pom.version}</version>
-        </dependency>
         <!-- CXF dependencies -->
         <dependency>
             <groupId>org.apache.cxf</groupId>

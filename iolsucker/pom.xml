@@ -19,8 +19,9 @@
     </dependency>    
   <dependency>
       <groupId>ar.com.leak.iolsucker</groupId>
-      <artifactId>jiol-api-impl</artifactId>
+      <artifactId>jiol-api-mock</artifactId>
       <version>${pom.version}</version>
+      <scope>test</scope>
     </dependency>    
 
      <dependency>

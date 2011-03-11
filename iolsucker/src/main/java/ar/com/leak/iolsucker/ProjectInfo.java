@@ -15,10 +15,15 @@
  */
 package ar.com.leak.iolsucker;
 
+import java.io.InputStream;
+
+import org.apache.commons.io.IOUtils;
+
+import ar.com.zauber.commons.web.version.impl.ManifestVersionProvider;
+import ar.com.zauber.commons.web.version.impl.PropertiesVersionProvider;
+
 /**
  * Contiene información sobre el proyecto/programa
- * 
- * TODO generar desed el POM de maven.
  * 
  * @author Juan F. Codagnone
  * @since Apr 12, 2005
@@ -27,7 +32,21 @@ public class ProjectInfo {
     /** name */
     private final String projectName = "iolsucker";
     /** version... */
-    private final String projectVersion = "3.18";
+    private String projectVersion = "unknown";
+    
+    {
+        InputStream is = null;
+        try {
+            is = getClass().getClassLoader().getResourceAsStream(
+                    "META-INF/maven/ar.com.leak.iolsucker/jiol-iolsucker/pom.properties");
+            if(is != null) {
+                projectVersion = new PropertiesVersionProvider(is, "version").getVersion();
+            }
+        } finally {
+            IOUtils.closeQuietly(is);
+        }
+    }
+    
     /** developers...*/
     private final String [] developers = {
             "Juan F. Codagnone <juan @ sin.spam im.leak.com.ar> (core)",

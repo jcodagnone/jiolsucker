@@ -23,12 +23,18 @@
       <version>${pom.version}</version>
       <scope>test</scope>
     </dependency>    
-
      <dependency>
       <groupId>ar.com.leak.iolsucker</groupId>
       <artifactId>jiol-sharepoint</artifactId>
       <version>${pom.version}</version>
-    </dependency>    
+    </dependency>  
+    <dependency>
+      <artifactId>commons-web-version</artifactId>
+      <groupId>ar.com.zauber.commons.web</groupId>
+      <version>${commons.version}</version>
+    </dependency>
+
+
         <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>

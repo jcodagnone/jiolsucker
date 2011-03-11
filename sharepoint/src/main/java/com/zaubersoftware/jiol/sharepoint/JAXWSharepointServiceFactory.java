@@ -45,11 +45,9 @@ import com.microsoft.schemas.sharepoint.soap.Authentication;
 import com.microsoft.schemas.sharepoint.soap.AuthenticationSoap;
 import com.microsoft.schemas.sharepoint.soap.LoginErrorCode;
 import com.microsoft.schemas.sharepoint.soap.LoginResult;
-import com.microsoft.schemas.sharepoint.soap.SiteDataSoap;
 
 /**
- * TODO Descripcion de la clase. Los comenterios van en castellano.
- * 
+ * Maneja autenticacion de servicios JAX-WS
  * 
  * @author Juan F. Codagnone
  * @since Mar 8, 2011
@@ -63,13 +61,17 @@ public class JAXWSharepointServiceFactory implements SharepointServiceFactory {
      *
      */
     public JAXWSharepointServiceFactory(final URISharepointStrategy uriStrategy, 
-            final LoginInfo credentialsProvider) 
-            throws MalformedURLException {
+            final LoginInfo credentialsProvider)  {
         Validate.notNull(uriStrategy);
         Validate.notNull(credentialsProvider);
         
-        final AuthenticationSoap authentication = new Authentication(uriStrategy.getUriForService(
-                Authentication.class).toURL()).getAuthenticationSoap();
+        AuthenticationSoap authentication;
+        try {
+            authentication = new Authentication(uriStrategy.getUriForService(
+                    Authentication.class).toURL()).getAuthenticationSoap();
+        } catch (MalformedURLException e) {
+            throw new UnhandledException(e);
+        }
         configureBinding((BindingProvider) authentication);
         final LoginResult login = authentication.login(credentialsProvider.getUsername(), 
                                                        credentialsProvider.getPassword());

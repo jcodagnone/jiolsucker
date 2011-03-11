@@ -93,38 +93,41 @@ public class SharepointIolDAO implements IolDAO {
         
         final WebListing webs = getWebs(uriStrategy, serviceFactory);
         final TaskExecutor executorService = new TaskExecutor();
-        
-        
-        for(final SWebWithTime web : webs.getWebs()) {
-            // paralelizamos la busqueda de materias
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        final WebListing sub = getWebs(new FixedURISharepointStrategy(
-                                URI.create(web.getUrl())), serviceFactory);
-                        for(final SWebWithTime s : sub.getWebs()) {
-                            executorService.execute(new Runnable() {
-                                @Override
-                                public void run() {
-                                    final WebListing subsub = getWebs(new FixedURISharepointStrategy(
-                                            URI.create(s.getUrl())), serviceFactory);
-                                    final String [] uriTitle = new String[]{s.getUrl(), 
-                                            subsub.getMetadata().getTitle()};
-                                    materiasUrlTitle.add(uriTitle);
-                                }
-                            });
-                        }
-                    } catch(SOAPFaultException t) {
-                        // esto puede estar bien...significa 403 probablemente
-                    }
-                }
-            });
-        }
         try {
-            executorService.awaitIdleness();
-        } catch (InterruptedException e) {
-            throw new UnhandledException(e);
+            
+            for(final SWebWithTime web : webs.getWebs()) {
+                // paralelizamos la busqueda de materias
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            final WebListing sub = getWebs(new FixedURISharepointStrategy(
+                                    URI.create(web.getUrl())), serviceFactory);
+                            for(final SWebWithTime s : sub.getWebs()) {
+                                executorService.execute(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        final WebListing subsub = getWebs(new FixedURISharepointStrategy(
+                                                URI.create(s.getUrl())), serviceFactory);
+                                        final String [] uriTitle = new String[]{s.getUrl(), 
+                                                subsub.getMetadata().getTitle()};
+                                        materiasUrlTitle.add(uriTitle);
+                                    }
+                                });
+                            }
+                        } catch(SOAPFaultException t) {
+                            // esto puede estar bien...significa 403 probablemente
+                        }
+                    }
+                });
+            }
+            try {
+                executorService.awaitIdleness();
+            } catch (InterruptedException e) {
+                throw new UnhandledException(e);
+            }
+        } finally {
+            executorService.shutdownNow();
         }
         
         for(final String []urlTitle : materiasUrlTitle) {
@@ -213,6 +216,10 @@ class WebListing {
 class TaskExecutor extends AbstractAsyncTaskExecutor implements Executor {
     private final ExecutorService executorService = Executors.newFixedThreadPool(20);
 
+    public List<Runnable> shutdownNow() {
+        return executorService.shutdownNow();
+    }
+
     @Override
     public void execute(final Runnable command) {
         incrementActiveJobs();
@@ -235,4 +242,5 @@ class TaskExecutor extends AbstractAsyncTaskExecutor implements Executor {
             decrementActiveJobs();
         }
     }
+    
 }

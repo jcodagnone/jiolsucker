@@ -137,64 +137,14 @@
     </dependency>
 
   </dependencies>
-  <scm>
-    <connection>scm:svn:https://svn.leak.com.ar/jiol/</connection>
-    <developerConnection>scm:svn:https://svn.leak.com.ar/jiol/trunk/</developerConnection>
-    <url>https://svn.leak.com.ar/jiol/trunk/</url>
-  </scm>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <configuration>
-          <mainClass>ar.com.leak.iolsucker.Main</mainClass>
-	      <executions>
-	        <execution>
-	          <goals>
-	            <goal>exec</goal>
-	          </goals>
-	        </execution>
-          </executions>   
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>ar.com.leak.iolsucker.Main</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>2.0-beta-6</version>
-      </plugin>
-      <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <configuration>
-            <descriptors>
-              <descriptor>src/main/assembly/assembly.xml</descriptor>
-            </descriptors>
-          </configuration>
-         <executions>
-           <execution>
-             <id>make-assembly</id> 
-             <phase>package</phase>
-             <goals>
-                <goal>attached</goal>
-             </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
+    
+  <profiles>
+    <!-- mvn compile -->
+    <profile>
+      <id>iolsucker</id>
+      <build>
+       <plugins>
+       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>webstart-maven-plugin</artifactId>
         <version>1.0-alpha-2-r4672</version>
@@ -226,7 +176,56 @@
             <gzip>true</gzip>
         </configuration>
       </plugin>
+      </plugins>
+    </build>
+    </profile>
+  </profiles>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>ar.com.leak.iolsucker.Main</mainClass>
+	      <executions>
+	        <execution>
+	          <goals>
+	            <goal>exec</goal>
+	          </goals>
+	        </execution>
+          </executions>   
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>ar.com.leak.iolsucker.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
 
+      <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <descriptors>
+              <descriptor>src/main/assembly/assembly.xml</descriptor>
+            </descriptors>
+          </configuration>
+         <executions>
+           <execution>
+             <id>make-assembly</id> 
+             <phase>package</phase>
+             <goals>
+                <goal>attached</goal>
+             </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>

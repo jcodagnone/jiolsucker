@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
@@ -36,6 +39,7 @@ import ar.com.leak.iolsucker.model.Course;
 import ar.com.leak.iolsucker.model.IolDAO;
 import ar.com.leak.iolsucker.model.LoginInfo;
 import ar.com.leak.iolsucker.model.News;
+import ar.com.zauber.leviathan.common.AbstractAsyncTaskExecutor;
 
 import com.microsoft.schemas.sharepoint.soap.ArrayOfSFPUrl;
 import com.microsoft.schemas.sharepoint.soap.ArrayOfSListWithTime;
@@ -70,32 +74,56 @@ public class SharepointIolDAO implements IolDAO {
         this.uriStrategy = uriSharepointStrategy;
     }
     
+    
+    private Collection<Course> courses;
     @Override
     public final Collection<Course> getUserCourses() {
+        if(courses == null) {
+            courses = Collections.unmodifiableCollection(getUserCoursesReal());
+        }
+        return courses;
+    }
+    
+    /** real implementation for {@link #getUserCourses()} */
+    protected final Collection<Course> getUserCoursesReal() {
         final Collection<Course> ret = new ArrayList<Course>();
         final List<String []> materiasUrlTitle = new ArrayList<String[]>();
-        final SharepointServiceFactory serviceFactory;
-        try {
-            serviceFactory = new JAXWSharepointServiceFactory(uriStrategy, login);
-            
-            final WebListing webs = getWebs(uriStrategy, serviceFactory);
-            for(final SWebWithTime web : webs.getWebs()) {
-                try {
-                    final WebListing sub = getWebs(new FixedURISharepointStrategy(
-                            URI.create(web.getUrl())), serviceFactory);
-                    for(SWebWithTime s : sub.getWebs()) {
-                        final WebListing subsub = getWebs(new FixedURISharepointStrategy(
-                                URI.create(s.getUrl())), serviceFactory);
-                        final String [] uriTitle = new String[]{s.getUrl(), 
-                                                        subsub.getMetadata().getTitle()};
-                        materiasUrlTitle.add(uriTitle);
+        final SharepointServiceFactory serviceFactory = 
+            new JAXWSharepointServiceFactory(uriStrategy, login);
+        
+        final WebListing webs = getWebs(uriStrategy, serviceFactory);
+        final TaskExecutor executorService = new TaskExecutor();
+        
+        
+        for(final SWebWithTime web : webs.getWebs()) {
+            // paralelizamos la busqueda de materias
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        final WebListing sub = getWebs(new FixedURISharepointStrategy(
+                                URI.create(web.getUrl())), serviceFactory);
+                        for(final SWebWithTime s : sub.getWebs()) {
+                            executorService.execute(new Runnable() {
+                                @Override
+                                public void run() {
+                                    final WebListing subsub = getWebs(new FixedURISharepointStrategy(
+                                            URI.create(s.getUrl())), serviceFactory);
+                                    final String [] uriTitle = new String[]{s.getUrl(), 
+                                            subsub.getMetadata().getTitle()};
+                                    materiasUrlTitle.add(uriTitle);
+                                }
+                            });
+                        }
+                    } catch(SOAPFaultException t) {
+                        // esto puede estar bien...significa 403 probablemente
                     }
-                } catch(SOAPFaultException t) {
-                    // esto puede estar bien...significa 403 probablemente
                 }
-            }
-            
-        } catch(MalformedURLException e) {
+            });
+        }
+        try {
+            executorService.awaitIdleness();
+        } catch (InterruptedException e) {
             throw new UnhandledException(e);
         }
         
@@ -109,10 +137,14 @@ public class SharepointIolDAO implements IolDAO {
 
     /** retorna las sub webs de una web */
     private WebListing getWebs(final URISharepointStrategy uriStrategy, 
-            final SharepointServiceFactory serviceFactory)
-            throws MalformedURLException {
-        final SiteDataSoap site = new SiteData(uriStrategy.getUriForService(SiteData.class)
-                .toURL()).getSiteDataSoap();
+            final SharepointServiceFactory serviceFactory) {
+        SiteDataSoap site;
+        try {
+            site = new SiteData(uriStrategy.getUriForService(SiteData.class)
+                    .toURL()).getSiteDataSoap();
+        } catch (MalformedURLException e) {
+            throw new UnhandledException(e);
+        }
         serviceFactory.configureService((BindingProvider) site);
         final Holder<java.lang.Long> getWebResult = new Holder<Long>();
         final Holder<SWebMetadata> sWebMetadata = new Holder<SWebMetadata>();
@@ -122,7 +154,8 @@ public class SharepointIolDAO implements IolDAO {
         final Holder<java.lang.String> strRoles = new Holder<String>();
         final Holder<ArrayOfString> vRolesUsers = new Holder<ArrayOfString>();
         final Holder<ArrayOfString> vRolesGroups = new Holder<ArrayOfString>();
-        site.getWeb(getWebResult, sWebMetadata, vWebs, vLists, vFPUrls, strRoles, vRolesUsers, vRolesGroups);
+        site.getWeb(getWebResult, sWebMetadata, vWebs, vLists, vFPUrls, strRoles, vRolesUsers, 
+                    vRolesGroups);
         return new WebListing(sWebMetadata.value, vWebs.value.getSWebWithTime());
     }
 
@@ -168,5 +201,38 @@ class WebListing {
     
     public final List<SWebWithTime> getWebs() {
         return webs;
+    }
+}
+
+/**
+ * Ejectutador de tareas asincronicas que lleva la cuenta de que se está ejecutando. 
+ * 
+ * @author Juan F. Codagnone
+ * @since Mar 11, 2011
+ */
+class TaskExecutor extends AbstractAsyncTaskExecutor implements Executor {
+    private final ExecutorService executorService = Executors.newFixedThreadPool(20);
+
+    @Override
+    public void execute(final Runnable command) {
+        incrementActiveJobs();
+        
+        try {
+            executorService.execute(new Runnable() {
+                
+                @Override
+                public void run() {
+                    try {
+                        command.run();
+                    } finally {
+                        decrementActiveJobs();
+                    }
+                    
+                }
+            });
+        } catch(final Exception e){
+            // only on error we decrement.
+            decrementActiveJobs();
+        }
     }
 }

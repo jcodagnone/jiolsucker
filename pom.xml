@@ -54,6 +54,7 @@
   <scm>
     <connection>scm:git:git://github.com/jcodagnone/jiolsucker.git</connection>
     <url>scm:git:git://github.com/jcodagnone/jiolsucker.git</url>
+    <developerConnection>scm:git:git://github.com/jcodagnone/jiolsucker.git</developerConnection>
   </scm>
   <organization>
     <name>leak.com.ar</name>
@@ -84,6 +85,12 @@
                  </execution>
              </executions>
          </plugin>
+         <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>2.1</version>
+         </plugin>
+
       </plugins>
     </pluginManagement>  
   </build>

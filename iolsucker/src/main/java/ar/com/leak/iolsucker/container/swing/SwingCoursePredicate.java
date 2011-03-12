@@ -38,6 +38,7 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.commons.collections.Predicate;
 
+import ar.com.leak.common.swing.VerticalLayoutManager;
 import ar.com.leak.iolsucker.model.Course;
 import ar.com.leak.iolsucker.model.IolDAO;
 
@@ -74,8 +75,7 @@ public class SwingCoursePredicate implements Predicate {
         Collections.sort(courses, coursesComparator);
         final Collection<JCheckBox> checkboxes = new ArrayList<JCheckBox>(
                 courses.size());
-//        final JPanel panel = new JPanel(new VerticalLayoutManager());
-        final JPanel panel = new JPanel();
+        final JPanel panel = new JPanel(new VerticalLayoutManager());
         panel.setBorder(new  TitledBorder(new EtchedBorder(), "Cursos"));
         final String courseKey = "course";
         
@@ -98,8 +98,7 @@ public class SwingCoursePredicate implements Predicate {
             panel.add(check);
             checkboxes.add(check);
         }
-        final JPanel box = new JPanel();
-//        final JPanel box = new JPanel(new VerticalLayoutManager());
+        final JPanel box = new JPanel(new VerticalLayoutManager());
         box.setBorder(new  TitledBorder(new EtchedBorder(), "Marcar..."));
         final JButton all = new JButton("Todos");
         all.setToolTipText("Marca todos los cursos");

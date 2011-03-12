@@ -52,7 +52,8 @@
     </license>
   </licenses>
   <scm>
-    <url>https://github.com/jcodagnone/jiolsucker</url>
+    <connection>scm:git:git://github.com/jcodagnone/jiolsucker.git</connection>
+    <url>scm:git:git://github.com/jcodagnone/jiolsucker.git</url>
   </scm>
   <organization>
     <name>leak.com.ar</name>

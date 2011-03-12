@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -39,7 +38,8 @@ import ar.com.leak.iolsucker.model.Course;
 import ar.com.leak.iolsucker.model.IolDAO;
 import ar.com.leak.iolsucker.model.LoginInfo;
 import ar.com.leak.iolsucker.model.News;
-import ar.com.zauber.leviathan.common.AbstractAsyncTaskExecutor;
+import ar.com.zauber.commons.async.DelegateTaskExecutor;
+import ar.com.zauber.commons.async.WaitableExecutor;
 
 import com.microsoft.schemas.sharepoint.soap.ArrayOfSFPUrl;
 import com.microsoft.schemas.sharepoint.soap.ArrayOfSListWithTime;
@@ -92,7 +92,8 @@ public class SharepointIolDAO implements IolDAO {
             new JAXWSharepointServiceFactory(uriStrategy, login);
         
         final WebListing webs = getWebs(uriStrategy, serviceFactory);
-        final TaskExecutor executorService = new TaskExecutor();
+        final ExecutorService executor = Executors.newFixedThreadPool(20);
+        final WaitableExecutor executorService = new DelegateTaskExecutor(executor);
         try {
             
             for(final SWebWithTime web : webs.getWebs()) {
@@ -127,7 +128,7 @@ public class SharepointIolDAO implements IolDAO {
                 throw new UnhandledException(e);
             }
         } finally {
-            executorService.shutdownNow();
+            executor.shutdownNow();
         }
         
         for(final String []urlTitle : materiasUrlTitle) {
@@ -205,42 +206,4 @@ class WebListing {
     public final List<SWebWithTime> getWebs() {
         return webs;
     }
-}
-
-/**
- * Ejectutador de tareas asincronicas que lleva la cuenta de que se está ejecutando. 
- * 
- * @author Juan F. Codagnone
- * @since Mar 11, 2011
- */
-class TaskExecutor extends AbstractAsyncTaskExecutor implements Executor {
-    private final ExecutorService executorService = Executors.newFixedThreadPool(20);
-
-    public List<Runnable> shutdownNow() {
-        return executorService.shutdownNow();
-    }
-
-    @Override
-    public void execute(final Runnable command) {
-        incrementActiveJobs();
-        
-        try {
-            executorService.execute(new Runnable() {
-                
-                @Override
-                public void run() {
-                    try {
-                        command.run();
-                    } finally {
-                        decrementActiveJobs();
-                    }
-                    
-                }
-            });
-        } catch(final Exception e){
-            // only on error we decrement.
-            decrementActiveJobs();
-        }
-    }
-    
 }

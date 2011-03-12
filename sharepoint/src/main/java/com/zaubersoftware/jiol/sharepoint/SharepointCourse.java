@@ -68,7 +68,7 @@ public class SharepointCourse implements Course {
         Validate.notNull(uri);
         Validate.notNull(factory);
         final String path = uri.getPath();
-        this.code = FilenameUtils.getBaseName(path);
+        this.code = FilenameUtils.getName(path);
         this.level = FilenameUtils.getPath(path).startsWith("grado") ? 4 : 3;
         this.name = name;
         this.factory = factory;

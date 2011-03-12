@@ -40,7 +40,7 @@
   <properties>
     <spring.version>3.0.5.RELEASE</spring.version>
     <slf4j.version>1.6.1</slf4j.version>
-    <commons.version>3.43</commons.version>
+    <commons.version>3.44</commons.version>
     <leviathan.version>0.6-SNAPSHOT</leviathan.version>
   </properties>
   

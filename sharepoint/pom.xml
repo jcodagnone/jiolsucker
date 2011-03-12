@@ -81,7 +81,7 @@
         <dependency>
            <groupId>ar.com.zauber.commons</groupId>
            <artifactId>commons-base</artifactId>
-           <version>3.43</version>
+           <version>${commons.version}</version>
         </dependency>
         <dependency>
             <groupId>ar.com.zauber.leviathan</groupId>

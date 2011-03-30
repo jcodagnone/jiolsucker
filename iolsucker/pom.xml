@@ -13,18 +13,18 @@
     <dependency>
       <groupId>ar.com.leak.iolsucker</groupId>
       <artifactId>jiol-api</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>    
   <dependency>
       <groupId>ar.com.leak.iolsucker</groupId>
       <artifactId>jiol-api-mock</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
       <scope>test</scope>
     </dependency>    
      <dependency>
       <groupId>ar.com.leak.iolsucker</groupId>
       <artifactId>jiol-sharepoint</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>  
     <dependency>
       <artifactId>commons-web-version</artifactId>
@@ -185,6 +185,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2</version>
         <configuration>
           <mainClass>ar.com.leak.iolsucker.Main</mainClass>
 	      <executions>
@@ -199,6 +200,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.1</version>
         <configuration>
           <archive>
             <manifest>
@@ -211,6 +213,7 @@
 
       <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.2</version>
           <configuration>
             <descriptors>
               <descriptor>src/main/assembly/assembly.xml</descriptor>

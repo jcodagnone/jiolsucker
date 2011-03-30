@@ -39,9 +39,9 @@
 
     <dependencies>
         <dependency>
-          <groupId>${pom.groupId}</groupId>
+          <groupId>${project.groupId}</groupId>
           <artifactId>jiol-api</artifactId>
-          <version>${pom.version}</version>
+          <version>${project.version}</version>
         </dependency>
         <!-- CXF dependencies -->
         <dependency>

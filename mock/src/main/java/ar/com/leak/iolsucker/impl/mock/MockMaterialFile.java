@@ -89,4 +89,9 @@ public class MockMaterialFile implements Material {
     public final Date getLastModified() {
         return lastModDate;
     }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
 }

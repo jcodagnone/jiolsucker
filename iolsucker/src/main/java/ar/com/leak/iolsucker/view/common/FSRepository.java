@@ -20,8 +20,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -202,7 +204,7 @@ public class FSRepository extends  Observable implements Repository {
                 
                 try {
                     final InputStream in = material.getInputStream();
-                    logger.info("Descargando: " + material.getName());
+                    logger.info("Descargando: " + material.getName() + " " + material.getDescription());
                     copyInput(in, destFile, material.getEstimatedSize());
                     in.close();
                     setChanged();
@@ -231,7 +233,7 @@ public class FSRepository extends  Observable implements Repository {
                     
                     try {
                         InputStream in = material.getInputStream();
-                        logger.info("Descargando: " + material.getName());
+                        logger.info("Descargando: " + material.getName() + " (" + material.getDescription() + ")");
                         copyInput(in, destFile, material.getEstimatedSize());
                         in.close();
                         setChanged();
@@ -277,6 +279,7 @@ public class FSRepository extends  Observable implements Repository {
         });
     }
 
+    private String cuatrimestre = getCuatrimestre(GregorianCalendar.getInstance()); 
     /**
      * Resuelve el directorio donde debe quedar almacenado un curso
      *  
@@ -284,16 +287,22 @@ public class FSRepository extends  Observable implements Repository {
      * @return un directorio  donde debe quedar almacenado un curso
      */
     final File getDestDir(final Course course) {
-        final String name = course.getName().replace('/', '-')
-                                            .replace('(', ' ')
-                                            .replace(')', ' ')
-                                            .trim();
+        final String name = course.getName().concat("-").concat(course.getCode())
+                                            .replaceAll("/", "-")
+                                            .trim()
+                                            .replaceAll("\\s+", "-")
+                                            .replaceAll("[(]", "")
+                                            .replaceAll("[)]", "")
+                                            .replaceAll("[.][.][.]$", "");
+                                            
         if(name.indexOf('/') != -1) {
             throw new IllegalStateException("la materia `" + name
                     + "`tiene caracteres inseguros");
         }
         
-        return new File(base + File.separator +  StringUtils.upperCase(name)
+        return new File(base + File.separator
+                + cuatrimestre +  File.separator 
+                + StringUtils.upperCase(name)
                 + File.separator + "material");
     }
     
@@ -358,5 +367,24 @@ public class FSRepository extends  Observable implements Repository {
 
     public List<Throwable> getExceptions() {
         return exceptions;
+    }
+    
+    public static String getCuatrimestre(Calendar cal) {
+        final int month = cal.get(Calendar.MONTH) + 1;
+        int year;
+        int cuatrimestre;
+        
+        if(month == 1 || month == 2) {
+            year = cal.get(Calendar.YEAR) - 1;
+            cuatrimestre = 2;
+        } else if(month < 8) {
+            year = cal.get(Calendar.YEAR) ;
+            cuatrimestre = 1;
+        } else {
+            year = cal.get(Calendar.YEAR) ;
+            cuatrimestre = 2;
+        }
+        return String.format("%d-%d", year, cuatrimestre);
+        
     }
 }

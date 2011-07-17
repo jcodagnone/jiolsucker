@@ -60,9 +60,14 @@ public class SharepointMaterial implements Material {
 
     @Override
     public final String getName() {
-        return item.get("ows_ServerUrl").replace(basePath, "");
+        return item.get("ows_ServerUrl").replace(basePath, "").replace("/Material Didctico", "");
     }
 
+    @Override
+    public final String getDescription() {
+        return item.get("ows_Title");
+    }
+    
     @Override
     public final InputStream getInputStream() throws IOException {
         final URI uri = item.get("ows_EncodedAbsUrl", URI.class);

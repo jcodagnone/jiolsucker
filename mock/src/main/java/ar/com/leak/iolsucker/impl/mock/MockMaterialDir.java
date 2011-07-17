@@ -71,4 +71,9 @@ public class MockMaterialDir implements Material {
     public final Date getLastModified() {
         return new Date(0);
     }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
 }

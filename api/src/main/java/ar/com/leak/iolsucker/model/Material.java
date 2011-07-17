@@ -41,6 +41,11 @@ public interface Material {
     String getName();
     
     /**
+     * @return una descripción del archivo
+     */
+    String getDescription();
+    
+    /**
      * @return un <code>InputStream</code> que permitirá leer el contenido del
      *        material
      * 

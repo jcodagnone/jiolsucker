@@ -180,9 +180,6 @@ public class OptionsView  {
         botoneraContainer.getConstraints().ipadx = minButtonWidth;
         botoneraContainer.add(botonera);
 
-        botonera.add(btnOk);
-        botonera.add(btnCancel);
-
         Action okAction = new AbstractAction() {
             { putValue(AbstractAction.NAME, "Ok"); }
             public void actionPerformed(final ActionEvent e) {
@@ -199,14 +196,16 @@ public class OptionsView  {
         };
         btnOk.setAction(okAction);
         btnCancel.setAction(cancelAction);
-
         JButton button = new JButton("Sobre...");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
                 UiUtil.centerOnParentAndShow(aboutDialog);
             }
         });
+
         botonera.add(button);
+        botonera.add(btnCancel);
+        botonera.add(btnOk);
 
         return botoneraContainer.asJComponent();
     }

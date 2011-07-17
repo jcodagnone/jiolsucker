@@ -22,6 +22,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
@@ -60,6 +61,7 @@ public class SharepointCourse implements Course {
     private final URISharepointStrategy  uriStrategy;
     private final SharepointServiceFactory factory;
     private final URI uri;
+    private static Pattern codePat = Pattern.compile("\\d\\d[.]\\d\\d");
     
     /** */
     public SharepointCourse(final String name, final URI uri, 
@@ -69,7 +71,7 @@ public class SharepointCourse implements Course {
         Validate.notNull(factory);
         final String path = uri.getPath();
         this.code = FilenameUtils.getName(path);
-        this.level = FilenameUtils.getPath(path).startsWith("grado") ? 4 : 3;
+        this.level = codePat.matcher(code).matches() ? 4 : 3;
         this.name = name;
         this.factory = factory;
         uriStrategy = new FixedURISharepointStrategy(uri);

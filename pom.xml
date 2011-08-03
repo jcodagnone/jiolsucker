@@ -12,7 +12,7 @@
   <packaging>pom</packaging>
   <name>jiol</name>
   
-  <version>3.19</version>
+  <version>3.20-SNAPSHOT</version>
   <description>Cliente java para Itba On Line (iol) con un diseño muy flexible, y una implementación simple</description>
   <url>http://www.leak.com.ar/~juam/code/jiol/</url>
   

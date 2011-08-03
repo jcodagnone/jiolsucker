@@ -70,7 +70,16 @@ public class SharepointMaterial implements Material {
     
     @Override
     public final InputStream getInputStream() throws IOException {
-        final URI uri = item.get("ows_EncodedAbsUrl", URI.class);
+        URI uri;
+        try {
+            uri = item.get("ows_EncodedAbsUrl", URI.class);
+        } catch(IllegalArgumentException e) {
+            try {
+                uri = URI.create(item.get("ows_EncodedAbsUrl").replace("[", "%5B").replace("]", "%5D"));
+            } catch(IllegalArgumentException e1) {
+                throw new IOException(e);
+            }
+        }
         final URIFetcherResponse response = fetcher.get(uri);
         if(response.isSucceeded()) {
             final URIFetcherHttpResponse r = response.getHttpResponse();

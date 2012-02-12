@@ -961,10 +961,10 @@
   </wsdl:binding>
   <wsdl:service name="Webs">
     <wsdl:port name="WebsSoap" binding="tns:WebsSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/webs.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/webs.asmx" />
     </wsdl:port>
     <wsdl:port name="WebsSoap12" binding="tns:WebsSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/webs.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/webs.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -1918,10 +1918,10 @@
   </wsdl:binding>
   <wsdl:service name="UserGroup">
     <wsdl:port name="UserGroupSoap" binding="tns:UserGroupSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/UserGroup.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/UserGroup.asmx" />
     </wsdl:port>
     <wsdl:port name="UserGroupSoap12" binding="tns:UserGroupSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/UserGroup.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/UserGroup.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

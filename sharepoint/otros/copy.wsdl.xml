@@ -224,10 +224,10 @@
   </wsdl:binding>
   <wsdl:service name="Copy">
     <wsdl:port name="CopySoap" binding="tns:CopySoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/copy.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/copy.asmx" />
     </wsdl:port>
     <wsdl:port name="CopySoap12" binding="tns:CopySoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/copy.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/copy.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

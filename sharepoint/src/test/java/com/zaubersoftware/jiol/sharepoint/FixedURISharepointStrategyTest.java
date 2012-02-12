@@ -37,9 +37,9 @@ public class FixedURISharepointStrategyTest {
     @Test
     public final void resolv() {
         final URISharepointStrategy s = new FixedURISharepointStrategy(
-                URI.create("http://iol2.itba.edu.ar:27521/grado/72.27/"));
+                URI.create("http://iol2.itba.edu.ar/grado/72.27/"));
         final URI uri = s.getUriForService(Authentication.class);
-        assertEquals("http://iol2.itba.edu.ar:27521/grado/72.27/_vti_bin/Authentication.asmx?wsdl",
+        assertEquals("http://iol2.itba.edu.ar/grado/72.27/_vti_bin/Authentication.asmx?wsdl",
                 uri.toString());
         
     }

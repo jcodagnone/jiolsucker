@@ -224,7 +224,7 @@
   </binding>
   <service name="PortalCrawl">
     <port name="PortalCrawlSoap" binding="s0:PortalCrawlSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/spscrawl.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/spscrawl.asmx" />
     </port>
   </service>
 </definitions>

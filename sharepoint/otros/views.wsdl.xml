@@ -630,10 +630,10 @@
   </wsdl:binding>
   <wsdl:service name="Views">
     <wsdl:port name="ViewsSoap" binding="tns:ViewsSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/views.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/views.asmx" />
     </wsdl:port>
     <wsdl:port name="ViewsSoap12" binding="tns:ViewsSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/views.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/views.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -189,10 +189,10 @@
   <wsdl:service name="QueryService">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Microsoft Windows SharePoint Server 3.0 Search Query Web Service</wsdl:documentation>
     <wsdl:port name="QueryServiceSoap" binding="tns:QueryServiceSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/spsearch.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/spsearch.asmx" />
     </wsdl:port>
     <wsdl:port name="QueryServiceSoap12" binding="tns:QueryServiceSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/spsearch.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/spsearch.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -1534,7 +1534,7 @@
   <service name="UserProfileService">
     <documentation>User Profile Service</documentation>
     <port name="UserProfileServiceSoap" binding="s0:UserProfileServiceSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/UserProfileService.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/UserProfileService.asmx" />
     </port>
   </service>
 </definitions>

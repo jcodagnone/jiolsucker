@@ -586,10 +586,10 @@
   </wsdl:binding>
   <wsdl:service name="Meetings">
     <wsdl:port name="MeetingsSoap" binding="tns:MeetingsSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/meetings.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/meetings.asmx" />
     </wsdl:port>
     <wsdl:port name="MeetingsSoap12" binding="tns:MeetingsSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/meetings.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/meetings.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

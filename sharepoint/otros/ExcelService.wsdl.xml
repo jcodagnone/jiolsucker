@@ -866,10 +866,10 @@
   </wsdl:binding>
   <wsdl:service name="ExcelService">
     <wsdl:port name="ExcelServiceSoap" binding="tns:ExcelServiceSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/ExcelService.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar:/_vti_bin/ExcelService.asmx" />
     </wsdl:port>
     <wsdl:port name="ExcelServiceSoap12" binding="tns:ExcelServiceSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/ExcelService.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/ExcelService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

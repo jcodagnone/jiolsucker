@@ -73,7 +73,7 @@ public final class SharepointFacadeDriver {
         }
 
         final IolDAO dao = new SharepointIolDAO(new ParameterLoginInfo(username, password), 
-                new FixedURISharepointStrategy(URI.create("http://iol2.itba.edu.ar:27521/")));
+                new FixedURISharepointStrategy(URI.create("http://iol2.itba.edu.ar/")));
         for(final Course course : dao.getUserCourses()) {
             System.out.println(course.getName());
             for(final Material material : course.getFiles()) {

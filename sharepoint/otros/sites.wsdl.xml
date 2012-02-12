@@ -215,10 +215,10 @@
   </wsdl:binding>
   <wsdl:service name="Sites">
     <wsdl:port name="SitesSoap" binding="tns:SitesSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/sites.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/sites.asmx" />
     </wsdl:port>
     <wsdl:port name="SitesSoap12" binding="tns:SitesSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/sites.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/sites.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

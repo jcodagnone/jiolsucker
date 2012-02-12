@@ -112,10 +112,10 @@
   </wsdl:binding>
   <wsdl:service name="Forms">
     <wsdl:port name="FormsSoap" binding="tns:FormsSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/forms.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar:/_vti_bin/forms.asmx" />
     </wsdl:port>
     <wsdl:port name="FormsSoap12" binding="tns:FormsSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/forms.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/forms.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -208,10 +208,10 @@
   </wsdl:binding>
   <wsdl:service name="StsAdapter">
     <wsdl:port name="StsAdapterSoap" binding="tns:StsAdapterSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/dspsts.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/dspsts.asmx" />
     </wsdl:port>
     <wsdl:port name="StsAdapterSoap12" binding="tns:StsAdapterSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/dspsts.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/dspsts.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

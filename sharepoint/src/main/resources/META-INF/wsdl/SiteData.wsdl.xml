@@ -686,10 +686,10 @@
   </wsdl:binding>
   <wsdl:service name="SiteData">
     <wsdl:port name="SiteDataSoap" binding="tns:SiteDataSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/SiteData.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/SiteData.asmx" />
     </wsdl:port>
     <wsdl:port name="SiteDataSoap12" binding="tns:SiteDataSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/SiteData.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/SiteData.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

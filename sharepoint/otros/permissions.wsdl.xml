@@ -289,10 +289,10 @@
   </wsdl:binding>
   <wsdl:service name="Permissions">
     <wsdl:port name="PermissionsSoap" binding="tns:PermissionsSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/permissions.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/permissions.asmx" />
     </wsdl:port>
     <wsdl:port name="PermissionsSoap12" binding="tns:PermissionsSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/permissions.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/permissions.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -581,10 +581,10 @@
   </wsdl:binding>
   <wsdl:service name="Imaging">
     <wsdl:port name="ImagingSoap" binding="tns:ImagingSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/imaging.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/imaging.asmx" />
     </wsdl:port>
     <wsdl:port name="ImagingSoap12" binding="tns:ImagingSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/imaging.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/imaging.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

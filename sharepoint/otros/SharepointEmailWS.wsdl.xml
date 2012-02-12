@@ -519,10 +519,10 @@
   <wsdl:service name="SharepointEmailWS">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sharepoint Email Integration Web Service</wsdl:documentation>
     <wsdl:port name="SharepointEmailWSSoap" binding="tns:SharepointEmailWSSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/SharepointEmailWS.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/SharepointEmailWS.asmx" />
     </wsdl:port>
     <wsdl:port name="SharepointEmailWSSoap12" binding="tns:SharepointEmailWSSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/SharepointEmailWS.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/SharepointEmailWS.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

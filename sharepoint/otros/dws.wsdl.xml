@@ -479,10 +479,10 @@
   </wsdl:binding>
   <wsdl:service name="Dws">
     <wsdl:port name="DwsSoap" binding="tns:DwsSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/dws.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar:/_vti_bin/dws.asmx" />
     </wsdl:port>
     <wsdl:port name="DwsSoap12" binding="tns:DwsSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/dws.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/dws.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

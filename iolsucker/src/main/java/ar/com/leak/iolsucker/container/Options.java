@@ -42,7 +42,7 @@ public class Options implements LoginInfo  {
     /** si persisten...la password tambien persiste? */
     private boolean savePassword = false;
     /** default base url de iol */
-    private final String defaultURLBase = "http://iol2.itba.edu.ar:27521/";
+    private final String defaultURLBase = "http://iol2.itba.edu.ar/";
     private final String oldURLBase = "http://silvestre.itba.edu.ar/itbaV/";
     
     /** base url de iol */

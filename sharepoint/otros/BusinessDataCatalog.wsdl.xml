@@ -373,10 +373,10 @@
   <wsdl:service name="BdcWebService">
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Business Data Catalog Metadata Web Service</wsdl:documentation> 
   <wsdl:port name="BdcWebServiceSoap" binding="tns:BdcWebServiceSoap">
-  <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/BusinessDataCatalog.asmx" /> 
+  <soap:address location="http://iol2.itba.edu.ar/_vti_bin/BusinessDataCatalog.asmx" /> 
   </wsdl:port>
   <wsdl:port name="BdcWebServiceSoap12" binding="tns:BdcWebServiceSoap12">
-  <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/BusinessDataCatalog.asmx" /> 
+  <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/BusinessDataCatalog.asmx" /> 
   </wsdl:port>
   </wsdl:service>
   </wsdl:definitions>

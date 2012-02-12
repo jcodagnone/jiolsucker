@@ -139,10 +139,10 @@
   </wsdl:binding>
   <wsdl:service name="People">
     <wsdl:port name="PeopleSoap" binding="tns:PeopleSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/People.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/People.asmx" />
     </wsdl:port>
     <wsdl:port name="PeopleSoap12" binding="tns:PeopleSoap12">
-      <soap12:address location="http://iol2.itba.edu.ar:27521/_vti_bin/People.asmx" />
+      <soap12:address location="http://iol2.itba.edu.ar/_vti_bin/People.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

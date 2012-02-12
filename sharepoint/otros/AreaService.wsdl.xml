@@ -688,7 +688,7 @@
   <service name="AreaService">
     <documentation>SPS Area Service</documentation>
     <port name="AreaServiceSoap" binding="s0:AreaServiceSoap">
-      <soap:address location="http://iol2.itba.edu.ar:27521/_vti_bin/AreaService.asmx" />
+      <soap:address location="http://iol2.itba.edu.ar/_vti_bin/AreaService.asmx" />
     </port>
   </service>
 </definitions>

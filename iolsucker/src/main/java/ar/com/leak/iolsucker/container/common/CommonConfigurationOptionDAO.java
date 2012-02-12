@@ -145,7 +145,9 @@ public class CommonConfigurationOptionDAO extends FileOptionsDAO {
                 }
 
                 if(rev > 0) {
-                    ret.setURLBase(new URL(config.getString(KEY_URLBASE)));
+                    String url = config.getString(KEY_URLBASE).replaceAll("^http:[/][/]iol2[.]itba[.]edu[.]ar:27521[/]$", "http://iol2.itba.edu.ar/");
+                    ret.setURLBase(new URL(url));
+                    
                     String s = config.getString(KEY_PROXYHOST);
                     ret.setProxyHost(s == null ? "" : s);
                     ret.setProxyPort(config.getInt(KEY_PROXYPORT));

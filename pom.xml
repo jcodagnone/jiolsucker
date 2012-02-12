@@ -4,7 +4,7 @@
   <parent>
     <artifactId>bare</artifactId>
     <groupId>com.zaubersoftware.maven.poms</groupId>
-    <version>1.0.10</version>
+    <version>1.0.11</version>
   </parent>
 
   <groupId>ar.com.leak.iolsucker</groupId>
@@ -36,10 +36,10 @@
   </developers>
   
   <properties>
-    <spring.version>3.0.5.RELEASE</spring.version>
+    <spring.version>3.0.6.RELEASE</spring.version>
     <slf4j.version>1.6.1</slf4j.version>
-    <commons.version>3.47</commons.version>
-    <leviathan.version>0.6</leviathan.version>
+    <commons.version>3.49</commons.version>
+    <leviathan.version>0.8</leviathan.version>
   </properties>
   
   <licenses>
@@ -123,22 +123,6 @@
      <module>sharepoint</module>
      <module>iolsucker</module>
   </modules>
-  <repositories>
-         <repository>
-               <releases><enabled>true</enabled></releases>
-               <snapshots><enabled>false</enabled></snapshots>
-               <id>zauber-code-releases</id>
-               <name>Zauber Code Releases</name>
-               <url>https://repo1.zaubersoftware.com/zauber/code/releases</url>
-         </repository>
-         <repository>
-               <releases><enabled>false</enabled></releases>
-               <snapshots><enabled>true</enabled></snapshots>
-               <id>zauber-code-snapshots</id>
-              <name>Zauber Code Snapshots</name>
-              <url>https://repo1.zaubersoftware.com/zauber/code/snapshots</url>
-         </repository>
-  </repositories>
   
   <dependencyManagement>
     <dependencies>
@@ -227,52 +211,52 @@
       <!-- END Hibernate -->
       <!-- Commons -->  
       <dependency>
-        <groupId>ar.com.zauber.commons</groupId>
+        <groupId>com.zaubersoftware.commons</groupId>
         <artifactId>commons-base</artifactId>
         <version>${commons.version}</version>
       </dependency>
       <dependency>
-          <groupId>ar.com.zauber.commons.persistence</groupId>
+          <groupId>com.zaubersoftware.commons.persistence</groupId>
           <artifactId>commons-persistence-utils</artifactId>
           <version>${commons.version}</version>
       </dependency>
       <dependency>
-          <groupId>ar.com.zauber.commons.persistence</groupId>
+          <groupId>com.zaubersoftware.commons.persistence</groupId>
           <artifactId>commons-persistence-api</artifactId>
           <version>${commons.version}</version>
       </dependency>
       <dependency>
-          <groupId>ar.com.zauber.commons.message</groupId>
+          <groupId>com.zaubersoftware.commons.message</groupId>
           <artifactId>commons-message-impl</artifactId>
           <version>${commons.version}</version>
       </dependency>
       <dependency>
-          <groupId>ar.com.zauber.commons.auth</groupId>
+          <groupId>com.zaubersoftware.commons.auth</groupId>
           <artifactId>commons-auth-api</artifactId>
           <version>${commons.version}</version>
      </dependency>
       <dependency>
-          <groupId>ar.com.zauber.commons.auth</groupId>
+          <groupId>com.zaubersoftware.commons.auth</groupId>
           <artifactId>commons-auth-impl</artifactId>
           <version>${commons.version}</version>
      </dependency>
         <dependency>
             <artifactId>commons-web-cache</artifactId>
-            <groupId>ar.com.zauber.commons.web</groupId>
+            <groupId>com.zaubersoftware.commons.web</groupId>
           <version>${commons.version}</version>
         </dependency>
         <dependency>
             <artifactId>commons-web-uri</artifactId>
-            <groupId>ar.com.zauber.commons.web</groupId>
+            <groupId>com.zaubersoftware.commons.web</groupId>
             <version>${commons.version}</version>
         </dependency>
         <dependency>
-          <groupId>ar.com.zauber.commons.web</groupId>
+          <groupId>com.zaubersoftware.commons.web</groupId>
           <artifactId>commons-web-utils</artifactId>
           <version>${commons.version}</version>
         </dependency>
       <dependency>
-          <groupId>ar.com.zauber.commons</groupId>
+          <groupId>com.zaubersoftware.commons</groupId>
           <artifactId>commons-spring</artifactId>
           <version>${commons.version}</version>
           <exclusions>
@@ -339,17 +323,17 @@
       <!-- END Logging -->
 
            <dependency>
-                <groupId>ar.com.zauber.leviathan</groupId>
+                <groupId>com.zaubersoftware.leviathan</groupId>
                 <artifactId>leviathan-api</artifactId>
                 <version>${leviathan.version}</version>
            </dependency>
            <dependency>
-                <groupId>ar.com.zauber.leviathan</groupId>
+                <groupId>com.zaubersoftware.leviathan</groupId>
                 <artifactId>leviathan-api-common</artifactId>
                 <version>${leviathan.version}</version>
            </dependency>
            <dependency>
-                <groupId>ar.com.zauber.leviathan</groupId>
+                <groupId>com.zaubersoftware.leviathan</groupId>
                 <artifactId>leviathan-api-httpclient</artifactId>
                 <version>${leviathan.version}</version>
            </dependency>

@@ -28,7 +28,7 @@
     </dependency>  
     <dependency>
       <artifactId>commons-web-version</artifactId>
-      <groupId>ar.com.zauber.commons.web</groupId>
+      <groupId>com.zaubersoftware.commons.web</groupId>
       <version>${commons.version}</version>
     </dependency>
 

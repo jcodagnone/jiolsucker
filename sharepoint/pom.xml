@@ -77,20 +77,20 @@
            <version>2.5</version>
         </dependency>
         <dependency>
-           <groupId>ar.com.zauber.commons</groupId>
+           <groupId>com.zaubersoftware.commons</groupId>
            <artifactId>commons-base</artifactId>
            <version>${commons.version}</version>
         </dependency>
         <dependency>
-            <groupId>ar.com.zauber.leviathan</groupId>
+            <groupId>com.zaubersoftware.leviathan</groupId>
             <artifactId>leviathan-api</artifactId>            
         </dependency>
         <dependency>
-             <groupId>ar.com.zauber.leviathan</groupId>
+             <groupId>com.zaubersoftware.leviathan</groupId>
              <artifactId>leviathan-api-common</artifactId>
         </dependency>
          <dependency>
-             <groupId>ar.com.zauber.leviathan</groupId>
+             <groupId>com.zaubersoftware.leviathan</groupId>
              <artifactId>leviathan-api-httpclient</artifactId>
         </dependency>
  

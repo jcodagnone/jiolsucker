@@ -123,6 +123,22 @@
      <module>sharepoint</module>
      <module>iolsucker</module>
   </modules>
+  <repositories>
+         <repository>
+               <releases><enabled>true</enabled></releases>
+               <snapshots><enabled>false</enabled></snapshots>
+               <id>zauber-code-releases</id>
+               <name>Zauber Code Releases</name>
+               <url>https://repo1.flowics.com/zauber/code/releases</url>
+         </repository>
+         <repository>
+               <releases><enabled>false</enabled></releases>
+               <snapshots><enabled>true</enabled></snapshots>
+               <id>zauber-code-snapshots</id>
+              <name>Zauber Code Snapshots</name>
+              <url>https://repo1.flowics.com/zauber/code/snapshots</url>
+         </repository>
+  </repositories>
   
   <dependencyManagement>
     <dependencies>
@@ -353,12 +369,12 @@
     <repository>
       <id>zauber-code-releases</id>
       <name>Zauber Code Releases</name>
-      <url>https://repo1.zaubersoftware.com/zauber/code/releases</url>
+      <url>https://repo1.flowics.com/zauber/code/releases</url>
     </repository>
     <snapshotRepository>
       <id>zauber-code-snapshots</id>
       <name>Zauber Code Snapshots</name>
-      <url>https://repo1.zaubersoftware.com/zauber/code/snapshots</url>
+      <url>https://repo1.flowics.com/zauber/code/snapshots</url>
     </snapshotRepository>
 
   </distributionManagement>

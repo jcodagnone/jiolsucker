@@ -1,3 +1,4 @@
+Update: https://twitter.com/itba_ti/status/762730856565895168 IOL no utilza más sharepoint, armar una interface para la nueva plataforma implica implementar ciertas interfaces. Ver sharepoint/
 
 Para empezar a romper el jiol es necesario tener maven, y un jdk 1.6 (o 6 :).
 
